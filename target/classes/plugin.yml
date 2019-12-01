@@ -1,0 +1,12 @@
+name: NKjobs
+main: be.noki_senpai.NKjobs.NKjobs
+version: 1.0.0
+api-version: 1.14
+author: 'NoKi_senpai'
+description: 'Allows players to have jobs'
+depend: [Vault]
+softdepend: [NKeconomy, NKhome]
+commands:
+  jobs:
+    description: "Main NKjobs plugin command"
+    usage: /<command> <join|leave|leaveall|switch|info|stats|top|level|xp>
