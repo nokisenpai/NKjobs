@@ -834,7 +834,11 @@ public class DataRegisterManager
 	public String checkFurnace(Location location)
 	{
 		String key = "" + location.getX()  + "|" + location.getY()  + "|" + location.getZ();
-		return furnaces.get(location.getWorld().getName()).get(key).getPlayerName();
+		if(furnaces.get(location.getWorld().getName()).containsKey(key))
+		{
+			return furnaces.get(location.getWorld().getName()).get(key).getPlayerName();
+		}
+		return null;
 	}
 
 	// ######################################
@@ -844,7 +848,11 @@ public class DataRegisterManager
 	public String checkBrewingStand(Location location)
 	{
 		String key = "" + location.getX()  + "|" + location.getY()  + "|" + location.getZ();
-		return brewingStands.get(location.getWorld().getName()).get(key).getPlayerName();
+		if(brewingStands.get(location.getWorld().getName()).containsKey(key))
+		{
+			return brewingStands.get(location.getWorld().getName()).get(key).getPlayerName();
+		}
+		return null;
 	}
 
 	// ######################################
