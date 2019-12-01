@@ -922,7 +922,6 @@ public class JobManager
 						if(data.getName().equals(item))
 						{
 							rewardPlayer(player, jobName, data.getMoney(), data.getExp());
-							Bukkit.getPlayer(player.getUuid()).sendMessage(">" + "BREAK" + " : " + item);
 						}
 					}
 				}
