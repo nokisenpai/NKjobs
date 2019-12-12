@@ -4,12 +4,12 @@
   lvl_max: 100
   color: red
   equation_leveling:
-    base: 25
-    ratio: 50
+    base: 20
+    ratio: 100
   equation_exp:
-    ratio: 32
+    ratio: 25
   equation_money:
-    ratio: 50
+    ratio: 25
   action:
     BREAK:
       acacia_leaves:
@@ -227,10 +227,6 @@
       wither_skeleton_skull:
         base_money: 0.5
         base_exp: 0.5
-    REPAIR:
-      bow:
-        base_money: 0.5
-        base_exp: 0.5
     TAME:
       Wolf:
         base_money: 1.0
@@ -243,8 +239,8 @@
         base_exp: 1.0
     KILL:
       Chicken:
-        base_money: 1.0
-        base_exp: 1.0
+        base_money: 0.5
+        base_exp: 0.5
       Cow:
         base_money: 1.0
         base_exp: 1.0
@@ -345,28 +341,53 @@
         base_money: 50.0
         base_exp: 50.0
       slime-1:
-        base_money: 1.0
-        base_exp: 1.0
+        base_money: 0.1
+        base_exp: 0.1
       slime-2:
-        base_money: 2.0
-        base_exp: 2.0
+        base_money: 0.5
+        base_exp: 0.5
       slime-4:
         base_money: 3.0
         base_exp: 3.0
+      magma_cube-1:
+        base_money: 0.15
+        base_exp: 0.15
+      magma_cube-2:
+        base_money: 0.6
+        base_exp: 0.6
+      magma_cube-4:
+        base_money: 4.0
+        base_exp: 4.0
     EXPLORE:
-      1:
+      EXPLORE-1:
         base_money: 0.5
         base_exp: 0.5
-      2:
+      EXPLORE-2:
         base_money: 0.4
         base_exp: 0.4
-      3:
+      EXPLORE-3:
         base_money: 0.3
         base_exp: 0.3
-      4:
+      EXPLORE-4:
         base_money: 0.2
         base_exp: 0.2
-      5:
+      EXPLORE-5:
+        base_money: 0.1
+        base_exp: 0.1
+    SMELT:
+      NETHER_BRICK:
+        base_money: 0.01
+        base_exp: 0.01
+      Nether_Quartz:
+        base_money: 0.1
+        base_exp: 0.1
+      gold_nugget:
+        base_money: 0.05
+        base_exp: 0.05
+      iron_nugget:
+        base_money: 0.05
+        base_exp: 0.05
+      Popped_Chorus_Fruit:
         base_money: 0.1
         base_exp: 0.1
   reward:
@@ -376,11 +397,11 @@
           id: diamond_sword
           name: "Epée qui fait bobo"
           enchantments:
-            FIRE_ASPECT: 1
-            KNOCKBACK: 2
-            LOOT_BONUS_MOBS: 4
-            SWEEPING_EDGE: 3
-            DAMAGE_ALL: 8
+            fire_aspect: 2
+            knockback: 2
+            looting: 4
+            sweeping: 3
+            sharpness: 8
           unbreakable: true
           prevent_lost: true
 # Fin de la config du job Aventurier----------------------------------------
@@ -390,12 +411,12 @@
   lvl_max: 100
   color: green
   equation_leveling:
-    base: 25
-    ratio: 50
+    base: 20
+    ratio: 100
   equation_exp:
-    ratio: 32
+    ratio: 25
   equation_money:
-    ratio: 50
+    ratio: 25
   action:
     BREAK:
       acacia_leaves:
@@ -550,6 +571,10 @@
       spruce_sapling:
         base_money: 0.5
         base_exp: 0.5
+    SMELT:
+      Charcoal:
+        base_money: 0.05
+        base_exp: 0.05
   reward:
     50:
       items:
@@ -557,8 +582,8 @@
           id: diamond_axe
           name: "Hache efficace"
           enchantments:
-            DIG_SPEED: 7
-            LOOT_BONUS_BLOCKS: 4
+            efficiency: 7
+            fortune: 4
           unbreakable: true
           prevent_lost: true
 # Fin de la config du job Bucheron----------------------------------------
@@ -568,12 +593,12 @@
   lvl_max: 100
   color: pink
   equation_leveling:
-    base: 25
-    ratio: 50
+    base: 20
+    ratio: 100
   equation_exp:
-    ratio: 32
+    ratio: 25
   equation_money:
-    ratio: 50
+    ratio: 25
   action:
     CRAFT:
       wooden_axe:
@@ -2069,6 +2094,82 @@
       stone:
         base_money: 0.01
         base_exp: 0.01
+    SMELT:
+      Sponge:
+        base_money: 0.5
+        base_exp: 0.5
+      smooth_quartz:
+        base_money: 0.4
+        base_exp: 0.4
+      smooth_stone:
+        base_money: 0.05
+        base_exp: 0.05
+      Cracked_Stone_Bricks:
+        base_money: 0.05
+        base_exp: 0.05
+      glass:
+        base_money: 0.05
+        base_exp: 0.05
+      terracotta:
+        base_money: 0.05
+        base_exp: 0.05
+      white_glazed_terracotta:
+        base_money: 0.05
+        base_exp: 0.05
+      orange_glazed_terracotta:
+        base_money: 0.05
+        base_exp: 0.05
+      magenta_glazed_terracotta:
+        base_money: 0.05
+        base_exp: 0.05
+      light_blue_glazed_terracotta:
+        base_money: 0.05
+        base_exp: 0.05
+      yellow_glazed_terracotta:
+        base_money: 0.05
+        base_exp: 0.05
+      lime_glazed_terracotta:
+        base_money: 0.05
+        base_exp: 0.05
+      pink_glazed_terracotta:
+        base_money: 0.05
+        base_exp: 0.05
+      gray_glazed_terracotta:
+        base_money: 0.05
+        base_exp: 0.05
+      light_gray_glazed_terracotta:
+        base_money: 0.05
+        base_exp: 0.05
+      cyan_glazed_terracotta:
+        base_money: 0.05
+        base_exp: 0.05
+      purple_glazed_terracotta:
+        base_money: 0.05
+        base_exp: 0.05
+      blue_glazed_terracotta:
+        base_money: 0.05
+        base_exp: 0.05
+      brown_glazed_terracotta:
+        base_money: 0.05
+        base_exp: 0.05
+      green_glazed_terracotta:
+        base_money: 0.05
+        base_exp: 0.05
+      red_glazed_terracotta:
+        base_money: 0.05
+        base_exp: 0.05
+      black_glazed_terracotta:
+        base_money: 0.05
+        base_exp: 0.05
+      smooth_sandstone:
+        base_money: 0.05
+        base_exp: 0.05
+      Brick:
+        base_money: 0.1
+        base_exp: 0.1
+      smooth_red_sandstone:
+        base_money: 0.1
+        base_exp: 0.1
   reward:
     50:
       items:
@@ -2076,9 +2177,9 @@
           id: diamond_boots
           name: "Bottes de légèreté"
           enchantments:
-            DEPTH_STRIDER: 3
-            PROTECTION_FALL: 18
-            PROTECTION_ENVIRONMENTAL: 4
+            depth_strider: 3
+            feather_falling: 18
+            protection: 4
           unbreakable: true
           prevent_lost: true
 # Fin de la config du job Builder----------------------------------------
@@ -2088,12 +2189,12 @@
   lvl_max: 100
   color: white
   equation_leveling:
-    base: 25
-    ratio: 50
+    base: 20
+    ratio: 100
   equation_exp:
-    ratio: 32
+    ratio: 25
   equation_money:
-    ratio: 50
+    ratio: 25
   action:
     BREAK:
       glowstone:
@@ -2103,8 +2204,8 @@
         base_money: 0.01
         base_exp: 0.01
       nether_quartz_ore:
-        base_money: 0.20
-        base_exp: 0.20
+        base_money: 0.50
+        base_exp: 0.50
       andesite:
         base_money: 0.1
         base_exp: 0.1
@@ -2431,209 +2532,28 @@
       yellow_concrete_powder:
         base_money: 0.50
         base_exp: 0.50
-    REPAIR:
-      diamond_axe:
-        base_money: 0.50
-        base_exp: 0.50
-      diamond_boots:
-        base_money: 0.50
-        base_exp: 0.50
-      diamond_chestplate:
-        base_money: 0.50
-        base_exp: 0.50
-      diamond_helmet:
-        base_money: 0.50
-        base_exp: 0.50
-      diamond_hoe:
-        base_money: 0.50
-        base_exp: 0.50
-      diamond_leggings:
-        base_money: 0.50
-        base_exp: 0.50
-      diamond_pickaxe:
-        base_money: 0.50
-        base_exp: 0.50
-      diamond_shovel:
-        base_money: 0.50
-        base_exp: 0.50
-      diamond_sword:
-        base_money: 0.50
-        base_exp: 0.50
-      elytra:
-        base_money: 0.50
-        base_exp: 0.50
-      fishing_rod:
-        base_money: 0.50
-        base_exp: 0.50
-      golden_axe:
-        base_money: 0.50
-        base_exp: 0.50
-      golden_boots:
-        base_money: 0.50
-        base_exp: 0.50
-      golden_chestplate:
-        base_money: 0.50
-        base_exp: 0.50
-      golden_helmet:
-        base_money: 0.50
-        base_exp: 0.50
-      golden_hoe:
-        base_money: 0.50
-        base_exp: 0.50
-      golden_leggings:
-        base_money: 0.50
-        base_exp: 0.50
-      golden_pickaxe:
-        base_money: 0.50
-        base_exp: 0.50
-      golden_shovel:
-        base_money: 0.50
-        base_exp: 0.50
-      golden_sword:
-        base_money: 0.50
-        base_exp: 0.50
-      iron_axe:
-        base_money: 0.50
-        base_exp: 0.50
-      iron_boots:
-        base_money: 0.50
-        base_exp: 0.50
-      iron_chestplate:
-        base_money: 0.50
-        base_exp: 0.50
-      iron_helmet:
-        base_money: 0.50
-        base_exp: 0.50
-      iron_hoe:
-        base_money: 0.50
-        base_exp: 0.50
-      iron_leggings:
-        base_money: 0.50
-        base_exp: 0.50
-      iron_pickaxe:
-        base_money: 0.50
-        base_exp: 0.50
-      iron_shovel:
-        base_money: 0.50
-        base_exp: 0.50
-      iron_sword:
-        base_money: 0.50
-        base_exp: 0.50
-      leather_boots:
-        base_money: 0.50
-        base_exp: 0.50
-      leather_chestplate:
-        base_money: 0.50
-        base_exp: 0.50
-      leather_helmet:
-        base_money: 0.50
-        base_exp: 0.50
-      leather_leggings:
-        base_money: 0.50
-        base_exp: 0.50
-      stone_axe:
-        base_money: 0.50
-        base_exp: 0.50
-      stone_hoe:
-        base_money: 0.50
-        base_exp: 0.50
-      stone_pickaxe:
-        base_money: 0.50
-        base_exp: 0.50
-      stone_shovel:
-        base_money: 0.50
-        base_exp: 0.50
-      stone_sword:
-        base_money: 0.50
-        base_exp: 0.50
-      wooden_axe:
-        base_money: 0.50
-        base_exp: 0.50
-      wooden_hoe:
-        base_money: 0.50
-        base_exp: 0.50
-      wooden_pickaxe:
-        base_money: 0.50
-        base_exp: 0.50
-      wooden_shovel:
-        base_money: 0.50
-        base_exp: 0.50
-      wooden_sword:
-        base_money: 0.50
-        base_exp: 0.50
-      bow:
-        base_money: 0.50
-        base_exp: 0.50
-      chainmail_boots:
-        base_money: 0.50
-        base_exp: 0.50
-      chainmail_chestplate:
-        base_money: 0.50
-        base_exp: 0.50
-      chainmail_helmet:
-        base_money: 0.50
-        base_exp: 0.50
-      chainmail_leggings:
-        base_money: 0.50
-        base_exp: 0.50
     SMELT:
-      black_terracotta:
-        base_money: 0.50
-        base_exp: 0.50
-      diamond_ore:
-        base_money: 0.50
-        base_exp: 0.50
-      emerald_ore:
-        base_money: 0.50
-        base_exp: 0.50
-      gold_ore:
-        base_money: 0.50
-        base_exp: 0.50
-      gray_terracotta:
-        base_money: 0.50
-        base_exp: 0.50
-      green_terracotta:
-        base_money: 0.50
-        base_exp: 0.50
-      iron_ore:
-        base_money: 0.50
-        base_exp: 0.50
-      light_blue_terracotta:
-        base_money: 0.50
-        base_exp: 0.50
-      light_gray_terracotta:
-        base_money: 0.50
-        base_exp: 0.50
-      lime_terracotta:
-        base_money: 0.50
-        base_exp: 0.50
-      magenta_terracotta:
-        base_money: 0.50
-        base_exp: 0.50
-      orange_terracotta:
-        base_money: 0.50
-        base_exp: 0.50
-      pink_terracotta:
-        base_money: 0.50
-        base_exp: 0.50
-      purple_terracotta:
-        base_money: 0.50
-        base_exp: 0.50
-      redstone_ore:
-        base_money: 0.50
-        base_exp: 0.50
-      red_terracotta:
-        base_money: 0.50
-        base_exp: 0.50
-      terracotta:
-        base_money: 0.50
-        base_exp: 0.50
-      white_terracotta:
-        base_money: 0.50
-        base_exp: 0.50
-      yellow_terracotta:
-        base_money: 0.50
-        base_exp: 0.50
+      coal:
+        base_money: 0.1
+        base_exp: 0.1
+      diamond:
+        base_money: 1.0
+        base_exp: 1.0
+      iron_ingot:
+        base_money: 0.5
+        base_exp: 0.5
+      gold_ingot:
+        base_money: 0.4
+        base_exp: 0.4
+      redstone_dust:
+        base_money: 0.1
+        base_exp: 0.1
+      lapis_lazuli:
+        base_money: 0.1
+        base_exp: 0.1
+      emerald:
+        base_money: 2.0
+        base_exp: 2.0
   reward:
     50:
       items:
@@ -2641,8 +2561,8 @@
           id: diamond_pickaxe
           name: "Pioche efficace"
           enchantments:
-            DIG_SPEED: 7
-            LOOT_BONUS_BLOCKS: 4
+            efficiency: 7
+            fortune: 4
           unbreakable: true
           prevent_lost: true
 # Fin de la config du job Mineur----------------------------------------
@@ -2652,13 +2572,17 @@
   lvl_max: 100
   color: blue
   equation_leveling:
-    base: 25
-    ratio: 50
+    base: 20
+    ratio: 100
   equation_exp:
-    ratio: 32
+    ratio: 25
   equation_money:
-    ratio: 50
+    ratio: 25
   action:
+    BREED:
+      Turtle:
+        base_money: 1.0
+        base_exp: 1.0
     BREAK:
       blue_ice:
         base_money: 0.5
@@ -2912,32 +2836,22 @@
       turtle_egg:
         base_money: 0.50
         base_exp: 0.50
-    REPAIR:
-      fishing_rod:
-        base_money: 0.50
-        base_exp: 0.50
     SMELT:
-      clay:
-        base_money: 0.50
-        base_exp: 0.50
-      clay_ball:
-        base_money: 0.50
-        base_exp: 0.50
-      cod:
-        base_money: 0.50
-        base_exp: 0.50
-      red_sand:
-        base_money: 0.50
-        base_exp: 0.50
-      sand:
-        base_money: 0.50
-        base_exp: 0.50
-      tropical_fish:
-        base_money: 0.50
-        base_exp: 0.50
-      wet_sponge:
-        base_money: 0.50
-        base_exp: 0.50
+      Dried_Kelp:
+        base_money: 0.001
+        base_exp: 0.001
+      cooked_cod:
+        base_money: 0.003
+        base_exp: 0.003
+      Cooked_Salmon:
+        base_money: 0.5
+        base_exp: 0.5
+      Lime_Dye:
+        base_money: 0.5
+        base_exp: 0.5
+      Brick:
+        base_money: 0.1
+        base_exp: 0.1
     KILL:
       GUARDIAN:
         base_money: 2.0
@@ -2952,9 +2866,9 @@
           id: diamond_helmet
           name: "Casque de respiration"
           enchantments:
-            WATER_WORKER: 1
-            OXYGEN: 5
-            PROTECTION_ENVIRONMENTAL: 4
+            aqua_affinity: 1
+            respiration: 5
+            protection: 4
           unbreakable: true
           prevent_lost: true
 # Fin de la config du job Oceaniste----------------------------------------
@@ -2964,12 +2878,12 @@
   lvl_max: 100
   color: yellow
   equation_leveling:
-    base: 25
-    ratio: 50
+    base: 20
+    ratio: 100
   equation_exp:
-    ratio: 32
+    ratio: 25
   equation_money:
-    ratio: 50
+    ratio: 25
   action:
     BREAK:
       beetroots-3:
@@ -3063,16 +2977,19 @@
       pumpkin_pie:
         base_money: 1.0
         base_exp: 1.0
-    DYE:
-      cactus_green:
-        base_money: 0.50
-        base_exp: 0.50
-      cyan_dye:
-        base_money: 0.50
-        base_exp: 0.50
-      dandelion_yellow:
-        base_money: 0.50
-        base_exp: 0.50
+    KILL:
+      Chicken:
+        base_money: 0.5
+        base_exp: 0.5
+      Cow:
+        base_money: 1.0
+        base_exp: 1.0
+      Pig:
+        base_money: 1.0
+        base_exp: 1.0
+      Sheep:
+        base_money: 1.0
+        base_exp: 1.0
     PLACE:
       pumpkin_stem:
         base_money: 0.5
@@ -3123,87 +3040,30 @@
         base_money: 0.50
         base_exp: 0.50
     SMELT:
-      beef:
-        base_money: 0.50
-        base_exp: 0.50
-      cactus:
-        base_money: 0.50
-        base_exp: 0.50
-      chicken:
-        base_money: 0.50
-        base_exp: 0.50
-      chorus_fruit:
-        base_money: 0.50
-        base_exp: 0.50
-      mutton:
-        base_money: 0.50
-        base_exp: 0.50
-      netherrack:
-        base_money: 0.50
-        base_exp: 0.50
-      porkchop:
-        base_money: 0.50
-        base_exp: 0.50
-      potato:
-        base_money: 0.50
-        base_exp: 0.50
-      rabbit:
-        base_money: 0.50
-        base_exp: 0.50
-      salmon:
-        base_money: 0.50
-        base_exp: 0.50
+      cooked_porkchop:
+        base_money: 0.2
+        base_exp: 0.2
+      steak:
+        base_money: 0.2
+        base_exp: 0.2
+      Cooked_Chicken:
+        base_money: 0.02
+        base_exp: 0.02
+      baked_potato:
+        base_money: 0.1
+        base_exp: 0.1
+      Cooked_Rabbit:
+        base_money: 0.4
+        base_exp: 0.4
+      Cooked_Mutton:
+        base_money: 0.2
+        base_exp: 0.2
     MILK:
       Cow:
         base_money: 1.0
         base_exp: 1.0
     SHEAR:
-      Red:
-        base_money: 1.0
-        base_exp: 1.0
-      Orange:
-        base_money: 1.0
-        base_exp: 1.0
-      Yellow:
-        base_money: 1.0
-        base_exp: 1.0
-      Green:
-        base_money: 1.0
-        base_exp: 1.0
-      Blue:
-        base_money: 1.0
-        base_exp: 1.0
-      Navy:
-        base_money: 1.0
-        base_exp: 1.0
-      Magenta:
-        base_money: 1.0
-        base_exp: 1.0
-      Pink:
-        base_money: 1.0
-        base_exp: 1.0
-      White:
-        base_money: 1.0
-        base_exp: 1.0
-      Light_Gray:
-        base_money: 1.0
-        base_exp: 1.0
-      Black:
-        base_money: 1.0
-        base_exp: 1.0
-      Brown:
-        base_money: 1.0
-        base_exp: 1.0
-      Purple:
-        base_money: 1.0
-        base_exp: 1.0
-      Cyan:
-        base_money: 1.0
-        base_exp: 1.0
-      Gray:
-        base_money: 1.0
-        base_exp: 1.0
-      Lime:
+      Sheep:
         base_money: 1.0
         base_exp: 1.0
     BREED:
@@ -3263,8 +3123,8 @@
           id: diamond_axe
           name: "Hache sensible"
           enchantments:
-            DIG_SPEED: 7
-            SILK_TOUCH: 1
+            efficiency: 7
+            silk_touch: 1
           unbreakable: true
           prevent_lost: true
 # Fin de la config du job Paysan----------------------------------------
@@ -3274,62 +3134,62 @@
   lvl_max: 100
   color: purple
   equation_leveling:
-    base: 25
-    ratio: 50
+    base: 20
+    ratio: 100
   equation_exp:
-    ratio: 32
+    ratio: 25
   equation_money:
-    ratio: 50
+    ratio: 25
   action:
     BREW:
       nether_wart:
-        base_money: 1.0
-        base_exp: 1.0
+        base_money: 0.1
+        base_exp: 0.1
       redstone:
-        base_money: 1.0
-        base_exp: 1.0
+        base_money: 0.1
+        base_exp: 0.1
       glowstone_dust:
-        base_money: 1.0
-        base_exp: 1.0
+        base_money: 0.4
+        base_exp: 0.4
       fermented_spider_eye:
         base_money: 1.0
         base_exp: 1.0
       gunpowder:
-        base_money: 1.0
-        base_exp: 1.0
+        base_money: 0.2
+        base_exp: 0.2
       dragon_breath:
-        base_money: 1.0
-        base_exp: 1.0
+        base_money: 2.0
+        base_exp: 2.0
       sugar:
-        base_money: 1.0
-        base_exp: 1.0
+        base_money: 0.1
+        base_exp: 0.1
       rabbit_foot:
-        base_money: 1.0
-        base_exp: 1.0
+        base_money: 5.0
+        base_exp: 5.0
       glistering_melon_slice:
-        base_money: 1.0
-        base_exp: 1.0
+        base_money: 0.5
+        base_exp: 0.5
       spider_eye:
-        base_money: 1.0
-        base_exp: 1.0
+        base_money: 0.1
+        base_exp: 0.1
       pufferfish:
         base_money: 1.0
         base_exp: 1.0
       magma_cream:
-        base_money: 1.0
-        base_exp: 1.0
+        base_money: 0.3
+        base_exp: 0.3
       golden_carrot:
-        base_money: 1.0
-        base_exp: 1.0
+        base_money: 0.3
+        base_exp: 0.3
       blaze_powder:
-        base_money: 1.0
-        base_exp: 1.0
+        base_money: 0.1
+        base_exp: 0.1
       ghast_tear:
-        base_money: 1.0
-        base_exp: 1.0
+        base_money: 2.5
+        base_exp: 2.5
       turtle_helmet:
-        base_money: 1.0
-        base_exp: 1.0
+        base_money: 10.0
+        base_exp: 10.0
       phantom_membrane:
         base_money: 1.0
         base_exp: 1.0
@@ -3355,159 +3215,318 @@
       glass_bottle:
         base_money: 0.50
         base_exp: 0.50
-    DYE:
-      leather_boots:
-        base_money: 1.0
-        base_exp: 1.0
-      leather_chestplate:
-        base_money: 1.0
-        base_exp: 1.0
-      leather_helmet:
-        base_money: 1.0
-        base_exp: 1.0
-      leather_leggings:
-        base_money: 1.0
-        base_exp: 1.0
     ENCHANT:
-      book:
-        base_money: 1.0
-        base_exp: 1.0
-      bow:
-        base_money: 1.0
-        base_exp: 1.0
-      chainmail_boots:
-        base_money: 1.0
-        base_exp: 1.0
-      chainmail_chestplate:
-        base_money: 1.0
-        base_exp: 1.0
-      chainmail_helmet:
-        base_money: 1.0
-        base_exp: 1.0
-      chainmail_leggings:
-        base_money: 1.0
-        base_exp: 1.0
-      diamond_axe:
-        base_money: 1.0
-        base_exp: 1.0
-      diamond_boots:
-        base_money: 1.0
-        base_exp: 1.0
-      diamond_chestplate:
-        base_money: 1.0
-        base_exp: 1.0
-      diamond_helmet:
-        base_money: 1.0
-        base_exp: 1.0
-      diamond_hoe:
-        base_money: 1.0
-        base_exp: 1.0
-      diamond_leggings:
-        base_money: 1.0
-        base_exp: 1.0
-      diamond_pickaxe:
-        base_money: 1.0
-        base_exp: 1.0
-      diamond_shovel:
-        base_money: 1.0
-        base_exp: 1.0
-      diamond_sword:
-        base_money: 1.0
-        base_exp: 1.0
-      golden_axe:
-        base_money: 1.0
-        base_exp: 1.0
-      golden_boots:
-        base_money: 1.0
-        base_exp: 1.0
-      golden_chestplate:
-        base_money: 1.0
-        base_exp: 1.0
-      golden_helmet:
-        base_money: 1.0
-        base_exp: 1.0
-      golden_hoe:
-        base_money: 1.0
-        base_exp: 1.0
-      golden_leggings:
-        base_money: 1.0
-        base_exp: 1.0
-      golden_pickaxe:
-        base_money: 1.0
-        base_exp: 1.0
-      golden_shovel:
-        base_money: 1.0
-        base_exp: 1.0
-      golden_sword:
-        base_money: 1.0
-        base_exp: 1.0
-      iron_axe:
-        base_money: 1.0
-        base_exp: 1.0
-      iron_boots:
-        base_money: 1.0
-        base_exp: 1.0
-      iron_chestplate:
-        base_money: 1.0
-        base_exp: 1.0
-      iron_helmet:
-        base_money: 1.0
-        base_exp: 1.0
-      iron_hoe:
-        base_money: 1.0
-        base_exp: 1.0
-      iron_leggings:
-        base_money: 1.0
-        base_exp: 1.0
-      iron_pickaxe:
-        base_money: 1.0
-        base_exp: 1.0
-      iron_shovel:
-        base_money: 1.0
-        base_exp: 1.0
-      iron_sword:
-        base_money: 1.0
-        base_exp: 1.0
-      leather_boots:
-        base_money: 1.0
-        base_exp: 1.0
-      leather_chestplate:
-        base_money: 1.0
-        base_exp: 1.0
-      leather_helmet:
-        base_money: 1.0
-        base_exp: 1.0
-      leather_leggings:
-        base_money: 1.0
-        base_exp: 1.0
-      stone_axe:
-        base_money: 1.0
-        base_exp: 1.0
-      stone_hoe:
-        base_money: 1.0
-        base_exp: 1.0
-      stone_pickaxe:
-        base_money: 1.0
-        base_exp: 1.0
-      stone_shovel:
-        base_money: 1.0
-        base_exp: 1.0
-      stone_sword:
-        base_money: 1.0
-        base_exp: 1.0
-      wooden_axe:
-        base_money: 1.0
-        base_exp: 1.0
-      wooden_hoe:
-        base_money: 1.0
-        base_exp: 1.0
-      wooden_pickaxe:
-        base_money: 1.0
-        base_exp: 1.0
-      wooden_shovel:
-        base_money: 1.0
-        base_exp: 1.0
-      wooden_sword:
-        base_money: 1.0
-        base_exp: 1.0
+      power-1:
+        base_money: 0.1
+        base_exp: 0.1
+      power-2:
+        base_money: 0.2
+        base_exp: 0.2
+      power-3:
+        base_money: 0.4
+        base_exp: 0.4
+      power-4:
+        base_money: 0.8
+        base_exp: 0.8
+      flame-1:
+        base_money: 0.9
+        base_exp: 0.9
+      infinity-1:
+        base_money: 2.7
+        base_exp: 2.7
+      punch-1:
+        base_money: 0.3
+        base_exp: 0.3
+      punch-2:
+        base_money: 0.6
+        base_exp: 0.6
+      channeling-1:
+        base_money: 2.7
+        base_exp: 2.7
+      sharpness-1:
+        base_money: 0.1
+        base_exp: 0.1
+      sharpness-2:
+        base_money: 0.2
+        base_exp: 0.2
+      sharpness-3:
+        base_money: 0.4
+        base_exp: 0.4
+      sharpness-4:
+        base_money: 0.8
+        base_exp: 0.8
+      sharpness-5:
+        base_money: 1.6
+        base_exp: 1.6
+      bane_of_arthropods-1:
+        base_money: 0.3
+        base_exp: 0.3
+      bane_of_arthropods-2:
+        base_money: 0.6
+        base_exp: 0.6
+      bane_of_arthropods-3:
+        base_money: 1.2
+        base_exp: 1.2
+      bane_of_arthropods-4:
+        base_money: 2.4
+        base_exp: 2.4
+      bane_of_arthropods-5:
+        base_money: 4.8
+        base_exp: 4.8
+      smite-1:
+        base_money: 0.3
+        base_exp: 0.3
+      smite-2:
+        base_money: 0.6
+        base_exp: 0.6
+      smite-3:
+        base_money: 1.2
+        base_exp: 1.2
+      smite-4:
+        base_money: 2.4
+        base_exp: 2.4
+      smite-5:
+        base_money: 4.8
+        base_exp: 4.8
+      depth_strider-1:
+        base_money: 0.9
+        base_exp: 0.9
+      depth_strider-2:
+        base_money: 1.8
+        base_exp: 1.8
+      depth_strider-3:
+        base_money: 3.6
+        base_exp: 3.6
+      efficiency-1:
+        base_money: 0.1
+        base_exp: 0.1
+      efficiency-2:
+        base_money: 0.2
+        base_exp: 0.2
+      efficiency-3:
+        base_money: 0.4
+        base_exp: 0.4
+      efficiency-4:
+        base_money: 0.8
+        base_exp: 0.8
+      efficiency-5:
+        base_money: 1.6
+        base_exp: 1.6
+      unbreaking-1:
+        base_money: 0.3
+        base_exp: 0.3
+      unbreaking-2:
+        base_money: 0.6
+        base_exp: 0.6
+      unbreaking-3:
+        base_money: 1.2
+        base_exp: 1.2
+      fire_aspect-1:
+        base_money: 0.9
+        base_exp: 0.9
+      fire_aspect-2:
+        base_money: 1.8
+        base_exp: 1.8
+      frost_walker-1:
+        base_money: 0.9
+        base_exp: 0.9
+      frost_walker-2:
+        base_money: 1.8
+        base_exp: 1.8
+      impaling-1:
+        base_money: 0.9
+        base_exp: 0.9
+      impaling-2:
+        base_money: 1.8
+        base_exp: 1.8
+      impaling-3:
+        base_money: 3.6
+        base_exp: 3.6
+      impaling-4:
+        base_money: 7.2
+        base_exp: 7.2
+      impaling-5:
+        base_money: 14.4
+        base_exp: 14.4
+      knockback-1:
+        base_money: 0.3
+        base_exp: 0.3
+      knockback-2:
+        base_money: 0.6
+        base_exp: 0.6
+      fortune-1:
+        base_money: 0.9
+        base_exp: 0.9
+      fortune-2:
+        base_money: 1.8
+        base_exp: 1.8
+      fortune-3:
+        base_money: 3.6
+        base_exp: 3.6
+      looting-1:
+        base_money: 0.9
+        base_exp: 0.9
+      looting-2:
+        base_money: 1.8
+        base_exp: 1.8
+      looting-3:
+        base_money: 3.6
+        base_exp: 3.6
+      loyalty-1:
+        base_money: 0.3
+        base_exp: 0.3
+      loyalty-2:
+        base_money: 0.6
+        base_exp: 0.6
+      loyalty-3:
+        base_money: 1.2
+        base_exp: 1.2
+      luck_of_the_sea-1:
+        base_money: 0.9
+        base_exp: 0.9
+      luck_of_the_sea-2:
+        base_money: 1.8
+        base_exp: 1.8
+      luck_of_the_sea-3:
+        base_money: 3.6
+        base_exp: 3.6
+      lure-1:
+        base_money: 0.9
+        base_exp: 0.9
+      lure-2:
+        base_money: 1.8
+        base_exp: 1.8
+      lure-3:
+        base_money: 3.6
+        base_exp: 3.6
+      multishot-1:
+        base_money: 0.9
+        base_exp: 0.9
+      respiration-1:
+        base_money: 0.9
+        base_exp: 0.9
+      respiration-2:
+        base_money: 1.8
+        base_exp: 1.8
+      respiration-3:
+        base_money: 3.6
+        base_exp: 3.6
+      piercing-1:
+        base_money: 0.1
+        base_exp: 0.1
+      piercing-2:
+        base_money: 0.2
+        base_exp: 0.2
+      piercing-3:
+        base_money: 0.4
+        base_exp: 0.4
+      piercing-4:
+        base_money: 0.8
+        base_exp: 0.8
+      protection-1:
+        base_money: 0.1
+        base_exp: 0.1
+      protection-2:
+        base_money: 0.2
+        base_exp: 0.2
+      protection-3:
+        base_money: 0.4
+        base_exp: 0.4
+      protection-4:
+        base_money: 0.8
+        base_exp: 0.8
+      blast_protection-1:
+        base_money: 0.9
+        base_exp: 0.9
+      blast_protection-2:
+        base_money: 1.8
+        base_exp: 1.8
+      blast_protection-3:
+        base_money: 3.6
+        base_exp: 3.6
+      blast_protection-4:
+        base_money: 7.2
+        base_exp: 7.2
+      feather_falling-1:
+        base_money: 0.3
+        base_exp: 0.3
+      feather_falling-2:
+        base_money: 0.6
+        base_exp: 0.6
+      feather_falling-3:
+        base_money: 1.2
+        base_exp: 1.2
+      feather_falling-4:
+        base_money: 2.4
+        base_exp: 2.4
+      fire_protection-1:
+        base_money: 0.3
+        base_exp: 0.3
+      fire_protection-2:
+        base_money: 0.6
+        base_exp: 0.6
+      fire_protection-3:
+        base_money: 1.2
+        base_exp: 1.2
+      fire_protection-4:
+        base_money: 2.4
+        base_exp: 2.4
+      projectile_protection-1:
+        base_money: 0.3
+        base_exp: 0.3
+      projectile_protection-2:
+        base_money: 0.6
+        base_exp: 0.6
+      projectile_protection-3:
+        base_money: 1.2
+        base_exp: 1.2
+      projectile_protection-4:
+        base_money: 2.4
+        base_exp: 2.4
+      quick_charge-1:
+        base_money: 0.3
+        base_exp: 0.3
+      quick_charge-2:
+        base_money: 0.6
+        base_exp: 0.6
+      quick_charge-3:
+        base_money: 1.2
+        base_exp: 1.2
+      riptide-1:
+        base_money: 0.9
+        base_exp: 0.9
+      riptide-2:
+        base_money: 1.8
+        base_exp: 1.8
+      riptide-3:
+        base_money: 3.6
+        base_exp: 3.6
+      silk_touch-1:
+        base_money: 2.7
+        base_exp: 2.7
+      sweeping-1:
+        base_money: 0.9
+        base_exp: 0.9
+      sweeping-2:
+        base_money: 1.8
+        base_exp: 1.8
+      sweeping-3:
+        base_money: 3.6
+        base_exp: 3.6
+      thorns-1:
+        base_money: 2.7
+        base_exp: 2.7
+      thorns-2:
+        base_money: 5.4
+        base_exp: 5.4
+      thorns-3:
+        base_money: 10.8
+        base_exp: 10.8
+      aqua_affinity-1:
+        base_money: 0.9
+        base_exp: 0.9
+    SMELT:
+      Lime_Dye:
+        base_money: 0.5
+        base_exp: 0.5
 # Fin de la config du job Sorcier----------------------------------------

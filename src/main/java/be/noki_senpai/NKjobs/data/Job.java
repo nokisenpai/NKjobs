@@ -13,7 +13,8 @@ public class Job
 	public String name;
 	public String formattedName = null;
 	private int lvlMax;
-	private String color;
+	private String chatColor;
+	private String colorBar;
 	private double baseLeveling;
 	private double ratioLeveling;
 	private double ratioExp;
@@ -27,15 +28,19 @@ public class Job
 		this.name = name;
 		if(color.equals("PINK"))
 		{
-			color = "LIGHT_PURPLE";
+			chatColor = "LIGHT_PURPLE";
 		}
-		if(color.equals("PURPLE"))
+		else if(color.equals("PURPLE"))
 		{
-			color = "DARK_PURPLE";
+			chatColor = "DARK_PURPLE";
 		}
-		this.formattedName = ChatColor.valueOf(color) + name.substring(0, 1).toUpperCase() + name.substring(1) + ChatColor.RESET;
+		else
+		{
+			chatColor = color;
+		}
+		this.formattedName = ChatColor.valueOf(chatColor) + name.substring(0, 1).toUpperCase() + name.substring(1) + ChatColor.RESET;
 		this.lvlMax = lvlMax;
-		this.color = color;
+		this.colorBar = color;
 		this.baseLeveling = baseLeveling;
 		this.ratioLeveling = ratioLeveling;
 		this.ratioExp = ratioExp;
@@ -59,7 +64,7 @@ public class Job
 
 	public double equationExp(double base, int level)
 	{
-		return base + base * level / ratioExp;
+		return ( base + base * level / ratioExp ) * 2;
 	}
 
 	public double equationMoney(double base, int level)
@@ -82,15 +87,26 @@ public class Job
 		this.lvlMax = lvlMax;
 	}
 
-	// Getter & Setter 'color'
-	public String getColor()
+	// Getter & Setter 'chatColor'
+	public String getChatColor()
 	{
-		return color;
+		return chatColor;
 	}
 
-	public void setColor(String color)
+	public void setChatColor(String color)
 	{
-		this.color = color;
+		this.chatColor = color;
+	}
+
+	// Getter & Setter 'colorBar'
+	public String getColorBar()
+	{
+		return colorBar;
+	}
+
+	public void setColorBar(String color)
+	{
+		this.colorBar = color;
 	}
 
 	// Getter & Setter 'baseLeveling'

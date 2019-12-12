@@ -22,8 +22,10 @@ F:\Google Drive\Projets\Projet programmation\Java\Eclipse\NKplugins\NKjobs\src\m
 F:\Google Drive\Projets\Projet programmation\Java\Eclipse\NKplugins\NKjobs\src\main\java\be\noki_senpai\NKjobs\cmd\Jobs\Join.java
 F:\Google Drive\Projets\Projet programmation\Java\Eclipse\NKplugins\NKjobs\src\main\java\be\noki_senpai\NKjobs\cmd\Jobs\Leaveall.java
 F:\Google Drive\Projets\Projet programmation\Java\Eclipse\NKplugins\NKjobs\src\main\java\be\noki_senpai\NKjobs\managers\PlayerManager.java
+F:\Google Drive\Projets\Projet programmation\Java\Eclipse\NKplugins\NKjobs\src\main\java\be\noki_senpai\NKjobs\data\RewardedItem.java
 F:\Google Drive\Projets\Projet programmation\Java\Eclipse\NKplugins\NKjobs\src\main\java\be\noki_senpai\NKjobs\data\ExploredChunk.java
 F:\Google Drive\Projets\Projet programmation\Java\Eclipse\NKplugins\NKjobs\src\main\java\be\noki_senpai\NKjobs\managers\JobManager.java
+F:\Google Drive\Projets\Projet programmation\Java\Eclipse\NKplugins\NKjobs\src\main\java\be\noki_senpai\NKjobs\listeners\JobCompleter.java
 F:\Google Drive\Projets\Projet programmation\Java\Eclipse\NKplugins\NKjobs\src\main\java\be\noki_senpai\NKjobs\utils\CheckType.java
 F:\Google Drive\Projets\Projet programmation\Java\Eclipse\NKplugins\NKjobs\src\main\java\be\noki_senpai\NKjobs\managers\TranslationManager.java
 F:\Google Drive\Projets\Projet programmation\Java\Eclipse\NKplugins\NKjobs\src\main\java\be\noki_senpai\NKjobs\data\RegisteredFurnace.java
@@ -32,4 +34,5 @@ F:\Google Drive\Projets\Projet programmation\Java\Eclipse\NKplugins\NKjobs\src\m
 F:\Google Drive\Projets\Projet programmation\Java\Eclipse\NKplugins\NKjobs\src\main\java\be\noki_senpai\NKjobs\managers\ConfigManager.java
 F:\Google Drive\Projets\Projet programmation\Java\Eclipse\NKplugins\NKjobs\src\main\java\be\noki_senpai\NKjobs\listeners\PlayerConnectionListener.java
 F:\Google Drive\Projets\Projet programmation\Java\Eclipse\NKplugins\NKjobs\src\main\java\be\noki_senpai\NKjobs\utils\SQLConnect.java
+F:\Google Drive\Projets\Projet programmation\Java\Eclipse\NKplugins\NKjobs\src\main\java\be\noki_senpai\NKjobs\listeners\ProtectedItemListener.java
 F:\Google Drive\Projets\Projet programmation\Java\Eclipse\NKplugins\NKjobs\src\main\java\be\noki_senpai\NKjobs\data\Reward.java

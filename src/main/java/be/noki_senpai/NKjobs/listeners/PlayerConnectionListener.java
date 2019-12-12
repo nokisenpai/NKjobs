@@ -8,7 +8,8 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 import be.noki_senpai.NKjobs.NKjobs;
-import be.noki_senpai.NKjobs.data.NKPlayer;;import java.util.function.Function;
+import be.noki_senpai.NKjobs.data.NKPlayer;
+import org.bukkit.scheduler.BukkitRunnable;;import java.util.function.Function;
 
 public class PlayerConnectionListener implements Listener
 {
@@ -24,37 +25,35 @@ public class PlayerConnectionListener implements Listener
 	@EventHandler
 	public void PlayerJoinEvent(PlayerJoinEvent event) 
 	{
-		queueManager.addToQueue(new Function()
+		new BukkitRunnable()
 		{
-			@Override public Object apply(Object o)
+			@Override public void run()
 			{
 				playerManager.addPlayer(event.getPlayer());
 				if(NKjobs.managePlayerDb)
 				{
 					playerManager.addOtherServer(event.getPlayer().getName());
 				}
-				return null;
 			}
-		});
-
+		}.runTaskLaterAsynchronously(NKjobs.getPlugin(), 20);
 	}
 
 	@EventHandler
 	public void onPlayerQuitEvent(PlayerQuitEvent event) 
 	{
 		String playerName = event.getPlayer().getName();
-		queueManager.addToQueue(new Function()
+		new BukkitRunnable()
 		{
-			@Override public Object apply(Object o)
+			@Override public void run()
 			{
-				playerManager.getPlayer(playerName).save(queueManager);
+				playerManager.getPlayer(playerName).save();
+				playerManager.getPlayer(playerName).saveRewardedItem();
 				if(NKjobs.managePlayerDb)
 				{
 					playerManager.removeOtherServer(event.getPlayer().getName());
 				}
 				playerManager.delPlayer(event.getPlayer().getName());
-				return null;
 			}
-		});
+		}.runTaskAsynchronously(NKjobs.getPlugin());
 	}
 }

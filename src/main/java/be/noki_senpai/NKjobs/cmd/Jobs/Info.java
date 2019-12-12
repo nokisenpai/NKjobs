@@ -6,6 +6,8 @@ import be.noki_senpai.NKjobs.managers.JobManager;
 import be.noki_senpai.NKjobs.managers.PlayerManager;
 import be.noki_senpai.NKjobs.managers.QueueManager;
 import be.noki_senpai.NKjobs.utils.CheckType;
+import net.md_5.bungee.api.chat.ComponentBuilder;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
@@ -80,7 +82,8 @@ public class Info
 			{
 				jobLevel = playerManager.getPlayer(sender.getName()).getOldJobs().get(jobName).lvl;
 			}
-			sender.sendMessage(jobManager.getJobInfo(jobName, page, jobLevel));
+
+			sender.spigot().sendMessage(jobManager.getJobInfo(jobName, page, jobLevel));
 
 		}
 

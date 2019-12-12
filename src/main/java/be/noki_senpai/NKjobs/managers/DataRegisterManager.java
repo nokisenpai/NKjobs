@@ -591,7 +591,7 @@ public class DataRegisterManager
 	// registerPlaceBlockTimer
 	// ######################################
 
-	public void registerPlaceBlockTimer(Location location, int blockTimer)
+	public void registerPlaceBlockTimer(Location location, long blockTimer)
 	{
 		String key = "" + location.getX()  + "|" + location.getY()  + "|" + location.getZ();
 		blocks.get(location.getWorld().getName()).put(key, new BlockTimer(location.getX(), location.getY(), location.getZ(), new java.sql.Timestamp(System.currentTimeMillis() + (blockTimer * 1000))));
@@ -618,7 +618,7 @@ public class DataRegisterManager
 				ResultSet resultat = null;
 
 				String req = "INSERT INTO " + DatabaseManager.table.FURNACES + " ( player_id, server_id, world_id, x, y, z) "
-						+ "VALUES ( ? , ? , ? , ? , ? ? ) "
+						+ "VALUES ( ? , ? , ? , ? , ? , ? ) "
 						+ "ON DUPLICATE KEY UPDATE player_id = VALUES(player_id), id = LAST_INSERT_ID(id)";
 				try
 				{
@@ -675,7 +675,7 @@ public class DataRegisterManager
 				ResultSet resultat = null;
 
 				String req = "INSERT INTO " + DatabaseManager.table.BREWINGSTANDS + " ( player_id, server_id, world_id, x, y, z) "
-						+ "VALUES ( ? , ? , ? , ? , ? ? ) "
+						+ "VALUES ( ? , ? , ? , ? , ? , ? ) "
 						+ "ON DUPLICATE KEY UPDATE player_id = VALUES(player_id), id = LAST_INSERT_ID(id)";
 				try
 				{
@@ -725,7 +725,7 @@ public class DataRegisterManager
 		}
 		else
 		{
-			List<String> playerNames = null;
+			List<String> playerNames = new ArrayList<String>();
 			playerNames.add(playerName);
 			chunks.get(chunk.getWorld().getName()).put(key, new ExploredChunk(chunk.getX(), chunk.getZ(), playerNames));
 			newChunks.get(chunk.getWorld().getName()).put(key, chunks.get(chunk.getWorld().getName()).get(key));
@@ -739,42 +739,47 @@ public class DataRegisterManager
 
 	public void unregisterFurnace(Location location, Player player)
 	{
-		queueManager.addToQueue(new Function()
+		String key = "" + location.getX()  + "|" + location.getY()  + "|" + location.getZ();
+		if(furnaces.get(location.getWorld().getName()).containsKey(key))
 		{
-			@Override public Object apply(Object o)
+			queueManager.addToQueue(new Function()
 			{
-				String key = "" + location.getX()  + "|" + location.getY()  + "|" + location.getZ();
-
-				Connection bdd = null;
-				PreparedStatement ps = null;
-
-				String req = "DELETE FROM " + DatabaseManager.table.FURNACES + " WHERE id = ?";
-
-				try
+				@Override
+				public Object apply(Object o)
 				{
-					bdd = DatabaseManager.getConnection();
-					ps = bdd.prepareStatement(req);
-					ps.setInt(1, furnaces.get(location.getWorld().getName()).get(key).getId());
 
-					ps.executeUpdate();
-					ps.close();
-				}
-				catch(SQLException e)
-				{
-					e.printStackTrace();
-				}
+					Connection bdd = null;
+					PreparedStatement ps = null;
 
-				NKPlayer nkPlayer = playerManager.getPlayer(furnaces.get(location.getWorld().getName()).get(key).getPlayerName());
-				if(nkPlayer != null)
-				{
-					nkPlayer.removeFurnace();
-				}
+					String req = "DELETE FROM " + DatabaseManager.table.FURNACES + " WHERE id = ?";
 
-				player.sendMessage(ChatColor.GREEN + "Vous avez détruit le four de " + furnaces.get(location.getWorld().getName()).get(key).getPlayerName() + ".");
-				furnaces.get(location.getWorld().getName()).remove(key);
-				return null;
-			}
-		});
+					try
+					{
+						bdd = DatabaseManager.getConnection();
+						ps = bdd.prepareStatement(req);
+						ps.setInt(1, furnaces.get(location.getWorld().getName()).get(key).getId());
+
+						ps.executeUpdate();
+						ps.close();
+					}
+					catch(SQLException e)
+					{
+						e.printStackTrace();
+					}
+
+					NKPlayer nkPlayer = playerManager.getPlayer(furnaces.get(location.getWorld().getName()).get(key).getPlayerName());
+					if(nkPlayer != null)
+					{
+						nkPlayer.removeFurnace();
+					}
+
+					player.sendMessage(
+							ChatColor.GREEN + "Vous avez détruit le four de " + furnaces.get(location.getWorld().getName()).get(key).getPlayerName() + ".");
+					furnaces.get(location.getWorld().getName()).remove(key);
+					return null;
+				}
+			});
+		}
 	}
 
 	// ######################################
@@ -783,42 +788,46 @@ public class DataRegisterManager
 
 	public void unregisterBrewingStand(Location location, Player player)
 	{
-		queueManager.addToQueue(new Function()
+		String key = "" + location.getX()  + "|" + location.getY()  + "|" + location.getZ();
+		if(furnaces.get(location.getWorld().getName()).containsKey(key))
 		{
-			@Override public Object apply(Object o)
+			queueManager.addToQueue(new Function()
 			{
-				String key = "" + location.getX()  + "|" + location.getY()  + "|" + location.getZ();
-
-				Connection bdd = null;
-				PreparedStatement ps = null;
-
-				String req = "DELETE FROM " + DatabaseManager.table.BREWINGSTANDS + " WHERE id = ?";
-
-				try
+				@Override
+				public Object apply(Object o)
 				{
-					bdd = DatabaseManager.getConnection();
-					ps = bdd.prepareStatement(req);
-					ps.setInt(1, brewingStands.get(location.getWorld().getName()).get(key).getId());
 
-					ps.executeUpdate();
-					ps.close();
-				}
-				catch(SQLException e)
-				{
-					e.printStackTrace();
-				}
+					Connection bdd = null;
+					PreparedStatement ps = null;
 
-				NKPlayer nkPlayer = playerManager.getPlayer(brewingStands.get(location.getWorld().getName()).get(key).getPlayerName());
-				if(nkPlayer != null)
-				{
-					nkPlayer.removeBrewingStand();
-				}
+					String req = "DELETE FROM " + DatabaseManager.table.BREWINGSTANDS + " WHERE id = ?";
 
-				player.sendMessage(ChatColor.GREEN + "Vous avez détruit l'alambic de " + brewingStands.get(location.getWorld().getName()).get(key).getPlayerName() + ".");
-				brewingStands.get(location.getWorld().getName()).remove(key);
-				return null;
-			}
-		});
+					try
+					{
+						bdd = DatabaseManager.getConnection();
+						ps = bdd.prepareStatement(req);
+						ps.setInt(1, brewingStands.get(location.getWorld().getName()).get(key).getId());
+
+						ps.executeUpdate();
+						ps.close();
+					}
+					catch(SQLException e)
+					{
+						e.printStackTrace();
+					}
+
+					NKPlayer nkPlayer = playerManager.getPlayer(brewingStands.get(location.getWorld().getName()).get(key).getPlayerName());
+					if(nkPlayer != null)
+					{
+						nkPlayer.removeBrewingStand();
+					}
+
+					player.sendMessage(ChatColor.GREEN + "Vous avez détruit l'alambic de " + brewingStands.get(location.getWorld().getName()).get(key).getPlayerName() + ".");
+					brewingStands.get(location.getWorld().getName()).remove(key);
+					return null;
+				}
+			});
+		}
 	}
 
 	// **************************************
@@ -859,20 +868,19 @@ public class DataRegisterManager
 	// checkBlockTimer
 	// ######################################
 
-	public Boolean checkBlockTimer(Location location)
+	public Timestamp checkBlockTimer(Location location)
 	{
-		Date now = new java.sql.Date(System.currentTimeMillis());
 		String key = "" + location.getX()  + "|" + location.getY()  + "|" + location.getZ();
 		if(blocks.get(location.getWorld().getName()).containsKey(key))
 		{
-			if(blocks.get(location.getWorld().getName()).get(key).getTime().before(now))
+			if(blocks.get(location.getWorld().getName()).get(key).getTime().before(new java.sql.Date(System.currentTimeMillis())))
 			{
 				blocks.get(location.getWorld().getName()).remove(key);
-				return true;
+				return null;
 			}
-			return false;
+			return blocks.get(location.getWorld().getName()).get(key).getTime();
 		}
-		return true;
+		return null;
 	}
 
 	// ######################################

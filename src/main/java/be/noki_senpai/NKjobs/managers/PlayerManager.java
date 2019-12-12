@@ -18,6 +18,7 @@ import org.bukkit.boss.BarColor;
 import org.bukkit.boss.BarStyle;
 import org.bukkit.boss.BossBar;
 import org.bukkit.command.ConsoleCommandSender;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -25,6 +26,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -59,7 +61,7 @@ public class PlayerManager
 			{
 				giveGain();
 			}
-		}.runTaskTimerAsynchronously(NKjobs.getPlugin(), 0, 5 * 20);
+		}.runTaskTimerAsynchronously(NKjobs.getPlugin(), 0, 3 * 20);
 	}
 
 	public void loadPlayer()
@@ -100,14 +102,19 @@ public class PlayerManager
 			Connection bdd = null;
 			PreparedStatement ps = null;
 			String req = "INSERT INTO " + DatabaseManager.table.PLAYER_JOBS + " ( player_id, job_id, lvl, xp, xp_goal, xp_total, old) VALUES ";
-
+			boolean ok = false;
 			for(Map.Entry<String, NKPlayer> player : players.entrySet())
 			{
 				for(Map.Entry<String, PlayerJob> jobs : player.getValue().getJobs().entrySet())
 				{
+					ok = true;
 					req += "(" + player.getValue().getId() + " , " + jobs.getValue().id + " , " + jobs.getValue().lvl + " , " + jobs.getValue().xp
 							+ " , " + jobs.getValue().xpGoal + " , " + jobs.getValue().xpTotal + " , false ),";
 				}
+			}
+			if(!ok)
+			{
+				return;
 			}
 			req = req.substring(0, req.length() - 1);
 			req += " ON DUPLICATE KEY UPDATE lvl = VALUES(lvl), xp = VALUES(xp), xp_goal = VALUES(xp_goal),"
@@ -121,6 +128,7 @@ public class PlayerManager
 			}
 			catch(SQLException e)
 			{
+				console.sendMessage(ChatColor.GOLD + req);
 				e.printStackTrace();
 			}
 		}
@@ -136,11 +144,21 @@ public class PlayerManager
 		{
 			for(Map.Entry<String, NKPlayer> player : players.entrySet())
 			{
-				if(player.getValue().getTmpMoney() != 0)
+				if(player.getValue().getTmpTime() != null)
+				{
+					Date now = new java.sql.Date(System.currentTimeMillis());
+					if(player.getValue().getTmpTime().after(now))
+					{
+						Bukkit.getPlayer(player.getValue().getUuid()).spigot().sendMessage(ChatMessageType.ACTION_BAR, new ComponentBuilder(
+								ChatColor.YELLOW + "Cette action ne rapporte rien avant " + ChatColor.RED + ((player.getValue().getTmpTime().getTime()-now.getTime())/1000) + ChatColor.YELLOW + " secondes.").create());
+						player.getValue().setTmpTime(null);
+					}
+				}
+				else if(player.getValue().getTmpMoney() != 0)
 				{
 					NKjobs.getPlugin().getEconomy().depositPlayer(Bukkit.getOfflinePlayer(player.getValue().getUuid()), player.getValue().getTmpMoney());
 					Bukkit.getPlayer(player.getValue().getUuid()).spigot().sendMessage(ChatMessageType.ACTION_BAR, new ComponentBuilder(
-							ChatColor.GREEN + "+" + NKjobs.getPlugin().getEconomy().format(player.getValue().getTmpMoney()) + ChatColor.GREEN +  "   +" + Formatter.formatMoney(player.getValue().getTmpExp()) + " XP").create());
+							ChatColor.YELLOW + "+" + NKjobs.getPlugin().getEconomy().format(player.getValue().getTmpMoney()) + ChatColor.BLUE +  "   +" + Formatter.formatMoney(player.getValue().getTmpExp()) + " XP").create());
 					player.getValue().resetTmp();
 				}
 				for(Map.Entry<String, PlayerJob> job : player.getValue().getJobs().entrySet())
@@ -177,7 +195,7 @@ public class PlayerManager
 
 			try
 			{
-				bdd = SQLConnect.getHikariDS().getConnection();
+				bdd = DatabaseManager.getConnection();
 
 				req = "SELECT id, name, uuid FROM " + DatabaseManager.table.PLAYERS + " WHERE name = ?";
 				ps = bdd.prepareStatement(req);
@@ -210,7 +228,7 @@ public class PlayerManager
 		}
 		else
 		{
-			player.addJob(jobName, jobManager.jobs.get(jobName).id, 1, 0, jobManager.jobs.get(jobName).equationLeveling(1), 0, Bukkit.getPlayer(player.getUuid()), jobManager.jobs.get(jobName).getColor());
+			player.addJob(jobName, jobManager.jobs.get(jobName).id, 1, 0.0, jobManager.jobs.get(jobName).equationLeveling(1), 0, Bukkit.getPlayer(player.getUuid()), jobManager.jobs.get(jobName).getChatColor(), jobManager.jobs.get(jobName).getColorBar());
 		}
 
 		if(crossServer && Bukkit.getPlayer(player.getUuid()) != null)
@@ -517,12 +535,12 @@ public class PlayerManager
 		}
 		else
 		{
-			player.addJob(jobName, jobManager.jobs.get(jobName).id, 1, 0, jobManager.jobs.get(jobName).equationLeveling(1), 0, Bukkit.getPlayer(player.getUuid()), jobManager.jobs.get(jobName).getColor());
+			player.addJob(jobName, jobManager.jobs.get(jobName).id, 1, 0.0, jobManager.jobs.get(jobName).equationLeveling(1), 0, Bukkit.getPlayer(player.getUuid()), jobManager.jobs.get(jobName).getChatColor(), jobManager.jobs.get(jobName).getColorBar());
 		}
 
 		if(crossServer && Bukkit.getPlayer(player.getUuid()) != null)
 		{
-			Bukkit.getPlayer(player.getUuid()).sendMessage(ChatColor.GREEN + "Vous êtes plus maintenant " + jobName);
+			Bukkit.getPlayer(player.getUuid()).sendMessage(ChatColor.GREEN + "Vous êtes maintenant " + jobManager.jobs.get(jobName).formattedName);
 		}
 	}
 

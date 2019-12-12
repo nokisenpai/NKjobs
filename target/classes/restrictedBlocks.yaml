@@ -4,14 +4,14 @@
 # By setting time to -1 will keep block protected until global cleanup, mainly used for structure blocks like diamond
 # If you want to have default value for all blocks, enable GlobalBlockTimer in generalConfig file
 blocks-timer:
-  NETHER_QUARTZ_ORE: -1
-  COAL_ORE: -1
-  DIAMOND_ORE: -1
-  EMERALD_ORE: -1
-  GOLD_ORE: -1
-  IRON_ORE: -1
-  LAPIS_ORE: -1
-  REDSTONE_ORE: -1
+  NETHER_QUARTZ_ORE: 2592000
+  COAL_ORE: 2592000
+  DIAMOND_ORE: 2592000
+  EMERALD_ORE: 2592000
+  GOLD_ORE: 2592000
+  IRON_ORE: 2592000
+  LAPIS_ORE: 2592000
+  REDSTONE_ORE: 2592000
   OAK_BUTTON: 5
   LADDER: 5
   SPRUCE_BUTTON: 5
