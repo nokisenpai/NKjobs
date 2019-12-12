@@ -108,6 +108,6 @@ public class TranslationManager
 		{
 			return items.get(item);
 		}
-		return "null";
+		return item;
 	}
 }

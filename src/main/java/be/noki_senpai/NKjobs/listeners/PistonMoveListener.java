@@ -10,6 +10,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPistonExtendEvent;
 import org.bukkit.event.block.BlockPistonRetractEvent;
 
+import java.sql.Timestamp;
+
 public class PistonMoveListener implements Listener
 {
 	private DataRegisterManager dataRegisterManager = null;
@@ -38,7 +40,7 @@ public class PistonMoveListener implements Listener
 		{
 			//Bukkit.getConsoleSender().sendMessage("" + ChatColor.GREEN + i + ". " + block.getType().name());
 			i++;
-			if(!dataRegisterManager.checkBlockTimer(block.getLocation()))
+			if(dataRegisterManager.checkBlockTimer(block.getLocation()) != null)
 			{
 				dataRegisterManager.moveBlockTimer(block.getLocation(),event.getDirection().name());
 			}
@@ -69,7 +71,7 @@ public class PistonMoveListener implements Listener
 		{
 			//Bukkit.getConsoleSender().sendMessage("" + ChatColor.GREEN + i + ". " + block.getType().name());
 			i++;
-			if(!dataRegisterManager.checkBlockTimer(block.getLocation()))
+			if(dataRegisterManager.checkBlockTimer(block.getLocation()) != null)
 			{
 				dataRegisterManager.moveBlockTimer(block.getLocation(),event.getDirection().getOppositeFace().name());
 			}

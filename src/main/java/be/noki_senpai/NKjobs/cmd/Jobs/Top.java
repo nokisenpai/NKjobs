@@ -7,6 +7,7 @@ import be.noki_senpai.NKjobs.managers.JobManager;
 import be.noki_senpai.NKjobs.managers.PlayerManager;
 import be.noki_senpai.NKjobs.managers.QueueManager;
 import be.noki_senpai.NKjobs.utils.CheckType;
+import be.noki_senpai.NKjobs.utils.Formatter;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
@@ -107,13 +108,13 @@ public class Top
 						if(i == 1)
 						{
 							topList += "\n" + ChatColor.GOLD + i + ". " + itsMe + ChatColor.GOLD + ChatColor.BOLD + entry.getKey() + "   niveau "
-									+ entry.getValue().lvl + " ( " + entry.getValue().xp + " xp / " + entry.getValue().xpGoal + " xp )";
+									+ entry.getValue().lvl + " ( " + Formatter.format(entry.getValue().xp) + " xp / " + Formatter.format(entry.getValue().xpGoal) + " xp )";
 						}
 						else
 						{
 							topList +=
 									"\n" + ChatColor.GREEN + i + ". " + itsMe + ChatColor.GREEN + entry.getKey() + "   niveau " + entry.getValue().lvl
-											+ " ( " + entry.getValue().xp + " xp / " + entry.getValue().xpGoal + " xp )";
+											+ " ( " + Formatter.format(entry.getValue().xp) + " xp / " + Formatter.format(entry.getValue().xpGoal) + " xp )";
 						}
 						i = i + 1;
 					}

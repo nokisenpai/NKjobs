@@ -49,7 +49,7 @@ public class Stats
 					return true;
 				}
 
-				targetName = args[2];
+				targetName = args[1];
 			}
 
 			String finalTargetName = targetName;
@@ -115,7 +115,7 @@ public class Stats
 			// Check if a player is specified
 			if(args.length >= 2)
 			{
-				targetName = args[2];
+				targetName = args[1];
 			}
 			else
 			{
@@ -159,7 +159,7 @@ public class Stats
 						}
 					}
 
-					stats = ChatColor.GREEN + "---- Ancien(s) métier(s) de " + player.getName() + " ---------------------";
+					stats = ChatColor.GREEN + "---- Ancien(s) métier(s) de " + player.getName() + " ------------------------";
 					if(player.getJobs().size() == 0)
 					{
 						stats += "\n" + ChatColor.WHITE + "Aucun ancien métier" + ChatColor.GREEN;

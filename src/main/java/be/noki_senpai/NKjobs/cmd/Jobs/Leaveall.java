@@ -1,14 +1,17 @@
 package be.noki_senpai.NKjobs.cmd.Jobs;
 
 import be.noki_senpai.NKjobs.data.NKPlayer;
+import be.noki_senpai.NKjobs.data.PlayerJob;
 import be.noki_senpai.NKjobs.managers.JobManager;
 import be.noki_senpai.NKjobs.managers.PlayerManager;
 import be.noki_senpai.NKjobs.managers.QueueManager;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 
+import java.util.Map;
 import java.util.function.Function;
 
 public class Leaveall
@@ -64,6 +67,16 @@ public class Leaveall
 					{
 						sender.sendMessage(ChatColor.RED + " Ce joueur n'existe pas");
 						return null;
+					}
+
+					Player worker = Bukkit.getPlayer(finalTargetName);
+					if(worker != null)
+					{
+						worker.sendMessage(ChatColor.GREEN + "Vous n'avez plus aucun métier.");
+						for(Map.Entry<String, PlayerJob> job : player.getJobs().entrySet())
+						{
+							job.getValue().hideBar();
+						}
 					}
 
 					// Let the player leave all jobs

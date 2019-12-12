@@ -4,6 +4,7 @@ import be.noki_senpai.NKjobs.data.NKPlayer;
 import be.noki_senpai.NKjobs.managers.JobManager;
 import be.noki_senpai.NKjobs.managers.PlayerManager;
 import be.noki_senpai.NKjobs.managers.QueueManager;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
@@ -149,6 +150,13 @@ public class Leave
 					{
 						sender.sendMessage(ChatColor.RED + " Ce joueur n'est pas " + jobName);
 						return null;
+					}
+
+					Player worker = Bukkit.getPlayer(finalTargetName);
+					if(worker != null)
+					{
+						worker.sendMessage(ChatColor.GREEN + "Vous n'êtes plus " + jobManager.jobs.get(jobName).formattedName);
+						player.getJobs().get(jobName).hideBar();
 					}
 
 					// Let the player leave the job

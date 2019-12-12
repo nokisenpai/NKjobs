@@ -10,6 +10,7 @@ import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.Smoker;
 import org.bukkit.block.data.type.BrewingStand;
+import org.bukkit.block.data.type.Cocoa;
 import org.bukkit.block.data.type.Furnace;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.*;
@@ -32,10 +33,12 @@ import org.bukkit.inventory.*;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.PotionMeta;
 import org.bukkit.inventory.meta.Repairable;
+import org.bukkit.material.CocoaPlant;
 import org.bukkit.material.Dye;
 import org.bukkit.permissions.PermissionDefault;
 import org.bukkit.potion.PotionData;
 
+import java.sql.Timestamp;
 import java.util.Map;
 
 public class JobsListener implements Listener
@@ -59,12 +62,19 @@ public class JobsListener implements Listener
 
 	@EventHandler(priority = EventPriority.LOW) public void onBlockBreak(BlockBreakEvent event)
 	{
+		if(event.isCancelled())
+		{
+			return;
+		}
+
 		if(event.getPlayer().getGameMode().equals(GameMode.SURVIVAL))
 		{
 			Block block = event.getBlock();
 
-			if(!dataRegisterManager.checkBlockTimer(block.getLocation()))
+			Timestamp checkedTime = dataRegisterManager.checkBlockTimer(block.getLocation());
+			if(checkedTime != null)
 			{
+				playerManager.getPlayer(event.getPlayer().getName()).setTmpTime(checkedTime);
 				return;
 			}
 
@@ -90,12 +100,19 @@ public class JobsListener implements Listener
 
 	@EventHandler(priority = EventPriority.LOW) public void onBlockPlace(BlockPlaceEvent event)
 	{
+		if(event.isCancelled())
+		{
+			return;
+		}
+
 		if(event.getPlayer().getGameMode().equals(GameMode.SURVIVAL))
 		{
 			Block block = event.getBlock();
 
-			if(!dataRegisterManager.checkBlockTimer(block.getLocation()))
+			Timestamp checkedTime = dataRegisterManager.checkBlockTimer(block.getLocation());
+			if(checkedTime != null)
 			{
+				playerManager.getPlayer(event.getPlayer().getName()).setTmpTime(checkedTime);
 				return;
 			}
 
@@ -109,7 +126,13 @@ public class JobsListener implements Listener
 				dataRegisterManager.registerBrewingStand(block.getLocation(), playerManager.getPlayer(event.getPlayer().getName()));
 			}
 
-			dataRegisterManager.registerPlaceBlockTimer(block.getLocation(), jobManager.items.get(block.getBlockData().getMaterial().toString().toUpperCase()));
+			long timer = ConfigManager.GLOBALBLOCKSTIMER;
+			if(jobManager.items.containsKey(block.getBlockData().getMaterial().toString().toUpperCase()))
+			{
+				timer = jobManager.items.get(block.getBlockData().getMaterial().toString().toUpperCase());
+			}
+
+			dataRegisterManager.registerPlaceBlockTimer(block.getLocation(), timer);
 
 			jobManager.executePlace(playerManager.getPlayer(event.getPlayer().getName()), block.getBlockData().getMaterial().toString(), exeptionBlock(block, false));
 		}
@@ -137,8 +160,15 @@ public class JobsListener implements Listener
 
 	@EventHandler(priority = EventPriority.LOW) public void onFish(PlayerFishEvent event)
 	{
-		if(event.getState() != PlayerFishEvent.State.CAUGHT_FISH)
+		if(event.isCancelled())
+		{
 			return;
+		}
+
+		if(event.getState() != PlayerFishEvent.State.CAUGHT_FISH)
+		{
+			return;
+		}
 
 		Item item = (Item) event.getCaught();
 		if(item != null)
@@ -156,10 +186,88 @@ public class JobsListener implements Listener
 
 	@EventHandler(priority = EventPriority.LOW) public void onCraft(CraftItemEvent event)
 	{
+		if(event.isCancelled())
+		{
+			return;
+		}
+
 		Player player = (Player) event.getWhoClicked();
 		if(player.getGameMode().equals(GameMode.SURVIVAL))
 		{
-			jobManager.executeCraft(playerManager.getPlayer(player.getName()), event.getRecipe().getResult().getType().toString(), event.getCurrentItem().getAmount());
+			int itemsChecked = 0;
+			int possibleCreations = 1;
+			if(event.isShiftClick())
+			{
+				for(ItemStack item : event.getInventory().getMatrix())
+				{
+					if(item != null && !item.getType().equals(Material.AIR))
+					{
+						if(itemsChecked == 0)
+						{
+							possibleCreations = item.getAmount();
+						}
+						else
+						{
+							possibleCreations = Math.min(possibleCreations, item.getAmount());
+						}
+						itemsChecked++;
+					}
+				}
+			}
+			int amount = (event.getInventory().getResult().getAmount() * possibleCreations);
+			int finalAmount = (event.getInventory().getResult().getAmount() * possibleCreations);
+
+			int empty = 0;
+			for(int i = 8; i >= 0; i--)
+			{
+				if(amount < 0)
+				{
+					break;
+				}
+				ItemStack item = player.getInventory().getItem(i);
+				if(item == null)
+				{
+					empty++;
+					continue;
+				}
+				if(item.isSimilar(event.getRecipe().getResult()))
+				{
+					if(item.getAmount() < item.getMaxStackSize())
+					{
+						amount -= (item.getMaxStackSize() - item.getAmount());
+					}
+				}
+			}
+			for(int i = 35; i >= 9; i--)
+			{
+				if(amount < 0)
+				{
+					break;
+				}
+				ItemStack item = player.getInventory().getItem(i);
+				if(item == null)
+				{
+					empty++;
+					continue;
+				}
+				if(item.isSimilar(event.getRecipe().getResult()))
+				{
+					if(item.getAmount() < item.getMaxStackSize())
+					{
+						amount -= (item.getMaxStackSize()-item.getAmount());
+					}
+				}
+			}
+			if(empty >= (int) Math.ceil(1.0 * amount / event.getInventory().getResult().getMaxStackSize()))
+			{
+				amount = 0;
+			}
+			if(amount > 0)
+			{
+				finalAmount -= amount;
+			}
+
+			jobManager.executeCraft(playerManager.getPlayer(player.getName()), event.getRecipe().getResult().getType().toString(), finalAmount);
 		}
 	}
 
@@ -169,6 +277,11 @@ public class JobsListener implements Listener
 
 	@EventHandler(priority = EventPriority.LOW) public void onSmelt(FurnaceSmeltEvent event)
 	{
+		if(event.isCancelled())
+		{
+			return;
+		}
+
 		String playerName = dataRegisterManager.checkFurnace(event.getBlock().getLocation());
 		if(playerName == null)
 		{
@@ -194,6 +307,11 @@ public class JobsListener implements Listener
 
 	@EventHandler(priority = EventPriority.LOW) public void onBrew(BrewEvent event)
 	{
+		if(event.isCancelled())
+		{
+			return;
+		}
+
 		String playerName = dataRegisterManager.checkBrewingStand(event.getBlock().getLocation());
 		if(playerName == null)
 		{
@@ -232,6 +350,11 @@ public class JobsListener implements Listener
 
 	@EventHandler(priority = EventPriority.LOW) public void onEnchant(EnchantItemEvent event)
 	{
+		if(event.isCancelled())
+		{
+			return;
+		}
+
 		Player player = (Player) event.getEnchanter();
 		if(player.getGameMode().equals(GameMode.SURVIVAL))
 		{
@@ -318,6 +441,11 @@ public class JobsListener implements Listener
 
 	@EventHandler(priority = EventPriority.LOW) public void onBreed(EntityBreedEvent event)
 	{
+		if(event.isCancelled())
+		{
+			return;
+		}
+
 		Player player = (Player) event.getBreeder();
 		if(player.getGameMode().equals(GameMode.SURVIVAL))
 		{
@@ -331,6 +459,11 @@ public class JobsListener implements Listener
 
 	@EventHandler(priority = EventPriority.LOW) public void onTame(EntityTameEvent event)
 	{
+		if(event.isCancelled())
+		{
+			return;
+		}
+
 		Player player = (Player) event.getOwner();
 		if(player.getGameMode().equals(GameMode.SURVIVAL))
 		{
@@ -344,6 +477,11 @@ public class JobsListener implements Listener
 
 	@EventHandler(priority = EventPriority.LOW) public void onMilk(PlayerInteractEntityEvent event)
 	{
+		if(event.isCancelled())
+		{
+			return;
+		}
+
 		Player player = (Player) event.getPlayer();
 		if(player.getGameMode().equals(GameMode.SURVIVAL))
 		{
@@ -373,6 +511,11 @@ public class JobsListener implements Listener
 
 	@EventHandler(priority = EventPriority.LOW) public void onShear(PlayerShearEntityEvent event)
 	{
+		if(event.isCancelled())
+		{
+			return;
+		}
+
 		Player player = (Player) event.getPlayer();
 		if(player.getGameMode().equals(GameMode.SURVIVAL))
 		{
@@ -386,17 +529,26 @@ public class JobsListener implements Listener
 
 	@EventHandler(priority = EventPriority.LOW) public void onPlayerMove(PlayerMoveEvent event)
 	{
+		if(event.isCancelled())
+		{
+			return;
+		}
+
 		if(event.getFrom().getChunk().equals(event.getTo().getChunk()))
 		{
 			Player player = (Player) event.getPlayer();
-			int amount = dataRegisterManager.checkChunk(event.getTo().getChunk(), player.getName());
-			if(amount == -1)
-			{
-				return;
-			}
+
 			if(player.getGameMode().equals(GameMode.SURVIVAL))
 			{
-				jobManager.executeExplore(playerManager.getPlayer(player.getName()), amount);
+				int amount = dataRegisterManager.checkChunk(event.getTo().getChunk(), player.getName());
+				if(amount == -1)
+				{
+					return;
+				}
+				if(jobManager.executeExplore(playerManager.getPlayer(player.getName()), amount))
+				{
+					dataRegisterManager.registerChunk(event.getTo().getChunk(), player.getName());
+				}
 			}
 		}
 
@@ -440,15 +592,15 @@ public class JobsListener implements Listener
 				case "POTATOES":
 				case "NETHER_WART":
 				case "BEETROOTS":
-				case "COCOA":
 				case "CHORUS_FLOWER":
 					i = (int) block.getData();
 					break;
+				case "COCOA":
+					i = ((CocoaPlant) block.getState().getData()).getSize().ordinal();
 				default:
 					break;
 			}
 		}
-
 		return i;
 	}
 

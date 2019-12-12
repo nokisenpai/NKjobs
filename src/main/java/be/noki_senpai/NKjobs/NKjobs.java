@@ -2,7 +2,7 @@ package be.noki_senpai.NKjobs;
 
 import java.io.File;
 
-import be.noki_senpai.NKjobs.listeners.PistonMoveListener;
+import be.noki_senpai.NKjobs.listeners.*;
 import be.noki_senpai.NKjobs.managers.Manager;
 import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteStreams;
@@ -16,8 +16,6 @@ import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import be.noki_senpai.NKjobs.cmd.JobsCmd;
-import be.noki_senpai.NKjobs.listeners.JobsListener;
-import be.noki_senpai.NKjobs.listeners.PlayerConnectionListener;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.plugin.messaging.PluginMessageListener;
 
@@ -103,11 +101,15 @@ public class NKjobs extends JavaPlugin implements PluginMessageListener
 		// Load data for online players
 		manager.getPlayerManager().loadPlayer();
 
-		//On command
+		// On command
+		getCommand("jobs").setExecutor(new JobsCmd(manager.getQueueManager(), manager.getPlayerManager(), manager.getJobManager()));
+
+		// Event
 		getServer().getPluginManager().registerEvents(new PlayerConnectionListener(manager.getQueueManager(), manager.getPlayerManager()), this);
 		getServer().getPluginManager().registerEvents(new JobsListener(manager.getQueueManager(), manager.getPlayerManager(), manager.getJobManager(), manager.getDataRegisterManager()), this);
 		getServer().getPluginManager().registerEvents(new PistonMoveListener(manager.getDataRegisterManager()), this);
-		getCommand("jobs").setExecutor(new JobsCmd(manager.getQueueManager(), manager.getPlayerManager(), manager.getJobManager()));
+		getServer().getPluginManager().registerEvents(new ProtectedItemListener(manager.getPlayerManager()), this);
+		getCommand("jobs").setTabCompleter(new JobCompleter(manager.getJobManager()));
 
 		// Data exchange between servers
 		this.getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");

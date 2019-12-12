@@ -1,6 +1,7 @@
 package be.noki_senpai.NKjobs.cmd.Jobs;
 
 import be.noki_senpai.NKjobs.data.NKPlayer;
+import be.noki_senpai.NKjobs.data.PlayerJob;
 import be.noki_senpai.NKjobs.managers.ConfigManager;
 import be.noki_senpai.NKjobs.managers.JobManager;
 import be.noki_senpai.NKjobs.managers.PlayerManager;
@@ -11,6 +12,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 
+import java.util.Map;
 import java.util.function.Function;
 
 public class Switch
@@ -99,9 +101,22 @@ public class Switch
 						return null;
 					}
 
+					Player worker = Bukkit.getPlayer(finalTargetName);
+					if(worker != null)
+					{
+						if(!worker.getName().equals(sender.getName()))
+						{
+							worker.sendMessage(ChatColor.GREEN + "Vous êtes maintenant " + jobManager.jobs.get(jobName).formattedName);
+						}
+						for(Map.Entry<String, PlayerJob> job : player.getJobs().entrySet())
+						{
+							job.getValue().hideBar();
+						}
+					}
+
 					// Let the player switch job
 					playerManager.switchJob(player, jobName, false);
-					sender.sendMessage(ChatColor.GREEN + finalTargetName + " est maintenant " + jobName);
+					sender.sendMessage(ChatColor.GREEN + finalTargetName + " est maintenant " + jobManager.jobs.get(jobName).formattedName);
 
 					return null;
 				}

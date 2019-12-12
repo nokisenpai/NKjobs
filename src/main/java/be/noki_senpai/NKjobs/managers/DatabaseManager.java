@@ -26,15 +26,17 @@ public class DatabaseManager
 
 	public enum table
 	{
+		PLAYERS("NK_players"),
+		SERVERS("NK_servers"),
+		WORLDS("NK_worlds"),
 		PLAYER_JOBS(ConfigManager.PREFIX + "player_jobs"),
 		JOBS(ConfigManager.PREFIX + "jobs"),
-		PLAYERS("NK_players"),
 		BLOCKS(ConfigManager.PREFIX + "blocks"),
 		FURNACES(ConfigManager.PREFIX + "furnaces"),
 		BREWINGSTANDS(ConfigManager.PREFIX + "brewingstands"),
 		CHUNKS(ConfigManager.PREFIX + "chunks"),
-		SERVERS("NK_servers"),
-		WORLDS("NK_worlds");
+		ITEMS(ConfigManager.PREFIX + "items")
+		;
 
 		private String name = "";
 
@@ -212,9 +214,30 @@ public class DatabaseManager
 				s.execute(req);
 				s.close();
 
+				//Creating servers table
+				req = "CREATE TABLE IF NOT EXISTS `" + table.SERVERS + "` ("
+						+ " `id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,"
+						+ " `name` VARCHAR(100) NOT NULL,"
+						+ " PRIMARY KEY (`id`),"
+						+ " UNIQUE INDEX `name` (`name`)) ENGINE = InnoDB;";
+				s = bdd.createStatement();
+				s.execute(req);
+				s.close();
+
+				//Creating worlds table
+				req = "CREATE TABLE IF NOT EXISTS `" + table.WORLDS + "` ("
+						+ " `id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,"
+						+ " `server_id` INT NOT NULL,"
+						+ " `name` VARCHAR(100) NOT NULL,"
+						+ " PRIMARY KEY (`id`),"
+						+ " UNIQUE INDEX `server_world` (`server_id`, `name`)) ENGINE = InnoDB;";
+				s = bdd.createStatement();
+				s.execute(req);
+				s.close();
+
 				//Creating jobs table
 				req = "CREATE TABLE IF NOT EXISTS `" + table.JOBS + "` (" + "  `id` INT NOT NULL," + " `name` VARCHAR(100) NOT NULL,"
-						+ "  `old` BOOLEAN NOT NULL," + "  PRIMARY KEY (`id`)," + "  UNIQUE INDEX `jobs_id_name_UNIQUE` (`id` ASC, `name` ASC))"
+						+ "  `old` BOOLEAN NOT NULL," + "  PRIMARY KEY (`id`)," + "  UNIQUE INDEX `jobs_id_name_UNIQUE` (`id`, `name`))"
 						+ "ENGINE = InnoDB;";
 				s = bdd.createStatement();
 				s.execute(req);
@@ -222,17 +245,14 @@ public class DatabaseManager
 
 				//Creating player_jobs table
 				req = "CREATE TABLE IF NOT EXISTS `" + table.PLAYER_JOBS + "` ("
-						+ "  `player_id` INT NOT NULL,"
-						+ "  `job_id` INT NOT NULL,"
-						+ "  `lvl` double NOT NULL,"
-						+ "  `xp` double NOT NULL,"
-						+ "  `xp_goal` double NOT NULL,"
-						+ "  `xp_total` double NOT NULL,"
-						+ "  `old` BOOLEAN NOT NULL,"
-						+ "  UNIQUE INDEX `player_id_job_id_UNIQUE` (`player_id` ASC, `job_id` ASC),"
-						+ "  CONSTRAINT `player_jobs_player_id`" + "	FOREIGN KEY (`player_id`)" + "	REFERENCES `" + table.PLAYERS + "` (`id`)"
-						+ "	ON DELETE CASCADE" + "	ON UPDATE CASCADE," + "  CONSTRAINT `player_jobs_job_id`" + "	FOREIGN KEY (`job_id`)"
-						+ "	REFERENCES `" + table.JOBS + "` (`id`)" + "	ON DELETE CASCADE" + "	ON UPDATE CASCADE)" + "ENGINE = InnoDB;";
+						+ " `player_id` INT NOT NULL,"
+						+ " `job_id` INT NOT NULL,"
+						+ " `lvl` double NOT NULL,"
+						+ " `xp` double NOT NULL,"
+						+ " `xp_goal` double NOT NULL,"
+						+ " `xp_total` double NOT NULL,"
+						+ " `old` BOOLEAN NOT NULL,"
+						+ " UNIQUE INDEX `player_id_job_id_UNIQUE` (`player_id`,`job_id`)) ENGINE = InnoDB;";
 				s = bdd.createStatement();
 				s.execute(req);
 				s.close();
@@ -288,35 +308,24 @@ public class DatabaseManager
 						+ " `server_id` INT NOT NULL,"
 						+ " `world_id` INT NOT NULL,"
 						+ " `x` DOUBLE NOT NULL ,"
-						+ " `y` DOUBLE NOT NULL ,"
 						+ " `z` DOUBLE NOT NULL ,"
 						+ " `players` TEXT NOT NULL,"
 						+ " PRIMARY KEY (`id`),"
-						+ " UNIQUE INDEX `chunks_server_world_x_y_z` (`server_id`, `world_id`, `x`, `y`, `z`)) ENGINE = InnoDB;";
+						+ " UNIQUE INDEX `chunks_server_world_x_z` (`server_id`, `world_id`, `x`, `z`)) ENGINE = InnoDB;";
 				s = bdd.createStatement();
 				s.execute(req);
 				s.close();
 
-				//Creating servers table
-				req = "CREATE TABLE IF NOT EXISTS `" + table.SERVERS + "` ("
+				//Creating player_jobs table
+				req = "CREATE TABLE IF NOT EXISTS `" + table.ITEMS + "` ("
 						+ " `id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,"
-						+ " `name` VARCHAR(100) NOT NULL,"
-						+ " PRIMARY KEY (`id`),"
-						+ " UNIQUE INDEX `name` (`name`)) ENGINE = InnoDB;";
+						+ " `player_id` INT NOT NULL,"
+						+ " `item` TEXT NOT NULL,"
+						+ " PRIMARY KEY (`id`)) ENGINE = InnoDB;";
 				s = bdd.createStatement();
 				s.execute(req);
 				s.close();
 
-				//Creating worlds table
-				req = "CREATE TABLE IF NOT EXISTS `" + table.WORLDS + "` ("
-						+ " `id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,"
-						+ " `server_id` INT NOT NULL,"
-						+ " `name` VARCHAR(100) NOT NULL,"
-						+ " PRIMARY KEY (`id`),"
-						+ " UNIQUE INDEX `server_world` (`server_id`, `name`)) ENGINE = InnoDB;";
-				s = bdd.createStatement();
-				s.execute(req);
-				s.close();
 
 				console.sendMessage(ChatColor.GREEN + NKjobs.PNAME + " Database structure created.");
 			}
