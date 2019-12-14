@@ -274,11 +274,11 @@ public class JobsListener implements Listener
 		{
 			return;
 		}
-		if(playerManager.getPlayer(playerName) == null)
+		if(Bukkit.getPlayer(playerName) == null)
 		{
 			return;
 		}
-		if(Bukkit.getPlayer(playerName) == null)
+		if(playerManager.getPlayer(playerName) == null)
 		{
 			return;
 		}
@@ -304,11 +304,11 @@ public class JobsListener implements Listener
 		{
 			return;
 		}
-		if(playerManager.getPlayer(playerName) == null)
+		if(Bukkit.getPlayer(playerName) == null)
 		{
 			return;
 		}
-		if(Bukkit.getPlayer(playerName) == null)
+		if(playerManager.getPlayer(playerName) == null)
 		{
 			return;
 		}
