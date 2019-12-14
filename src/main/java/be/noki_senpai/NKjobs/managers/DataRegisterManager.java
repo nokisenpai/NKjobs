@@ -468,20 +468,20 @@ public class DataRegisterManager
 
 	public void saveBlocksTimer()
 	{
-		Map<String, Map<String, BlockTimer>> saveBlocks = new HashMap<>(blocks);
-		if(saveBlocks.size() > 0)
+		if(blocks.size() > 0)
 		{
 			boolean ok = false;
 			Connection bdd = null;
 			PreparedStatement ps = null;
 			String req = "INSERT INTO " + DatabaseManager.table.BLOCKS + " ( server_id, world_id, x, y, z, time) VALUES ";
 
-			for(Map.Entry<String, Map<String, BlockTimer>> world : saveBlocks.entrySet())
+			for(Map.Entry<String, Map<String, BlockTimer>> world : blocks.entrySet())
 			{
 				if(world.getValue().size() > 0)
 				{
+					Map<String, BlockTimer> saveBlocks = new HashMap<>(world.getValue());
 					ok = true;
-					for(Map.Entry<String, BlockTimer> block : world.getValue().entrySet())
+					for(Map.Entry<String, BlockTimer> block : saveBlocks.entrySet())
 					{
 						req += "(" + SERVERID + " , " + worlds.get(world.getKey()) + " , " + block.getValue().getX() + " , " + block.getValue().getY()
 								+ " , " + block.getValue().getZ() + " , '" + block.getValue().getTime().toString() + "'),";

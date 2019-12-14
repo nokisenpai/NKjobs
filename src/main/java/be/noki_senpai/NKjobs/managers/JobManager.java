@@ -896,7 +896,7 @@ public class JobManager
 	// executeBreak
 	// ######################################
 
-	public void executeBreak(NKPlayer player, String item, int itemData)
+	public void executeBreak(NKPlayer player, String item, int itemData, Timestamp checkedTime)
 	{
 		if(itemData >= 0)
 		{
@@ -909,6 +909,11 @@ public class JobManager
 					{
 						if(data.getName().equals(item + "-" + itemData) || data.getName().equals(item))
 						{
+							if(checkedTime != null)
+							{
+								player.setTmpTime(checkedTime);
+								return;
+							}
 							rewardPlayer(player, jobName, data.getMoney(), data.getExp());
 						}
 					}
@@ -926,6 +931,11 @@ public class JobManager
 					{
 						if(data.getName().equals(item))
 						{
+							if(checkedTime != null)
+							{
+								player.setTmpTime(checkedTime);
+								return;
+							}
 							rewardPlayer(player, jobName, data.getMoney(), data.getExp());
 						}
 					}
@@ -938,7 +948,7 @@ public class JobManager
 	// executePlace
 	// ######################################
 
-	public void executePlace(NKPlayer player, String item, int itemData)
+	public void executePlace(NKPlayer player, String item, int itemData, Timestamp checkedTime)
 	{
 		if(itemData >= 0)
 		{
@@ -951,6 +961,11 @@ public class JobManager
 					{
 						if(data.getName().equals(item + "-" + itemData) || data.getName().equals(item))
 						{
+							if(checkedTime != null)
+							{
+								player.setTmpTime(checkedTime);
+								return;
+							}
 							rewardPlayer(player, jobName, data.getMoney(), data.getExp());
 						}
 					}
@@ -968,6 +983,11 @@ public class JobManager
 					{
 						if(data.getName().equals(item))
 						{
+							if(checkedTime != null)
+							{
+								player.setTmpTime(checkedTime);
+								return;
+							}
 							rewardPlayer(player, jobName, data.getMoney(), data.getExp());
 						}
 					}

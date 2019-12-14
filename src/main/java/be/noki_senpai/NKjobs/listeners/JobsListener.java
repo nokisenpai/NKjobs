@@ -64,16 +64,9 @@ public class JobsListener implements Listener
 				dataRegisterManager.unregisterBrewingStand(block.getLocation(), event.getPlayer());
 			}
 
-			Timestamp checkedTime = dataRegisterManager.checkBlockTimer(block.getLocation());
-			if(checkedTime != null)
-			{
-				playerManager.getPlayer(event.getPlayer().getName()).setTmpTime(checkedTime);
-				return;
-			}
-
 			dataRegisterManager.registerBreakBlockTimer(block.getLocation());
 
-			jobManager.executeBreak(playerManager.getPlayer(event.getPlayer().getName()), block.getBlockData().getMaterial().toString(), exeptionBlock(block, false));
+			jobManager.executeBreak(playerManager.getPlayer(event.getPlayer().getName()), block.getBlockData().getMaterial().toString(), exeptionBlock(block, false), dataRegisterManager.checkBlockTimer(block.getLocation()));
 		}
 	}
 
@@ -102,13 +95,6 @@ public class JobsListener implements Listener
 				dataRegisterManager.registerBrewingStand(block.getLocation(), playerManager.getPlayer(event.getPlayer().getName()));
 			}
 
-			Timestamp checkedTime = dataRegisterManager.checkBlockTimer(block.getLocation());
-			if(checkedTime != null)
-			{
-				playerManager.getPlayer(event.getPlayer().getName()).setTmpTime(checkedTime);
-				return;
-			}
-
 			long timer = ConfigManager.GLOBALBLOCKSTIMER;
 			if(jobManager.items.containsKey(block.getBlockData().getMaterial().toString().toUpperCase()))
 			{
@@ -117,7 +103,7 @@ public class JobsListener implements Listener
 
 			dataRegisterManager.registerPlaceBlockTimer(block.getLocation(), timer);
 
-			jobManager.executePlace(playerManager.getPlayer(event.getPlayer().getName()), block.getBlockData().getMaterial().toString(), exeptionBlock(block, false));
+			jobManager.executePlace(playerManager.getPlayer(event.getPlayer().getName()), block.getBlockData().getMaterial().toString(), exeptionBlock(block, false), dataRegisterManager.checkBlockTimer(block.getLocation()));
 		}
 	}
 
