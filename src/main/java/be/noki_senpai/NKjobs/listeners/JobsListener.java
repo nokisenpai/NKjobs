@@ -1,18 +1,12 @@
 package be.noki_senpai.NKjobs.listeners;
 
 import be.noki_senpai.NKjobs.managers.*;
-import com.sun.scenario.Settings;
-import net.md_5.bungee.api.chat.ClickEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
-import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
-import org.bukkit.block.Smoker;
 import org.bukkit.block.data.type.BrewingStand;
-import org.bukkit.block.data.type.Cocoa;
 import org.bukkit.block.data.type.Furnace;
-import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -20,8 +14,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 
-import be.noki_senpai.NKjobs.NKjobs;
-import be.noki_senpai.NKjobs.data.NKPlayer;
 import org.bukkit.event.enchantment.EnchantItemEvent;
 import org.bukkit.event.entity.*;
 import org.bukkit.event.inventory.*;
@@ -30,28 +22,19 @@ import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerShearEntityEvent;
 import org.bukkit.inventory.*;
-import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.inventory.meta.PotionMeta;
-import org.bukkit.inventory.meta.Repairable;
 import org.bukkit.material.CocoaPlant;
-import org.bukkit.material.Dye;
-import org.bukkit.permissions.PermissionDefault;
-import org.bukkit.potion.PotionData;
 
 import java.sql.Timestamp;
-import java.util.Map;
 
 public class JobsListener implements Listener
 {
 	private PlayerManager playerManager = null;
-	private QueueManager queueManager = null;
 	private JobManager jobManager = null;
 	private DataRegisterManager dataRegisterManager = null;
 
-	public JobsListener(QueueManager queueManager, PlayerManager playerManager, JobManager jobManager, DataRegisterManager dataRegisterManager)
+	public JobsListener(PlayerManager playerManager, JobManager jobManager, DataRegisterManager dataRegisterManager)
 	{
 		this.playerManager = playerManager;
-		this.queueManager = queueManager;
 		this.jobManager = jobManager;
 		this.dataRegisterManager = dataRegisterManager;
 	}
@@ -71,13 +54,6 @@ public class JobsListener implements Listener
 		{
 			Block block = event.getBlock();
 
-			Timestamp checkedTime = dataRegisterManager.checkBlockTimer(block.getLocation());
-			if(checkedTime != null)
-			{
-				playerManager.getPlayer(event.getPlayer().getName()).setTmpTime(checkedTime);
-				return;
-			}
-
 			if(block.getBlockData() instanceof Furnace)
 			{
 				dataRegisterManager.unregisterFurnace(block.getLocation(), event.getPlayer());
@@ -90,7 +66,7 @@ public class JobsListener implements Listener
 
 			dataRegisterManager.registerBreakBlockTimer(block.getLocation());
 
-			jobManager.executeBreak(playerManager.getPlayer(event.getPlayer().getName()), block.getBlockData().getMaterial().toString(), exeptionBlock(block, false));
+			jobManager.executeBreak(playerManager.getPlayer(event.getPlayer().getName()), block.getBlockData().getMaterial().toString(), exeptionBlock(block, false), dataRegisterManager.checkBlockTimer(block.getLocation()));
 		}
 	}
 
@@ -108,13 +84,6 @@ public class JobsListener implements Listener
 		if(event.getPlayer().getGameMode().equals(GameMode.SURVIVAL))
 		{
 			Block block = event.getBlock();
-
-			Timestamp checkedTime = dataRegisterManager.checkBlockTimer(block.getLocation());
-			if(checkedTime != null)
-			{
-				playerManager.getPlayer(event.getPlayer().getName()).setTmpTime(checkedTime);
-				return;
-			}
 
 			if(event.getBlock().getBlockData() instanceof Furnace && playerManager.getPlayer(event.getPlayer().getName()).getNbFurnace() < ConfigManager.MAXREGISTEREDFURNACES)
 			{
@@ -134,7 +103,7 @@ public class JobsListener implements Listener
 
 			dataRegisterManager.registerPlaceBlockTimer(block.getLocation(), timer);
 
-			jobManager.executePlace(playerManager.getPlayer(event.getPlayer().getName()), block.getBlockData().getMaterial().toString(), exeptionBlock(block, false));
+			jobManager.executePlace(playerManager.getPlayer(event.getPlayer().getName()), block.getBlockData().getMaterial().toString(), exeptionBlock(block, false), dataRegisterManager.checkBlockTimer(block.getLocation()));
 		}
 	}
 
@@ -149,7 +118,11 @@ public class JobsListener implements Listener
 		{
 			if(entity.getKiller().getGameMode().equals(GameMode.SURVIVAL))
 			{
-				jobManager.executeKill(playerManager.getPlayer(entity.getKiller().getName()), entity.getType().name().toUpperCase(), exeptionEntity(entity), entity.getScoreboardTags().contains(ConfigManager.SCOREBOARDTAG));
+				if(entity instanceof PigZombie && !entity.getScoreboardTags().contains(ConfigManager.HITPIGMEN))
+				{
+					return;
+				}
+				jobManager.executeKill(playerManager.getPlayer(entity.getKiller().getName()), entity.getType().name().toUpperCase(), exeptionEntity(entity), entity.getScoreboardTags().contains(ConfigManager.FROMSPAWNER));
 			}
 		}
 	}
@@ -287,11 +260,11 @@ public class JobsListener implements Listener
 		{
 			return;
 		}
-		if(playerManager.getPlayer(playerName) == null)
+		if(Bukkit.getPlayer(playerName) == null)
 		{
 			return;
 		}
-		if(Bukkit.getPlayer(playerName) == null)
+		if(playerManager.getPlayer(playerName) == null)
 		{
 			return;
 		}
@@ -317,11 +290,11 @@ public class JobsListener implements Listener
 		{
 			return;
 		}
-		if(playerManager.getPlayer(playerName) == null)
+		if(Bukkit.getPlayer(playerName) == null)
 		{
 			return;
 		}
-		if(Bukkit.getPlayer(playerName) == null)
+		if(playerManager.getPlayer(playerName) == null)
 		{
 			return;
 		}
@@ -560,7 +533,19 @@ public class JobsListener implements Listener
 
 	@EventHandler public void onEntitySpawn(SpawnerSpawnEvent e)
 	{
-		e.getEntity().addScoreboardTag(ConfigManager.SCOREBOARDTAG);
+		e.getEntity().addScoreboardTag(ConfigManager.FROMSPAWNER);
+	}
+
+	// ######################################
+	// Tag pigmen on hit by player
+	// ######################################
+
+	@EventHandler public void onEntitySpawn(EntityDamageByEntityEvent e)
+	{
+		if(e.getEntity() instanceof PigZombie)
+		{
+			e.getEntity().addScoreboardTag(ConfigManager.HITPIGMEN);
+		}
 	}
 
 	@SuppressWarnings("deprecation") public int exeptionBlock(Block block, boolean place)

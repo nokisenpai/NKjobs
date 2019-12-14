@@ -106,7 +106,7 @@ public class NKjobs extends JavaPlugin implements PluginMessageListener
 
 		// Event
 		getServer().getPluginManager().registerEvents(new PlayerConnectionListener(manager.getQueueManager(), manager.getPlayerManager()), this);
-		getServer().getPluginManager().registerEvents(new JobsListener(manager.getQueueManager(), manager.getPlayerManager(), manager.getJobManager(), manager.getDataRegisterManager()), this);
+		getServer().getPluginManager().registerEvents(new JobsListener(manager.getPlayerManager(), manager.getJobManager(), manager.getDataRegisterManager()), this);
 		getServer().getPluginManager().registerEvents(new PistonMoveListener(manager.getDataRegisterManager()), this);
 		getServer().getPluginManager().registerEvents(new ProtectedItemListener(manager.getPlayerManager()), this);
 		getCommand("jobs").setTabCompleter(new JobCompleter(manager.getJobManager()));

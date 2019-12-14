@@ -28,9 +28,9 @@ public class PlayerJob
 		this.xp = xp;
 		this.xpGoal = xpGoal;
 		this.xpTotal = xpTotal;
+		this.formattedName = ChatColor.valueOf(chatColor) + name.substring(0, 1).toUpperCase() + name.substring(1) + ChatColor.RESET;
 		if(player != null && colorBar != null)
 		{
-			this.formattedName = ChatColor.valueOf(chatColor) + name.substring(0, 1).toUpperCase() + name.substring(1) + ChatColor.RESET;
 			BossBar bossBar = Bukkit.getServer().createBossBar(
 					formattedName + " niv. " + lvl + " : " + Formatter.format(xp) + " / " + Formatter.format(xpGoal) + "xp", BarColor.valueOf(colorBar), BarStyle.SEGMENTED_20);
 			bossBar.setVisible(false);

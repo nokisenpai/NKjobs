@@ -124,7 +124,7 @@ public class Level
 
 					// Alter job xp
 					playerManager.levelJob(player, jobName, amount, subCommand, false);
-					sender.sendMessage(ChatColor.GREEN + finalTargetName + " est maintenant " + jobName);
+					sender.sendMessage(ChatColor.GREEN + "Le niveau de " + jobName + " de " + finalTargetName + " a été altérée.");
 
 					return null;
 				}

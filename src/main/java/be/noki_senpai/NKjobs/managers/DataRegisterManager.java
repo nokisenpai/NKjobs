@@ -4,6 +4,7 @@ import be.noki_senpai.NKjobs.NKjobs;
 import be.noki_senpai.NKjobs.data.*;
 import org.bukkit.*;
 import org.bukkit.block.BlockFace;
+import org.bukkit.block.Furnace;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -37,7 +38,8 @@ public class DataRegisterManager
 
 		new BukkitRunnable()
 		{
-			@Override public void run()
+			@Override
+			public void run()
 			{
 				purgeAll();
 				saveAll();
@@ -245,7 +247,8 @@ public class DataRegisterManager
 
 				newChunks.put(world.getName(), new HashMap<>());
 
-				req = "INSERT INTO " + DatabaseManager.table.WORLDS + " ( server_id, name ) VALUES ( ?, ? ) ON DUPLICATE KEY UPDATE id = LAST_INSERT_ID(id)";
+				req = "INSERT INTO " + DatabaseManager.table.WORLDS
+						+ " ( server_id, name ) VALUES ( ?, ? ) ON DUPLICATE KEY UPDATE id = LAST_INSERT_ID(id)";
 				ps = bdd.prepareStatement(req, Statement.RETURN_GENERATED_KEYS);
 				ps.setInt(1, SERVERID);
 				ps.setString(2, world.getName());
@@ -291,10 +294,8 @@ public class DataRegisterManager
 		{
 			bdd = DatabaseManager.getConnection();
 
-			req = "SELECT x, y, z, time, w.name AS world FROM " + DatabaseManager.table.BLOCKS + " b "
-					+ "LEFT JOIN " + DatabaseManager.table.WORLDS + " w "
-					+ "ON b.world_id = w.id "
-					+ "WHERE time > ? AND b.server_id = ?";
+			req = "SELECT x, y, z, time, w.name AS world FROM " + DatabaseManager.table.BLOCKS + " b " + "LEFT JOIN " + DatabaseManager.table.WORLDS
+					+ " w " + "ON b.world_id = w.id " + "WHERE time > ? AND b.server_id = ?";
 			ps = bdd.prepareStatement(req);
 			ps.setDate(1, new java.sql.Date(System.currentTimeMillis()));
 			ps.setInt(2, SERVERID);
@@ -302,7 +303,7 @@ public class DataRegisterManager
 
 			while(resultat.next())
 			{
-				String key = "" + resultat.getDouble("x") + "|" + resultat.getDouble("y")  + "|" + resultat.getDouble("z");
+				String key = "" + resultat.getDouble("x") + "|" + resultat.getDouble("y") + "|" + resultat.getDouble("z");
 				blocks.get(resultat.getString("world")).put(key, new BlockTimer(resultat.getDouble("x"), resultat.getDouble("y"), resultat.getDouble("z"), resultat.getTimestamp("time")));
 			}
 
@@ -335,19 +336,16 @@ public class DataRegisterManager
 		{
 			bdd = DatabaseManager.getConnection();
 
-			req = "SELECT f.id AS id, x, y, z, f.player_id AS player_id, p.name AS name, w.name AS world FROM " + DatabaseManager.table.FURNACES + " f "
-					+ "LEFT JOIN " + DatabaseManager.table.WORLDS + " w "
-					+ "ON f.world_id = w.id "
-					+ "LEFT JOIN " + DatabaseManager.table.PLAYERS + " p "
-					+ "ON f.player_id = p.id "
-					+ "WHERE f.server_id = ?";
+			req = "SELECT f.id AS id, x, y, z, f.player_id AS player_id, p.name AS name, w.name AS world FROM " + DatabaseManager.table.FURNACES
+					+ " f " + "LEFT JOIN " + DatabaseManager.table.WORLDS + " w " + "ON f.world_id = w.id " + "LEFT JOIN "
+					+ DatabaseManager.table.PLAYERS + " p " + "ON f.player_id = p.id " + "WHERE f.server_id = ?";
 			ps = bdd.prepareStatement(req);
 			ps.setInt(1, SERVERID);
 			resultat = ps.executeQuery();
 
 			while(resultat.next())
 			{
-				String key = "" + resultat.getDouble("x")  + "|" + resultat.getDouble("y")  + "|" + resultat.getDouble("z");
+				String key = "" + resultat.getDouble("x") + "|" + resultat.getDouble("y") + "|" + resultat.getDouble("z");
 				furnaces.get(resultat.getString("world")).put(key, new RegisteredFurnace(resultat.getInt("id"), resultat.getDouble("x"), resultat.getDouble("y"), resultat.getDouble("z"), resultat.getString("name"), resultat.getInt("player_id")));
 			}
 
@@ -380,19 +378,16 @@ public class DataRegisterManager
 		{
 			bdd = DatabaseManager.getConnection();
 
-			req = "SELECT bs.id AS id, x, y, z, bs.player_id AS player_id, p.name AS name, w.name AS world FROM " + DatabaseManager.table.BREWINGSTANDS + " bs "
-					+ "LEFT JOIN " + DatabaseManager.table.WORLDS + " w "
-					+ "ON bs.world_id = w.id "
-					+ "LEFT JOIN " + DatabaseManager.table.PLAYERS + " p "
-					+ "ON bs.player_id = p.id "
-					+ "WHERE bs.server_id = ?";
+			req = "SELECT bs.id AS id, x, y, z, bs.player_id AS player_id, p.name AS name, w.name AS world FROM "
+					+ DatabaseManager.table.BREWINGSTANDS + " bs " + "LEFT JOIN " + DatabaseManager.table.WORLDS + " w " + "ON bs.world_id = w.id "
+					+ "LEFT JOIN " + DatabaseManager.table.PLAYERS + " p " + "ON bs.player_id = p.id " + "WHERE bs.server_id = ?";
 			ps = bdd.prepareStatement(req);
 			ps.setInt(1, SERVERID);
 			resultat = ps.executeQuery();
 
 			while(resultat.next())
 			{
-				String key = "" + resultat.getDouble("x")  + "|" + resultat.getDouble("y")  + "|" + resultat.getDouble("z");
+				String key = "" + resultat.getDouble("x") + "|" + resultat.getDouble("y") + "|" + resultat.getDouble("z");
 				brewingStands.get(resultat.getString("world")).put(key, new RegisteredBrewingStand(resultat.getInt("id"), resultat.getDouble("x"), resultat.getDouble("y"), resultat.getDouble("z"), resultat.getString("name"), resultat.getInt("player_id")));
 			}
 
@@ -425,10 +420,8 @@ public class DataRegisterManager
 		{
 			bdd = DatabaseManager.getConnection();
 
-			req = "SELECT x, z, c.players AS players, w.name AS world FROM " + DatabaseManager.table.CHUNKS + " c "
-					+ "LEFT JOIN " + DatabaseManager.table.WORLDS + " w "
-					+ "ON c.world_id = w.id "
-					+ "WHERE c.server_id = ?";
+			req = "SELECT x, z, c.players AS players, w.name AS world FROM " + DatabaseManager.table.CHUNKS + " c " + "LEFT JOIN "
+					+ DatabaseManager.table.WORLDS + " w " + "ON c.world_id = w.id " + "WHERE c.server_id = ?";
 			ps = bdd.prepareStatement(req);
 			ps.setInt(1, SERVERID);
 			resultat = ps.executeQuery();
@@ -486,16 +479,12 @@ public class DataRegisterManager
 			{
 				if(world.getValue().size() > 0)
 				{
+					Map<String, BlockTimer> saveBlocks = new HashMap<>(world.getValue());
 					ok = true;
-					for(Map.Entry<String, BlockTimer> block : world.getValue().entrySet())
+					for(Map.Entry<String, BlockTimer> block : saveBlocks.entrySet())
 					{
-						req += "("
-								+ SERVERID + " , "
-								+ worlds.get(world.getKey()) + " , "
-								+ block.getValue().getX() + " , "
-								+ block.getValue().getY() + " , "
-								+ block.getValue().getZ() + " , '"
-								+ block.getValue().getTime().toString() + "'),";
+						req += "(" + SERVERID + " , " + worlds.get(world.getKey()) + " , " + block.getValue().getX() + " , " + block.getValue().getY()
+								+ " , " + block.getValue().getZ() + " , '" + block.getValue().getTime().toString() + "'),";
 					}
 				}
 			}
@@ -540,12 +529,8 @@ public class DataRegisterManager
 					ok = true;
 					for(Map.Entry<String, ExploredChunk> chunk : world.getValue().entrySet())
 					{
-						req += "("
-								+ SERVERID + " , "
-								+ worlds.get(world.getKey()) + " , "
-								+ chunk.getValue().getX() + " , "
-								+ chunk.getValue().getZ() + " , '"
-								+ chunk.getValue().getPlayersToString() + "'),";
+						req += "(" + SERVERID + " , " + worlds.get(world.getKey()) + " , " + chunk.getValue().getX() + " , " + chunk.getValue().getZ()
+								+ " , '" + chunk.getValue().getPlayersToString() + "'),";
 					}
 					newChunks.get(world.getKey()).clear();
 				}
@@ -582,7 +567,7 @@ public class DataRegisterManager
 
 	public void registerBreakBlockTimer(Location location)
 	{
-		String key = "" + location.getX()  + "|" + location.getY()  + "|" + location.getZ();
+		String key = "" + location.getX() + "|" + location.getY() + "|" + location.getZ();
 		blocks.get(location.getWorld().getName()).put(key, new BlockTimer(location.getX(), location.getY(), location.getZ(), new java.sql.Timestamp(
 				System.currentTimeMillis() + (ConfigManager.GLOBALBLOCKSTIMER * 1000))));
 	}
@@ -593,8 +578,9 @@ public class DataRegisterManager
 
 	public void registerPlaceBlockTimer(Location location, long blockTimer)
 	{
-		String key = "" + location.getX()  + "|" + location.getY()  + "|" + location.getZ();
-		blocks.get(location.getWorld().getName()).put(key, new BlockTimer(location.getX(), location.getY(), location.getZ(), new java.sql.Timestamp(System.currentTimeMillis() + (blockTimer * 1000))));
+		String key = "" + location.getX() + "|" + location.getY() + "|" + location.getZ();
+		blocks.get(location.getWorld().getName()).put(key, new BlockTimer(location.getX(), location.getY(), location.getZ(), new java.sql.Timestamp(
+				System.currentTimeMillis() + (blockTimer * 1000))));
 	}
 
 	// ######################################
@@ -605,9 +591,10 @@ public class DataRegisterManager
 	{
 		queueManager.addToQueue(new Function()
 		{
-			@Override public Object apply(Object o)
+			@Override
+			public Object apply(Object o)
 			{
-				String key = "" + location.getX()  + "|" + location.getY()  + "|" + location.getZ();
+				String key = "" + location.getX() + "|" + location.getY() + "|" + location.getZ();
 
 				player.addFurnace();
 
@@ -618,8 +605,7 @@ public class DataRegisterManager
 				ResultSet resultat = null;
 
 				String req = "INSERT INTO " + DatabaseManager.table.FURNACES + " ( player_id, server_id, world_id, x, y, z) "
-						+ "VALUES ( ? , ? , ? , ? , ? , ? ) "
-						+ "ON DUPLICATE KEY UPDATE player_id = VALUES(player_id), id = LAST_INSERT_ID(id)";
+						+ "VALUES ( ? , ? , ? , ? , ? , ? ) " + "ON DUPLICATE KEY UPDATE player_id = VALUES(player_id), id = LAST_INSERT_ID(id)";
 				try
 				{
 					bdd = DatabaseManager.getConnection();
@@ -662,9 +648,10 @@ public class DataRegisterManager
 	{
 		queueManager.addToQueue(new Function()
 		{
-			@Override public Object apply(Object o)
+			@Override
+			public Object apply(Object o)
 			{
-				String key = "" + location.getX()  + "|" + location.getY()  + "|" + location.getZ();
+				String key = "" + location.getX() + "|" + location.getY() + "|" + location.getZ();
 
 				player.addBrewingStand();
 
@@ -675,8 +662,7 @@ public class DataRegisterManager
 				ResultSet resultat = null;
 
 				String req = "INSERT INTO " + DatabaseManager.table.BREWINGSTANDS + " ( player_id, server_id, world_id, x, y, z) "
-						+ "VALUES ( ? , ? , ? , ? , ? , ? ) "
-						+ "ON DUPLICATE KEY UPDATE player_id = VALUES(player_id), id = LAST_INSERT_ID(id)";
+						+ "VALUES ( ? , ? , ? , ? , ? , ? ) " + "ON DUPLICATE KEY UPDATE player_id = VALUES(player_id), id = LAST_INSERT_ID(id)";
 				try
 				{
 					bdd = DatabaseManager.getConnection();
@@ -739,15 +725,18 @@ public class DataRegisterManager
 
 	public void unregisterFurnace(Location location, Player player)
 	{
-		String key = "" + location.getX()  + "|" + location.getY()  + "|" + location.getZ();
-		if(furnaces.get(location.getWorld().getName()).containsKey(key))
+		String key = "" + location.getX() + "|" + location.getY() + "|" + location.getZ();
+		String worldName = location.getWorld().getName();
+
+		if(furnaces.get(worldName).containsKey(key))
 		{
+			RegisteredFurnace furnace = furnaces.get(worldName).get(key);
+
 			queueManager.addToQueue(new Function()
 			{
 				@Override
 				public Object apply(Object o)
 				{
-
 					Connection bdd = null;
 					PreparedStatement ps = null;
 
@@ -757,9 +746,9 @@ public class DataRegisterManager
 					{
 						bdd = DatabaseManager.getConnection();
 						ps = bdd.prepareStatement(req);
-						ps.setInt(1, furnaces.get(location.getWorld().getName()).get(key).getId());
+						ps.setInt(1, furnace.getId());
 
-						ps.executeUpdate();
+						ps.execute();
 						ps.close();
 					}
 					catch(SQLException e)
@@ -767,15 +756,16 @@ public class DataRegisterManager
 						e.printStackTrace();
 					}
 
-					NKPlayer nkPlayer = playerManager.getPlayer(furnaces.get(location.getWorld().getName()).get(key).getPlayerName());
+					NKPlayer nkPlayer = playerManager.getPlayer(furnace.getPlayerName());
 					if(nkPlayer != null)
 					{
 						nkPlayer.removeFurnace();
 					}
 
 					player.sendMessage(
-							ChatColor.GREEN + "Vous avez détruit le four de " + furnaces.get(location.getWorld().getName()).get(key).getPlayerName() + ".");
-					furnaces.get(location.getWorld().getName()).remove(key);
+							ChatColor.GREEN + "Vous avez détruit le four de " + furnace.getPlayerName()
+									+ ".");
+					furnaces.get(worldName).remove(key);
 					return null;
 				}
 			});
@@ -788,15 +778,18 @@ public class DataRegisterManager
 
 	public void unregisterBrewingStand(Location location, Player player)
 	{
-		String key = "" + location.getX()  + "|" + location.getY()  + "|" + location.getZ();
-		if(furnaces.get(location.getWorld().getName()).containsKey(key))
+		String key = "" + location.getX() + "|" + location.getY() + "|" + location.getZ();
+		String worldName = location.getWorld().getName();
+
+		if(brewingStands.get(worldName).containsKey(key))
 		{
+			RegisteredBrewingStand brewingStand = brewingStands.get(worldName).get(key);
+
 			queueManager.addToQueue(new Function()
 			{
 				@Override
 				public Object apply(Object o)
 				{
-
 					Connection bdd = null;
 					PreparedStatement ps = null;
 
@@ -806,7 +799,7 @@ public class DataRegisterManager
 					{
 						bdd = DatabaseManager.getConnection();
 						ps = bdd.prepareStatement(req);
-						ps.setInt(1, brewingStands.get(location.getWorld().getName()).get(key).getId());
+						ps.setInt(1, brewingStand.getId());
 
 						ps.executeUpdate();
 						ps.close();
@@ -816,14 +809,15 @@ public class DataRegisterManager
 						e.printStackTrace();
 					}
 
-					NKPlayer nkPlayer = playerManager.getPlayer(brewingStands.get(location.getWorld().getName()).get(key).getPlayerName());
+					NKPlayer nkPlayer = playerManager.getPlayer(brewingStand.getPlayerName());
 					if(nkPlayer != null)
 					{
 						nkPlayer.removeBrewingStand();
 					}
 
-					player.sendMessage(ChatColor.GREEN + "Vous avez détruit l'alambic de " + brewingStands.get(location.getWorld().getName()).get(key).getPlayerName() + ".");
-					brewingStands.get(location.getWorld().getName()).remove(key);
+					player.sendMessage(ChatColor.GREEN + "Vous avez détruit l'alambic de "
+							+ brewingStand.getPlayerName() + ".");
+					brewingStands.get(worldName).remove(key);
 					return null;
 				}
 			});
@@ -842,7 +836,7 @@ public class DataRegisterManager
 
 	public String checkFurnace(Location location)
 	{
-		String key = "" + location.getX()  + "|" + location.getY()  + "|" + location.getZ();
+		String key = "" + location.getX() + "|" + location.getY() + "|" + location.getZ();
 		if(furnaces.get(location.getWorld().getName()).containsKey(key))
 		{
 			return furnaces.get(location.getWorld().getName()).get(key).getPlayerName();
@@ -856,7 +850,7 @@ public class DataRegisterManager
 
 	public String checkBrewingStand(Location location)
 	{
-		String key = "" + location.getX()  + "|" + location.getY()  + "|" + location.getZ();
+		String key = "" + location.getX() + "|" + location.getY() + "|" + location.getZ();
 		if(brewingStands.get(location.getWorld().getName()).containsKey(key))
 		{
 			return brewingStands.get(location.getWorld().getName()).get(key).getPlayerName();
@@ -870,7 +864,7 @@ public class DataRegisterManager
 
 	public Timestamp checkBlockTimer(Location location)
 	{
-		String key = "" + location.getX()  + "|" + location.getY()  + "|" + location.getZ();
+		String key = "" + location.getX() + "|" + location.getY() + "|" + location.getZ();
 		if(blocks.get(location.getWorld().getName()).containsKey(key))
 		{
 			if(blocks.get(location.getWorld().getName()).get(key).getTime().before(new java.sql.Date(System.currentTimeMillis())))
@@ -913,24 +907,31 @@ public class DataRegisterManager
 		double x = location.getX();
 		double y = location.getY();
 		double z = location.getZ();
-		String key = "" + location.getX()  + "|" + location.getY()  + "|" + location.getZ();
+		String key = "" + location.getX() + "|" + location.getY() + "|" + location.getZ();
 		switch(blockFace)
 		{
-			case "NORTH": z--;
+			case "NORTH":
+				z--;
 				break;
-			case "SOUTH": z++;
+			case "SOUTH":
+				z++;
 				break;
-			case "WEST": x--;
+			case "WEST":
+				x--;
 				break;
-			case "EAST": x++;
+			case "EAST":
+				x++;
 				break;
-			case "DOWN": y--;
+			case "DOWN":
+				y--;
 				break;
-			case "UP": y++;
+			case "UP":
+				y++;
 				break;
-			default: return;
+			default:
+				return;
 		}
-		String key2 = "" + x  + "|" + y  + "|" + z;
+		String key2 = "" + x + "|" + y + "|" + z;
 		blocks.get(location.getWorld().getName()).put(key2, new BlockTimer(x, y, z, blocks.get(location.getWorld().getName()).get(key).getTime()));
 	}
 }

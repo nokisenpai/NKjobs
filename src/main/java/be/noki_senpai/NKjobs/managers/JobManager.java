@@ -877,7 +877,7 @@ public class JobManager
 						 raw += resultSetMetaData.getColumnName(i) + " : " + resultat.getObject(i).toString() + " | ";
 					}
 					console.sendMessage(raw);*/
-					topJob.put(resultat.getString("name"), new PlayerJob(0, jobName, resultat.getInt("lvl"), resultat.getDouble("xp"), resultat.getDouble("xp_goal"), 0, null, null, null));
+					topJob.put(resultat.getString("name"), new PlayerJob(0, jobName, resultat.getInt("lvl"), resultat.getDouble("xp"), resultat.getDouble("xp_goal"), 0, null, jobs.get(jobName).getChatColor(), null));
 				}
 
 				ps.close();
@@ -896,7 +896,7 @@ public class JobManager
 	// executeBreak
 	// ######################################
 
-	public void executeBreak(NKPlayer player, String item, int itemData)
+	public void executeBreak(NKPlayer player, String item, int itemData, Timestamp checkedTime)
 	{
 		if(itemData >= 0)
 		{
@@ -909,6 +909,11 @@ public class JobManager
 					{
 						if(data.getName().equals(item + "-" + itemData) || data.getName().equals(item))
 						{
+							if(checkedTime != null)
+							{
+								player.setTmpTime(checkedTime);
+								return;
+							}
 							rewardPlayer(player, jobName, data.getMoney(), data.getExp());
 						}
 					}
@@ -926,6 +931,11 @@ public class JobManager
 					{
 						if(data.getName().equals(item))
 						{
+							if(checkedTime != null)
+							{
+								player.setTmpTime(checkedTime);
+								return;
+							}
 							rewardPlayer(player, jobName, data.getMoney(), data.getExp());
 						}
 					}
@@ -938,7 +948,7 @@ public class JobManager
 	// executePlace
 	// ######################################
 
-	public void executePlace(NKPlayer player, String item, int itemData)
+	public void executePlace(NKPlayer player, String item, int itemData, Timestamp checkedTime)
 	{
 		if(itemData >= 0)
 		{
@@ -951,6 +961,11 @@ public class JobManager
 					{
 						if(data.getName().equals(item + "-" + itemData) || data.getName().equals(item))
 						{
+							if(checkedTime != null)
+							{
+								player.setTmpTime(checkedTime);
+								return;
+							}
 							rewardPlayer(player, jobName, data.getMoney(), data.getExp());
 						}
 					}
@@ -968,6 +983,11 @@ public class JobManager
 					{
 						if(data.getName().equals(item))
 						{
+							if(checkedTime != null)
+							{
+								player.setTmpTime(checkedTime);
+								return;
+							}
 							rewardPlayer(player, jobName, data.getMoney(), data.getExp());
 						}
 					}
@@ -1400,6 +1420,7 @@ public class JobManager
 		{
 			job.lvl = jobs.get(jobName).getLvlMax();
 		}
+		job.xpGoal = jobs.get(jobName).equationLeveling(job.lvl);
 		congratPlayerBroadcast(player.getName(), jobName, job.lvl);
 	}
 
@@ -1415,6 +1436,7 @@ public class JobManager
 		{
 			job.lvl = 0;
 		}
+		job.xpGoal = jobs.get(jobName).equationLeveling(job.lvl);
 	}
 
 	public void setLevel(NKPlayer player, String jobName, int lvl)
@@ -1429,6 +1451,7 @@ public class JobManager
 		{
 			job.lvl = jobs.get(jobName).getLvlMax();
 		}
+		job.xpGoal = jobs.get(jobName).equationLeveling(job.lvl);
 		congratPlayerBroadcast(player.getName(), jobName, job.lvl);
 	}
 
