@@ -877,7 +877,7 @@ public class JobManager
 						 raw += resultSetMetaData.getColumnName(i) + " : " + resultat.getObject(i).toString() + " | ";
 					}
 					console.sendMessage(raw);*/
-					topJob.put(resultat.getString("name"), new PlayerJob(0, jobName, resultat.getInt("lvl"), resultat.getDouble("xp"), resultat.getDouble("xp_goal"), 0, null, null, null));
+					topJob.put(resultat.getString("name"), new PlayerJob(0, jobName, resultat.getInt("lvl"), resultat.getDouble("xp"), resultat.getDouble("xp_goal"), 0, null, jobs.get(jobName).getChatColor(), null));
 				}
 
 				ps.close();
@@ -1400,6 +1400,7 @@ public class JobManager
 		{
 			job.lvl = jobs.get(jobName).getLvlMax();
 		}
+		job.xpGoal = jobs.get(jobName).equationLeveling(job.lvl);
 		congratPlayerBroadcast(player.getName(), jobName, job.lvl);
 	}
 
@@ -1415,6 +1416,7 @@ public class JobManager
 		{
 			job.lvl = 0;
 		}
+		job.xpGoal = jobs.get(jobName).equationLeveling(job.lvl);
 	}
 
 	public void setLevel(NKPlayer player, String jobName, int lvl)
@@ -1429,6 +1431,7 @@ public class JobManager
 		{
 			job.lvl = jobs.get(jobName).getLvlMax();
 		}
+		job.xpGoal = jobs.get(jobName).equationLeveling(job.lvl);
 		congratPlayerBroadcast(player.getName(), jobName, job.lvl);
 	}
 

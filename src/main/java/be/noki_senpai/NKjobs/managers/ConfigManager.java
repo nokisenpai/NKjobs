@@ -20,7 +20,8 @@ public class ConfigManager
 	public static String PREFIX = null;
 	public static String SERVERNAME = null;
 	public static int MAXJOB = -1;
-	public static String SCOREBOARDTAG = "NKjobs_from_spawner";
+	public static String FROMSPAWNER = "NKjobs_from_spawner";
+	public static String HITPIGMEN = "NKjobs_hit_pigmen";
 	public static double RATIOFROMSPAWNER = 0.40;
 	public static double MINEXPLOREMONEY = 0.10;
 	public static double MINEXPLOREEXP = 0.10;

@@ -646,7 +646,7 @@ public class PlayerManager
 	//	Exp jobs
 	// ######################################
 
-	private void onlineExpJob(NKPlayer player, String jobName, Double amount, String subCommand, boolean crossServer)
+	private void onlineExpJob(NKPlayer player, String jobName, Double amount, String subCommand)
 	{
 		switch(subCommand)
 		{
@@ -658,7 +658,7 @@ public class PlayerManager
 				break;
 		}
 
-		if(crossServer && Bukkit.getPlayer(player.getUuid()) != null)
+		if(Bukkit.getPlayer(player.getUuid()) != null)
 		{
 			switch(subCommand)
 			{
@@ -690,7 +690,7 @@ public class PlayerManager
 			bdd = DatabaseManager.getConnection();
 
 			req = "UPDATE " + DatabaseManager.table.PLAYER_JOBS
-					+ " SET lvl = ? , xp = ? , xp_goal = ? , xp_total = ? , old = true WHERE player_id = ? AND job_id = ?";
+					+ " SET lvl = ? , xp = ? , xp_goal = ? , xp_total = ? WHERE player_id = ? AND job_id = ?";
 			ps = bdd.prepareStatement(req);
 			ps.setInt(1, job.lvl);
 			ps.setDouble(2, job.xp);
@@ -755,7 +755,7 @@ public class PlayerManager
 		}
 		if(players.containsKey(player.getName()))
 		{
-			onlineExpJob(player, jobName, amount, subCommand, crossServer);
+			onlineExpJob(player, jobName, amount, subCommand);
 		}
 		else if(!crossServer)
 		{
@@ -767,7 +767,7 @@ public class PlayerManager
 	//	Level jobs
 	// ######################################
 
-	private void onlineLevelJob(NKPlayer player, String jobName, int amount, String subCommand, boolean crossServer)
+	private void onlineLevelJob(NKPlayer player, String jobName, int amount, String subCommand)
 	{
 		switch(subCommand)
 		{
@@ -779,7 +779,7 @@ public class PlayerManager
 				break;
 		}
 
-		if(crossServer && Bukkit.getPlayer(player.getUuid()) != null)
+		if(Bukkit.getPlayer(player.getUuid()) != null)
 		{
 			switch(subCommand)
 			{
@@ -877,7 +877,7 @@ public class PlayerManager
 		}
 		if(players.containsKey(player.getName()))
 		{
-			onlineLevelJob(player, jobName, amount, subCommand, crossServer);
+			onlineLevelJob(player, jobName, amount, subCommand);
 		}
 		else if(!crossServer)
 		{

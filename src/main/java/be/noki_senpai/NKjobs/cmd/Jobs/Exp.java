@@ -124,7 +124,7 @@ public class Exp
 
 					// Alter job xp
 					playerManager.expJob(player, jobName, amount, subCommand, false);
-					sender.sendMessage(ChatColor.GREEN + finalTargetName + " est maintenant " + jobName);
+					sender.sendMessage(ChatColor.GREEN + "L'xp de " + jobName + " de " + finalTargetName + " a été altérée.");
 
 					return null;
 				}
