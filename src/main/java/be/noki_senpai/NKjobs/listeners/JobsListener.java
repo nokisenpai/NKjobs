@@ -64,9 +64,9 @@ public class JobsListener implements Listener
 				dataRegisterManager.unregisterBrewingStand(block.getLocation(), event.getPlayer());
 			}
 
-			dataRegisterManager.registerBreakBlockTimer(block.getLocation());
-
 			jobManager.executeBreak(playerManager.getPlayer(event.getPlayer().getName()), block.getBlockData().getMaterial().toString(), exeptionBlock(block, false), dataRegisterManager.checkBlockTimer(block.getLocation()));
+
+			dataRegisterManager.registerBreakBlockTimer(block.getLocation());
 		}
 	}
 
@@ -101,9 +101,9 @@ public class JobsListener implements Listener
 				timer = jobManager.items.get(block.getBlockData().getMaterial().toString().toUpperCase());
 			}
 
-			dataRegisterManager.registerPlaceBlockTimer(block.getLocation(), timer);
-
 			jobManager.executePlace(playerManager.getPlayer(event.getPlayer().getName()), block.getBlockData().getMaterial().toString(), exeptionBlock(block, false), dataRegisterManager.checkBlockTimer(block.getLocation()));
+
+			dataRegisterManager.registerPlaceBlockTimer(block.getLocation(), timer);
 		}
 	}
 
