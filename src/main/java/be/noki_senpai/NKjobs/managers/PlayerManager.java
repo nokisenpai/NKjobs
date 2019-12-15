@@ -197,7 +197,7 @@ public class PlayerManager
 			{
 				bdd = DatabaseManager.getConnection();
 
-				req = "SELECT id, name, uuid FROM " + DatabaseManager.table.PLAYERS + " WHERE name = ?";
+				req = "SELECT id, name, uuid FROM " + DatabaseManager.common.PLAYERS + " WHERE name = ?";
 				ps = bdd.prepareStatement(req);
 				ps.setString(1, playerName);
 				resultat = ps.executeQuery();
@@ -902,7 +902,7 @@ public class PlayerManager
 		{
 			bdd = DatabaseManager.getConnection();
 
-			req = "SELECT server FROM " + DatabaseManager.table.PLAYERS + " WHERE name = ?";
+			req = "SELECT server FROM " + DatabaseManager.common.PLAYERS + " WHERE name = ?";
 			ps = bdd.prepareStatement(req);
 			ps.setString(1, playername);
 
@@ -926,54 +926,5 @@ public class PlayerManager
 		}
 
 		return null;
-	}
-
-	// Add a player entry on sql DB with his server
-	public void addOtherServer(String playername)
-	{
-		Connection bdd = null;
-		PreparedStatement ps = null;
-		String req = null;
-
-		try
-		{
-			bdd = DatabaseManager.getConnection();
-
-			req = "UPDATE " + DatabaseManager.table.PLAYERS + " SET server = ? WHERE name = ?";
-			ps = bdd.prepareStatement(req);
-			ps.setString(1, ConfigManager.SERVERNAME);
-			ps.setString(2, playername);
-
-			ps.execute();
-			ps.close();
-		}
-		catch(SQLException e)
-		{
-			e.printStackTrace();
-		}
-	}
-
-	// Remove a player entry on sql DB with his server
-	public void removeOtherServer(String playername)
-	{
-		Connection bdd = null;
-		PreparedStatement ps = null;
-		String req = null;
-
-		try
-		{
-			bdd = DatabaseManager.getConnection();
-
-			req = "UPDATE " + DatabaseManager.table.PLAYERS + " SET server = NULL WHERE name = ?";
-			ps = bdd.prepareStatement(req);
-			ps.setString(1, playername);
-
-			ps.execute();
-			ps.close();
-		}
-		catch(SQLException e)
-		{
-			e.printStackTrace();
-		}
 	}
 }

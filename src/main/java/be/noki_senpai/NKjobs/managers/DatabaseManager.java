@@ -24,11 +24,32 @@ public class DatabaseManager
 		this.configManager = configManager;
 	}
 
-	public enum table
+	public enum common
 	{
 		PLAYERS("NK_players"),
 		SERVERS("NK_servers"),
-		WORLDS("NK_worlds"),
+		WORLDS("NK_worlds");
+
+		private String name = "";
+
+		common(String name)
+		{
+			this.name = name;
+		}
+
+		public String toString()
+		{
+			return name;
+		}
+
+		public static int size()
+		{
+			return common.values().length;
+		}
+	}
+
+	public enum table
+	{
 		PLAYER_JOBS(ConfigManager.PREFIX + "player_jobs"),
 		JOBS(ConfigManager.PREFIX + "jobs"),
 		BLOCKS(ConfigManager.PREFIX + "blocks"),
@@ -136,36 +157,6 @@ public class DatabaseManager
 			resultat.close();
 			ps.close();
 
-			req = "SHOW TABLES FROM " + configManager.getDbName() + " LIKE 'NK_players'";
-			ps = bdd.prepareStatement(req);
-			resultat = ps.executeQuery();
-			if(resultat.next())
-			{
-				count++;
-			}
-
-			resultat.close();
-			ps.close();
-
-			req = "SHOW TABLES FROM " + configManager.getDbName() + " LIKE 'NK_servers'";
-			ps = bdd.prepareStatement(req);
-			resultat = ps.executeQuery();
-			if(resultat.next())
-			{
-				count++;
-			}
-
-			resultat.close();
-			ps.close();
-
-			req = "SHOW TABLES FROM " + configManager.getDbName() + " LIKE 'NK_worlds'";
-			ps = bdd.prepareStatement(req);
-			resultat = ps.executeQuery();
-			if(resultat.next())
-			{
-				count++;
-			}
-
 			// if 1 or more tables are missing
 			if(count < table.size())
 			{
@@ -177,17 +168,6 @@ public class DatabaseManager
 		catch(SQLException e1)
 		{
 			console.sendMessage(ChatColor.DARK_RED + NKjobs.PNAME + " Error while testing existance of tables. (Error#main.Storage.003)");
-		}
-		finally
-		{
-			if(ps != null)
-			{
-				ps.close();
-			}
-			if(resultat != null)
-			{
-				resultat.close();
-			}
 		}
 
 		return true;
@@ -206,35 +186,6 @@ public class DatabaseManager
 
 			try
 			{
-				// Creating players table
-				req = "CREATE TABLE IF NOT EXISTS `" + table.PLAYERS + "` (`id` int(11) NOT NULL AUTO_INCREMENT,"
-						+ "`uuid` varchar(40) NOT NULL,`name` varchar(40) NOT NULL,`server` varchar(40) ,PRIMARY KEY (`id`),"
-						+ "UNIQUE KEY `uuid_unique` (`uuid`) USING BTREE) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
-				s = bdd.createStatement();
-				s.execute(req);
-				s.close();
-
-				//Creating servers table
-				req = "CREATE TABLE IF NOT EXISTS `" + table.SERVERS + "` ("
-						+ " `id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,"
-						+ " `name` VARCHAR(100) NOT NULL,"
-						+ " PRIMARY KEY (`id`),"
-						+ " UNIQUE INDEX `name` (`name`)) ENGINE = InnoDB;";
-				s = bdd.createStatement();
-				s.execute(req);
-				s.close();
-
-				//Creating worlds table
-				req = "CREATE TABLE IF NOT EXISTS `" + table.WORLDS + "` ("
-						+ " `id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,"
-						+ " `server_id` INT NOT NULL,"
-						+ " `name` VARCHAR(100) NOT NULL,"
-						+ " PRIMARY KEY (`id`),"
-						+ " UNIQUE INDEX `server_world` (`server_id`, `name`)) ENGINE = InnoDB;";
-				s = bdd.createStatement();
-				s.execute(req);
-				s.close();
-
 				//Creating jobs table
 				req = "CREATE TABLE IF NOT EXISTS `" + table.JOBS + "` (" + "  `id` INT NOT NULL," + " `name` VARCHAR(100) NOT NULL,"
 						+ "  `old` BOOLEAN NOT NULL," + "  PRIMARY KEY (`id`)," + "  UNIQUE INDEX `jobs_id_name_UNIQUE` (`id`, `name`))"

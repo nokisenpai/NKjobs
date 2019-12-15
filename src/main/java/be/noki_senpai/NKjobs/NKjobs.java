@@ -26,7 +26,6 @@ public class NKjobs extends JavaPlugin implements PluginMessageListener
 	private ConsoleCommandSender console = null;
 	private static NKjobs plugin = null;
 	private static Economy economy = null;
-	public static boolean managePlayerDb = true;
 
 	// Fired when plugin is first enabled
 	@Override public void onEnable()
@@ -38,12 +37,17 @@ public class NKjobs extends JavaPlugin implements PluginMessageListener
 		console = Bukkit.getConsoleSender();
 		manager = new Manager(this);
 
-		managePlayerDb = checkNKPlugin();
+		if(!checkNKmanager())
+		{
+			console.sendMessage(ChatColor.DARK_RED + PNAME + " NKmanager in not enabled !");
+			disablePlugin();
+			return;
+		}
 
 		// Link with Vault
 		if(!setupEconomy())
 		{
-			console.sendMessage(ChatColor.DARK_RED + PNAME + " Disabled due to no Vault dependency found ! (Error#A.2.000)");
+			console.sendMessage(ChatColor.DARK_RED + PNAME + " No Vault dependency found !");
 			disablePlugin();
 			return;
 		}
@@ -105,7 +109,7 @@ public class NKjobs extends JavaPlugin implements PluginMessageListener
 		getCommand("jobs").setExecutor(new JobsCmd(manager.getQueueManager(), manager.getPlayerManager(), manager.getJobManager()));
 
 		// Event
-		getServer().getPluginManager().registerEvents(new PlayerConnectionListener(manager.getQueueManager(), manager.getPlayerManager()), this);
+		getServer().getPluginManager().registerEvents(new PlayerConnectionListener(manager.getPlayerManager()), this);
 		getServer().getPluginManager().registerEvents(new JobsListener(manager.getPlayerManager(), manager.getJobManager(), manager.getDataRegisterManager()), this);
 		getServer().getPluginManager().registerEvents(new PistonMoveListener(manager.getDataRegisterManager()), this);
 		getServer().getPluginManager().registerEvents(new ProtectedItemListener(manager.getPlayerManager()), this);
@@ -236,20 +240,11 @@ public class NKjobs extends JavaPlugin implements PluginMessageListener
 	}
 
 	// ######################################
-	// Check other NK plugins
+	// Check if NKmanager is enabled
 	// ######################################
-	public boolean checkNKPlugin()
+
+	public boolean checkNKmanager()
 	{
-		if(getServer().getPluginManager().getPlugin("NKeconomy") != null)
-		{
-			console.sendMessage(ChatColor.GREEN + PNAME + " plugin NKeconomy detected. Let NKeconomy manages NKPlayers table in database.");
-			return false;
-		}
-		else if(getServer().getPluginManager().getPlugin("NKhome") != null)
-		{
-			console.sendMessage(ChatColor.GREEN + PNAME + " plugin NKhome detected. Let NKhome manages NKPlayers table in database.");
-			return false;
-		}
-		return true;
+		return getServer().getPluginManager().getPlugin("NKmanager").isEnabled();
 	}
 }
