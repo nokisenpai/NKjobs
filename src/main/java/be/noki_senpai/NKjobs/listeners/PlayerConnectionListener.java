@@ -14,12 +14,10 @@ import org.bukkit.scheduler.BukkitRunnable;;import java.util.function.Function;
 public class PlayerConnectionListener implements Listener
 {
 	private PlayerManager playerManager = null;
-	private QueueManager queueManager = null;
 
-	public PlayerConnectionListener(QueueManager queueManager, PlayerManager playerManager)
+	public PlayerConnectionListener(PlayerManager playerManager)
 	{
 		this.playerManager = playerManager;
-		this.queueManager = queueManager;
 	}
 
 	@EventHandler
@@ -30,10 +28,6 @@ public class PlayerConnectionListener implements Listener
 			@Override public void run()
 			{
 				playerManager.addPlayer(event.getPlayer());
-				if(NKjobs.managePlayerDb)
-				{
-					playerManager.addOtherServer(event.getPlayer().getName());
-				}
 			}
 		}.runTaskLaterAsynchronously(NKjobs.getPlugin(), 20);
 	}
@@ -48,10 +42,6 @@ public class PlayerConnectionListener implements Listener
 			{
 				playerManager.getPlayer(playerName).save();
 				playerManager.getPlayer(playerName).saveRewardedItem();
-				if(NKjobs.managePlayerDb)
-				{
-					playerManager.removeOtherServer(event.getPlayer().getName());
-				}
 				playerManager.delPlayer(event.getPlayer().getName());
 			}
 		}.runTaskAsynchronously(NKjobs.getPlugin());

@@ -48,7 +48,7 @@ public class NKPlayer
 		{
 			bdd = DatabaseManager.getConnection();
 
-			req = "SELECT id, name FROM " + DatabaseManager.table.PLAYERS + " WHERE uuid = ?";
+			req = "SELECT id, name FROM " + DatabaseManager.common.PLAYERS + " WHERE uuid = ?";
 			ps = bdd.prepareStatement(req);
 			ps.setString(1, uuid.toString());
 			resultat = ps.executeQuery();
@@ -57,38 +57,10 @@ public class NKPlayer
 			{
 				id = resultat.getInt("id");
 				String tmpName = resultat.getString("name");
-
-				if(NKjobs.managePlayerDb)
-				{
-					// If names are differents, update in database
-					if(!tmpName.equals(name))
-					{
-						ps.close();
-						resultat.close();
-
-						req = "UPDATE " + DatabaseManager.table.PLAYERS + " SET name = ? WHERE id = ?";
-						ps = bdd.prepareStatement(req);
-						ps.setString(1, name);
-						ps.setInt(2, getId());
-
-						ps.executeUpdate();
-					}
-				}
 			}
 			else
 			{
-				ps.close();
-				resultat.close();
-
-				req = "INSERT INTO " + DatabaseManager.table.PLAYERS + " ( uuid, name ) VALUES ( ? , ? )  ON DUPLICATE KEY UPDATE id = LAST_INSERT_ID(id)";
-				ps = bdd.prepareStatement(req, Statement.RETURN_GENERATED_KEYS);
-				ps.setString(1, uuid.toString());
-				ps.setString(2, name);
-				ps.executeUpdate();
-				resultat = ps.getGeneratedKeys();
-
-				resultat.next();
-				id = resultat.getInt(1);
+				Bukkit.getConsoleSender().sendMessage(ChatColor.DARK_RED + NKjobs.PNAME + " Error while setting a player. (#1)");
 			}
 
 			ps.close();

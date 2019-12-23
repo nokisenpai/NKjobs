@@ -50,6 +50,12 @@ public class JobsListener implements Listener
 			return;
 		}
 
+		// For QuickShop event fired
+		if(event.getBlock().getType() == Material.CHEST && !event.isDropItems())
+		{
+			return;
+		}
+
 		if(event.getPlayer().getGameMode().equals(GameMode.SURVIVAL))
 		{
 			Block block = event.getBlock();
@@ -64,9 +70,9 @@ public class JobsListener implements Listener
 				dataRegisterManager.unregisterBrewingStand(block.getLocation(), event.getPlayer());
 			}
 
-			dataRegisterManager.registerBreakBlockTimer(block.getLocation());
-
 			jobManager.executeBreak(playerManager.getPlayer(event.getPlayer().getName()), block.getBlockData().getMaterial().toString(), exeptionBlock(block, false), dataRegisterManager.checkBlockTimer(block.getLocation()));
+
+			dataRegisterManager.registerBreakBlockTimer(block.getLocation());
 		}
 	}
 
@@ -101,9 +107,9 @@ public class JobsListener implements Listener
 				timer = jobManager.items.get(block.getBlockData().getMaterial().toString().toUpperCase());
 			}
 
-			dataRegisterManager.registerPlaceBlockTimer(block.getLocation(), timer);
-
 			jobManager.executePlace(playerManager.getPlayer(event.getPlayer().getName()), block.getBlockData().getMaterial().toString(), exeptionBlock(block, false), dataRegisterManager.checkBlockTimer(block.getLocation()));
+
+			dataRegisterManager.registerPlaceBlockTimer(block.getLocation(), timer);
 		}
 	}
 

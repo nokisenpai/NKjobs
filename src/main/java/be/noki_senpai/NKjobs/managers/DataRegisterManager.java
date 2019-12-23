@@ -195,11 +195,11 @@ public class DataRegisterManager
 		{
 			bdd = DatabaseManager.getConnection();
 
-			req = "INSERT INTO " + DatabaseManager.table.SERVERS + " ( name ) VALUES ( ? ) ON DUPLICATE KEY UPDATE id = LAST_INSERT_ID(id)";
-			ps = bdd.prepareStatement(req, Statement.RETURN_GENERATED_KEYS);
+			req = "SELECT id FROM " + DatabaseManager.common.SERVERS + " WHERE name = ?";
+			ps = bdd.prepareStatement(req);
 			ps.setString(1, ConfigManager.SERVERNAME);
-			ps.executeUpdate();
-			resultat = ps.getGeneratedKeys();
+
+			resultat = ps.executeQuery();
 
 			if(resultat.next())
 			{
@@ -215,10 +215,10 @@ public class DataRegisterManager
 			ps.close();
 			resultat.close();
 		}
-		catch(SQLException e1)
+		catch(SQLException e)
 		{
 			Bukkit.getConsoleSender().sendMessage(ChatColor.DARK_RED + NKjobs.PNAME + " Error while getting server id.");
-			e1.printStackTrace();
+			e.printStackTrace();
 		}
 		return true;
 	}
@@ -247,13 +247,12 @@ public class DataRegisterManager
 
 				newChunks.put(world.getName(), new HashMap<>());
 
-				req = "INSERT INTO " + DatabaseManager.table.WORLDS
-						+ " ( server_id, name ) VALUES ( ?, ? ) ON DUPLICATE KEY UPDATE id = LAST_INSERT_ID(id)";
-				ps = bdd.prepareStatement(req, Statement.RETURN_GENERATED_KEYS);
+				req = "SELECT id FROM " + DatabaseManager.common.WORLDS	+ " WHERE server_id = ? AND name = ?";
+				ps = bdd.prepareStatement(req);
 				ps.setInt(1, SERVERID);
 				ps.setString(2, world.getName());
-				ps.executeUpdate();
-				resultat = ps.getGeneratedKeys();
+
+				resultat = ps.executeQuery();
 
 				if(resultat.next())
 				{
@@ -294,7 +293,7 @@ public class DataRegisterManager
 		{
 			bdd = DatabaseManager.getConnection();
 
-			req = "SELECT x, y, z, time, w.name AS world FROM " + DatabaseManager.table.BLOCKS + " b " + "LEFT JOIN " + DatabaseManager.table.WORLDS
+			req = "SELECT x, y, z, time, w.name AS world FROM " + DatabaseManager.table.BLOCKS + " b " + "LEFT JOIN " + DatabaseManager.common.WORLDS
 					+ " w " + "ON b.world_id = w.id " + "WHERE time > ? AND b.server_id = ?";
 			ps = bdd.prepareStatement(req);
 			ps.setDate(1, new java.sql.Date(System.currentTimeMillis()));
@@ -337,8 +336,8 @@ public class DataRegisterManager
 			bdd = DatabaseManager.getConnection();
 
 			req = "SELECT f.id AS id, x, y, z, f.player_id AS player_id, p.name AS name, w.name AS world FROM " + DatabaseManager.table.FURNACES
-					+ " f " + "LEFT JOIN " + DatabaseManager.table.WORLDS + " w " + "ON f.world_id = w.id " + "LEFT JOIN "
-					+ DatabaseManager.table.PLAYERS + " p " + "ON f.player_id = p.id " + "WHERE f.server_id = ?";
+					+ " f " + "LEFT JOIN " + DatabaseManager.common.WORLDS + " w " + "ON f.world_id = w.id " + "LEFT JOIN "
+					+ DatabaseManager.common.PLAYERS + " p " + "ON f.player_id = p.id " + "WHERE f.server_id = ?";
 			ps = bdd.prepareStatement(req);
 			ps.setInt(1, SERVERID);
 			resultat = ps.executeQuery();
@@ -379,8 +378,8 @@ public class DataRegisterManager
 			bdd = DatabaseManager.getConnection();
 
 			req = "SELECT bs.id AS id, x, y, z, bs.player_id AS player_id, p.name AS name, w.name AS world FROM "
-					+ DatabaseManager.table.BREWINGSTANDS + " bs " + "LEFT JOIN " + DatabaseManager.table.WORLDS + " w " + "ON bs.world_id = w.id "
-					+ "LEFT JOIN " + DatabaseManager.table.PLAYERS + " p " + "ON bs.player_id = p.id " + "WHERE bs.server_id = ?";
+					+ DatabaseManager.table.BREWINGSTANDS + " bs " + "LEFT JOIN " + DatabaseManager.common.WORLDS + " w " + "ON bs.world_id = w.id "
+					+ "LEFT JOIN " + DatabaseManager.common.PLAYERS + " p " + "ON bs.player_id = p.id " + "WHERE bs.server_id = ?";
 			ps = bdd.prepareStatement(req);
 			ps.setInt(1, SERVERID);
 			resultat = ps.executeQuery();
@@ -421,7 +420,7 @@ public class DataRegisterManager
 			bdd = DatabaseManager.getConnection();
 
 			req = "SELECT x, z, c.players AS players, w.name AS world FROM " + DatabaseManager.table.CHUNKS + " c " + "LEFT JOIN "
-					+ DatabaseManager.table.WORLDS + " w " + "ON c.world_id = w.id " + "WHERE c.server_id = ?";
+					+ DatabaseManager.common.WORLDS + " w " + "ON c.world_id = w.id " + "WHERE c.server_id = ?";
 			ps = bdd.prepareStatement(req);
 			ps.setInt(1, SERVERID);
 			resultat = ps.executeQuery();

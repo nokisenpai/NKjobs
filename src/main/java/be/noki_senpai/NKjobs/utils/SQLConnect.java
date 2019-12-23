@@ -19,7 +19,7 @@ public class SQLConnect
 
 	public static void setInfo(String host_, int port_, String dbName_, String user_, String password_)
 	{
-		jdbcConfig.setPoolName("NKhome");
+		jdbcConfig.setPoolName("NKjobs");
 		jdbcConfig.setMaximumPoolSize(10);
 		jdbcConfig.setMinimumIdle(2);
 		jdbcConfig.setMaxLifetime(900000);

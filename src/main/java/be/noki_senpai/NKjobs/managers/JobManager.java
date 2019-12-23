@@ -859,7 +859,7 @@ public class JobManager
 				bdd = DatabaseManager.getConnection();
 
 				req = "SELECT p.name as name, lvl, xp, xp_goal FROM " + DatabaseManager.table.PLAYER_JOBS + " LEFT JOIN "
-						+ DatabaseManager.table.PLAYERS + " p ON player_id = p.id WHERE job_id = ? ORDER BY xp_total DESC LIMIT ?, 10";
+						+ DatabaseManager.common.PLAYERS + " p ON player_id = p.id WHERE job_id = ? ORDER BY xp_total DESC LIMIT ?, 10";
 				ps = bdd.prepareStatement(req);
 				ps.setInt(1, jobs.get(jobName).id);
 				ps.setInt(2, (page - 1) * 10);
