@@ -50,6 +50,12 @@ public class JobsListener implements Listener
 			return;
 		}
 
+		// For QuickShop event fired
+		if(event.getBlock().getType() == Material.CHEST && !event.isDropItems())
+		{
+			return;
+		}
+
 		if(event.getPlayer().getGameMode().equals(GameMode.SURVIVAL))
 		{
 			Block block = event.getBlock();

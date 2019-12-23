@@ -185,11 +185,11 @@
         base_money: 0.5
         base_exp: 0.5
       diamond_sword:
-        base_money: 1.0
-        base_exp: 1.0
+        base_money: 2.0
+        base_exp: 2.0
       end_crystal:
-        base_money: 1.0
-        base_exp: 1.0
+        base_money: 5.0
+        base_exp: 5.0
       golden_sword:
         base_money: 0.5
         base_exp: 0.5
@@ -206,8 +206,8 @@
         base_money: 0.5
         base_exp: 0.5
       shulker_box:
-        base_money: 1.0
-        base_exp: 1.0
+        base_money: 10.0
+        base_exp: 10.0
       spruce_boat:
         base_money: 0.5
         base_exp: 0.5
@@ -215,8 +215,8 @@
         base_money: 0.5
         base_exp: 0.5
       wooden_sword:
-        base_money: 0.5
-        base_exp: 0.5
+        base_money: 0.2
+        base_exp: 0.2
     PLACE:
       beacon:
         base_money: 0.5
@@ -2846,16 +2846,13 @@
       Cooked_Salmon:
         base_money: 0.5
         base_exp: 0.5
-      Lime_Dye:
-        base_money: 0.5
-        base_exp: 0.5
       Brick:
         base_money: 0.1
         base_exp: 0.1
     KILL:
       GUARDIAN:
-        base_money: 2.0
-        base_exp: 2.0
+        base_money: 0.75
+        base_exp: 0.75
       elder_guardian:
         base_money: 50.0
         base_exp: 50.0
@@ -3058,6 +3055,9 @@
       Cooked_Mutton:
         base_money: 0.2
         base_exp: 0.2
+      Green_Dye:
+        base_money: 0.05
+        base_exp: 0.05
     MILK:
       Cow:
         base_money: 1.0

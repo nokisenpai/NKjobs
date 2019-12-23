@@ -151,8 +151,8 @@ public class PlayerManager
 					{
 						Bukkit.getPlayer(player.getValue().getUuid()).spigot().sendMessage(ChatMessageType.ACTION_BAR, new ComponentBuilder(
 								ChatColor.YELLOW + "Cette action ne rapporte rien avant " + ChatColor.RED + ((player.getValue().getTmpTime().getTime()-now.getTime())/1000) + ChatColor.YELLOW + " secondes.").create());
-						player.getValue().setTmpTime(null);
 					}
+					player.getValue().setTmpTime(null);
 				}
 				else if(player.getValue().getTmpMoney() != 0)
 				{

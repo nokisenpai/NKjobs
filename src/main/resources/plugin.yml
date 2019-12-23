@@ -5,7 +5,6 @@ api-version: 1.14
 author: 'NoKi_senpai'
 description: 'Allows players to have jobs'
 depend: [Vault, NKmanager]
-softdepend: [NKeconomy, NKhome]
 commands:
   jobs:
     description: "Main NKjobs plugin command"
