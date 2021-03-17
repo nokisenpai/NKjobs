@@ -18,6 +18,7 @@ import org.bukkit.persistence.PersistentDataType;
 import java.awt.*;
 import java.sql.*;
 import java.util.*;
+import java.util.Date;
 import java.util.List;
 
 public class NKPlayer
@@ -66,7 +67,7 @@ public class NKPlayer
 			ps.close();
 			resultat.close();
 
-			req = "SELECT name, job_id, lvl, xp, xp_goal, xp_total, p.old FROM " + DatabaseManager.table.PLAYER_JOBS + " p " + "LEFT JOIN "
+			req = "SELECT name, job_id, lvl, xp, xp_goal, xp_total, xp_day, time, p.old FROM " + DatabaseManager.table.PLAYER_JOBS + " p " + "LEFT JOIN "
 					+ DatabaseManager.table.JOBS + " j " + "ON p.job_id = j.id WHERE player_id = " + id;
 			ps = bdd.prepareStatement(req);
 			resultat = ps.executeQuery();
@@ -75,11 +76,11 @@ public class NKPlayer
 			{
 				if(resultat.getBoolean("old"))
 				{
-					addOldJob(resultat.getString("name"), resultat.getInt("job_id"), resultat.getInt("lvl"), resultat.getDouble("xp"), resultat.getDouble("xp_goal"), resultat.getDouble("xp_total"), Bukkit.getPlayer(uuid), jobManager.jobs.get(resultat.getString("name")).getChatColor(), jobManager.jobs.get(resultat.getString("name")).getColorBar());
+					addOldJob(resultat.getString("name"), resultat.getInt("job_id"), resultat.getInt("lvl"), resultat.getDouble("xp"), resultat.getDouble("xp_goal"), resultat.getDouble("xp_total"), Bukkit.getPlayer(uuid), jobManager.jobs.get(resultat.getString("name")).getChatColor(), jobManager.jobs.get(resultat.getString("name")).getColorBar(), resultat.getDouble("xp_day"), resultat.getDate("time"));
 				}
 				else
 				{
-					addJob(resultat.getString("name"), resultat.getInt("job_id"), resultat.getInt("lvl"), resultat.getDouble("xp"), resultat.getDouble("xp_goal"), resultat.getDouble("xp_total"), Bukkit.getPlayer(uuid), jobManager.jobs.get(resultat.getString("name")).getChatColor(), jobManager.jobs.get(resultat.getString("name")).getColorBar());
+					addJob(resultat.getString("name"), resultat.getInt("job_id"), resultat.getInt("lvl"), resultat.getDouble("xp"), resultat.getDouble("xp_goal"), resultat.getDouble("xp_total"), Bukkit.getPlayer(uuid), jobManager.jobs.get(resultat.getString("name")).getChatColor(), jobManager.jobs.get(resultat.getString("name")).getColorBar(), resultat.getDouble("xp_day"), resultat.getDate("time"));
 				}
 
 			}
@@ -139,16 +140,19 @@ public class NKPlayer
 			e1.printStackTrace();
 		}
 
-		checkLostRewardedItems(Bukkit.getPlayer(uuid).getInventory());
+		if(Bukkit.getPlayer(uuid) != null)
+		{
+			checkLostRewardedItems(Bukkit.getPlayer(uuid).getInventory());
+		}
 	}
 
 	// ######################################
 	// Add & Remove jobs
 	// ######################################
 
-	public void addJob(String jobName, int jobId, int lvl, double xp, double xpGoal, double xpTotal, Player player, String chatColor, String colorBar)
+	public void addJob(String jobName, int jobId, int lvl, double xp, double xpGoal, double xpTotal, Player player, String chatColor, String colorBar, double xpDay, Date time)
 	{
-		jobs.putIfAbsent(jobName, new PlayerJob(jobId, jobName, lvl, xp, xpGoal, xpTotal, player, chatColor, colorBar));
+		jobs.putIfAbsent(jobName, new PlayerJob(jobId, jobName, lvl, xp, xpGoal, xpTotal, player, chatColor, colorBar, xpDay, time));
 	}
 
 	public void addJob(PlayerJob job)
@@ -170,9 +174,9 @@ public class NKPlayer
 	// Add & Remove oldJobs
 	// ######################################
 
-	public void addOldJob(String jobName, int jobId, int lvl, double xp, double xpGoal, double xpTotal, Player player, String chatColor, String colorBar)
+	public void addOldJob(String jobName, int jobId, int lvl, double xp, double xpGoal, double xpTotal, Player player, String chatColor, String colorBar, double xpDay, Date time)
 	{
-		oldJobs.putIfAbsent(jobName, new PlayerJob(jobId, jobName, lvl, xp, xpGoal, xpTotal, player, chatColor,colorBar ));
+		oldJobs.putIfAbsent(jobName, new PlayerJob(jobId, jobName, lvl, xp, xpGoal, xpTotal, player, chatColor,colorBar,  xpDay, time ));
 	}
 
 	public void addOldJob(PlayerJob job)

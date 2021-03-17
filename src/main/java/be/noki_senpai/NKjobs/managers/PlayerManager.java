@@ -101,7 +101,7 @@ public class PlayerManager
 		{
 			Connection bdd = null;
 			PreparedStatement ps = null;
-			String req = "INSERT INTO " + DatabaseManager.table.PLAYER_JOBS + " ( player_id, job_id, lvl, xp, xp_goal, xp_total, old) VALUES ";
+			String req = "INSERT INTO " + DatabaseManager.table.PLAYER_JOBS + " ( player_id, job_id, lvl, xp, xp_goal, xp_total, old, xp_day, time) VALUES ";
 			boolean ok = false;
 			for(Map.Entry<String, NKPlayer> player : players.entrySet())
 			{
@@ -109,7 +109,7 @@ public class PlayerManager
 				{
 					ok = true;
 					req += "(" + player.getValue().getId() + " , " + jobs.getValue().id + " , " + jobs.getValue().lvl + " , " + jobs.getValue().xp
-							+ " , " + jobs.getValue().xpGoal + " , " + jobs.getValue().xpTotal + " , false ),";
+							+ " , " + jobs.getValue().xpGoal + " , " + jobs.getValue().xpTotal + " , false , " + jobs.getValue().xpDay + " , '0000-00-00'),";
 				}
 			}
 			if(!ok)
@@ -118,7 +118,7 @@ public class PlayerManager
 			}
 			req = req.substring(0, req.length() - 1);
 			req += " ON DUPLICATE KEY UPDATE lvl = VALUES(lvl), xp = VALUES(xp), xp_goal = VALUES(xp_goal),"
-					+ " xp_total = VALUES(xp_total)";
+					+ " xp_total = VALUES(xp_total), xp_day = VALUES(xp_day), time = VALUES(time)";
 			try
 			{
 				bdd = DatabaseManager.getConnection();
@@ -228,7 +228,7 @@ public class PlayerManager
 		}
 		else
 		{
-			player.addJob(jobName, jobManager.jobs.get(jobName).id, 1, 0.0, jobManager.jobs.get(jobName).equationLeveling(1), 0, Bukkit.getPlayer(player.getUuid()), jobManager.jobs.get(jobName).getChatColor(), jobManager.jobs.get(jobName).getColorBar());
+			player.addJob(jobName, jobManager.jobs.get(jobName).id, 1, 0.0, jobManager.jobs.get(jobName).equationLeveling(1), 0, Bukkit.getPlayer(player.getUuid()), jobManager.jobs.get(jobName).getChatColor(), jobManager.jobs.get(jobName).getColorBar(), 0, null);
 		}
 
 		if(crossServer && Bukkit.getPlayer(player.getUuid()) != null)
@@ -535,7 +535,7 @@ public class PlayerManager
 		}
 		else
 		{
-			player.addJob(jobName, jobManager.jobs.get(jobName).id, 1, 0.0, jobManager.jobs.get(jobName).equationLeveling(1), 0, Bukkit.getPlayer(player.getUuid()), jobManager.jobs.get(jobName).getChatColor(), jobManager.jobs.get(jobName).getColorBar());
+			player.addJob(jobName, jobManager.jobs.get(jobName).id, 1, 0.0, jobManager.jobs.get(jobName).equationLeveling(1), 0, Bukkit.getPlayer(player.getUuid()), jobManager.jobs.get(jobName).getChatColor(), jobManager.jobs.get(jobName).getColorBar(), 0 , null);
 		}
 
 		if(crossServer && Bukkit.getPlayer(player.getUuid()) != null)
@@ -926,5 +926,10 @@ public class PlayerManager
 		}
 
 		return null;
+	}
+
+	public Map<String, NKPlayer> getPlayers()
+	{
+		return players;
 	}
 }

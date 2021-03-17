@@ -29,7 +29,7 @@ public class PlayerConnectionListener implements Listener
 			{
 				playerManager.addPlayer(event.getPlayer());
 			}
-		}.runTaskLaterAsynchronously(NKjobs.getPlugin(), 20);
+		}.runTaskLaterAsynchronously(NKjobs.getPlugin(), 3*20);
 	}
 
 	@EventHandler

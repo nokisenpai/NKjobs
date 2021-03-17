@@ -247,7 +247,7 @@ public class DataRegisterManager
 
 				newChunks.put(world.getName(), new HashMap<>());
 
-				req = "SELECT id FROM " + DatabaseManager.common.WORLDS	+ " WHERE server_id = ? AND name = ?";
+				req = "SELECT id FROM " + DatabaseManager.common.WORLDS + " WHERE server_id = ? AND name = ?";
 				ps = bdd.prepareStatement(req);
 				ps.setInt(1, SERVERID);
 				ps.setString(2, world.getName());
@@ -303,7 +303,10 @@ public class DataRegisterManager
 			while(resultat.next())
 			{
 				String key = "" + resultat.getDouble("x") + "|" + resultat.getDouble("y") + "|" + resultat.getDouble("z");
-				blocks.get(resultat.getString("world")).put(key, new BlockTimer(resultat.getDouble("x"), resultat.getDouble("y"), resultat.getDouble("z"), resultat.getTimestamp("time")));
+				if(blocks.get(resultat.getString("world")) != null)
+				{
+					blocks.get(resultat.getString("world")).put(key, new BlockTimer(resultat.getDouble("x"), resultat.getDouble("y"), resultat.getDouble("z"), resultat.getTimestamp("time")));
+				}
 			}
 
 			resultat.last();
@@ -345,7 +348,10 @@ public class DataRegisterManager
 			while(resultat.next())
 			{
 				String key = "" + resultat.getDouble("x") + "|" + resultat.getDouble("y") + "|" + resultat.getDouble("z");
-				furnaces.get(resultat.getString("world")).put(key, new RegisteredFurnace(resultat.getInt("id"), resultat.getDouble("x"), resultat.getDouble("y"), resultat.getDouble("z"), resultat.getString("name"), resultat.getInt("player_id")));
+				if(furnaces.get(resultat.getString("world")) != null)
+				{
+					furnaces.get(resultat.getString("world")).put(key, new RegisteredFurnace(resultat.getInt("id"), resultat.getDouble("x"), resultat.getDouble("y"), resultat.getDouble("z"), resultat.getString("name"), resultat.getInt("player_id")));
+				}
 			}
 
 			resultat.last();
@@ -387,7 +393,10 @@ public class DataRegisterManager
 			while(resultat.next())
 			{
 				String key = "" + resultat.getDouble("x") + "|" + resultat.getDouble("y") + "|" + resultat.getDouble("z");
-				brewingStands.get(resultat.getString("world")).put(key, new RegisteredBrewingStand(resultat.getInt("id"), resultat.getDouble("x"), resultat.getDouble("y"), resultat.getDouble("z"), resultat.getString("name"), resultat.getInt("player_id")));
+				if(brewingStands.get(resultat.getString("world")) != null)
+				{
+					brewingStands.get(resultat.getString("world")).put(key, new RegisteredBrewingStand(resultat.getInt("id"), resultat.getDouble("x"), resultat.getDouble("y"), resultat.getDouble("z"), resultat.getString("name"), resultat.getInt("player_id")));
+				}
 			}
 
 			resultat.last();
@@ -428,7 +437,10 @@ public class DataRegisterManager
 			while(resultat.next())
 			{
 				String key = "" + resultat.getDouble("x") + "|" + resultat.getDouble("z");
-				chunks.get(resultat.getString("world")).put(key, new ExploredChunk(resultat.getDouble("x"), resultat.getDouble("z"), Arrays.asList(resultat.getString("players").split(","))));
+				if(chunks.get(resultat.getString("world")) != null)
+				{
+					chunks.get(resultat.getString("world")).put(key, new ExploredChunk(resultat.getDouble("x"), resultat.getDouble("z"), Arrays.asList(resultat.getString("players").split(","))));
+				}
 			}
 
 			resultat.last();
@@ -761,9 +773,7 @@ public class DataRegisterManager
 						nkPlayer.removeFurnace();
 					}
 
-					player.sendMessage(
-							ChatColor.GREEN + "Vous avez détruit le four de " + furnace.getPlayerName()
-									+ ".");
+					player.sendMessage(ChatColor.GREEN + "Vous avez détruit le four de " + furnace.getPlayerName() + ".");
 					furnaces.get(worldName).remove(key);
 					return null;
 				}
@@ -814,8 +824,7 @@ public class DataRegisterManager
 						nkPlayer.removeBrewingStand();
 					}
 
-					player.sendMessage(ChatColor.GREEN + "Vous avez détruit l'alambic de "
-							+ brewingStand.getPlayerName() + ".");
+					player.sendMessage(ChatColor.GREEN + "Vous avez détruit l'alambic de " + brewingStand.getPlayerName() + ".");
 					brewingStands.get(worldName).remove(key);
 					return null;
 				}

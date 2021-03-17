@@ -7,6 +7,7 @@ import be.noki_senpai.NKjobs.utils.Formatter;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.*;
+import org.bukkit.block.BlockFace;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
@@ -14,9 +15,12 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
+import org.bukkit.scheduler.BukkitRunnable;
 import org.yaml.snakeyaml.Yaml;
 
-import java.io.*;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.sql.*;
 import java.util.*;
 
@@ -39,6 +43,7 @@ public class JobManager
 		{
 			material.add(materialType.toString().toUpperCase());
 		}
+		//setXpDayTimer();
 	}
 
 	public void unloadJob()
@@ -46,7 +51,8 @@ public class JobManager
 		jobs.clear();
 	}
 
-	@SuppressWarnings("unchecked") public boolean loadJob()
+	@SuppressWarnings("unchecked")
+	public boolean loadJob()
 	{
 		List<String> possibleActions = new ArrayList<String>();
 		List<String> possibleColors = new ArrayList<String>();
@@ -160,21 +166,6 @@ public class JobManager
 			console.sendMessage(ChatColor.DARK_RED + NKjobs.PNAME + " Error : inputStream is null");
 			return false;
 		}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 		try
 		{
@@ -537,7 +528,7 @@ public class JobManager
 							else
 							{
 								// Get base exp
-								itemBaseExp = (double) value_.get("base_exp");
+								itemBaseExp = Double.parseDouble(value_.get("base_exp").toString());
 							}
 						}
 
@@ -546,7 +537,7 @@ public class JobManager
 						// ######################################
 
 						if(!(value_.containsKey("base_money")))
-						{
+						{// java.lang.Integer cannot be cast to java.lang.Double
 							error += "\n> " + jobName + " > " + actionName + " > " + itemName
 									+ " > Key 'base_money' not found. Verify syntax of keys.";
 						}
@@ -561,7 +552,7 @@ public class JobManager
 							else
 							{
 								// Get base money
-								itemBaseMoney = (double) value_.get("base_money");
+								itemBaseMoney = Double.parseDouble(value_.get("base_money").toString());
 							}
 						}
 
@@ -751,22 +742,22 @@ public class JobManager
 							}
 						}
 
-						// ######################################
-						// Store the reward data
-						// ######################################
+						if(value_.containsKey("permissions"))
+						{
+							List<String> entryPermission = (List<String>) value_.get("permissions");
 
-						// Store reward data
+							permissions.addAll(entryPermission);
+						}
+
+						if(value_.containsKey("commands"))
+						{
+							ArrayList<String> entryCommands = (ArrayList<String>) value_.get("commands");
+
+							commands.addAll(entryCommands);
+						}
 						job.addReward(rewardLevel, new Reward(items, commands, permissions));
 					}
 				}
-
-
-
-
-
-
-
-
 
 				// ######################################
 				// Store the job
@@ -824,7 +815,7 @@ public class JobManager
 		}
 
 
-		/*for(Map.Entry<String, Job> entry : jobs.entrySet())
+		for(Map.Entry<String, Job> entry : jobs.entrySet())
 		{
 			console.sendMessage(ChatColor.BLUE + entry.getValue().name);
 			for(Map.Entry<Integer, Reward> entry2 : entry.getValue().getRewards().entrySet())
@@ -833,8 +824,7 @@ public class JobManager
 				console.sendMessage(""+ChatColor.BLUE + entry2.getValue().getItems());
 			}
 
-		}*/
-
+		}
 
 		return true;
 	}
@@ -877,7 +867,7 @@ public class JobManager
 						 raw += resultSetMetaData.getColumnName(i) + " : " + resultat.getObject(i).toString() + " | ";
 					}
 					console.sendMessage(raw);*/
-					topJob.put(resultat.getString("name"), new PlayerJob(0, jobName, resultat.getInt("lvl"), resultat.getDouble("xp"), resultat.getDouble("xp_goal"), 0, null, jobs.get(jobName).getChatColor(), null));
+					topJob.put(resultat.getString("name"), new PlayerJob(0, jobName, resultat.getInt("lvl"), resultat.getDouble("xp"), resultat.getDouble("xp_goal"), 0, null, jobs.get(jobName).getChatColor(), null, 0, null));
 				}
 
 				ps.close();
@@ -1089,7 +1079,7 @@ public class JobManager
 				{
 					if(data.getName().equals(craft))
 					{
-						rewardPlayer(player, jobName, data.getMoney()*amount, data.getExp()*amount);
+						rewardPlayer(player, jobName, data.getMoney() * amount, data.getExp() * amount);
 					}
 				}
 			}
@@ -1133,7 +1123,7 @@ public class JobManager
 				{
 					if(data.getName().equals(brew))
 					{
-						rewardPlayer(player, jobName, data.getMoney()*amount, data.getExp()*amount);
+						rewardPlayer(player, jobName, data.getMoney() * amount, data.getExp() * amount);
 					}
 				}
 			}
@@ -1332,28 +1322,32 @@ public class JobManager
 	{
 		PlayerJob job = player.getJobs().get(jobName);
 
-		player.addTmpMoney(jobs.get(jobName).equationMoney(money, job.lvl));
-		player.addTmpExp(jobs.get(jobName).equationExp(exp, job.lvl));
-
-		job.addExp(jobs.get(jobName).equationExp(exp, job.lvl));
-		boolean playSound = false;
-
-		while(job.xp >= job.xpGoal && job.lvl <= jobs.get(jobName).getLvlMax())
+		if(job.xpDay < jobs.get(jobName).equationExp(10, job.lvl))
 		{
-			job.lvl++;
-			playSound = true;
-			job.xp -= job.xpGoal;
-			job.xpGoal = jobs.get(jobName).equationLeveling(job.lvl);
+			player.addTmpMoney(jobs.get(jobName).equationMoney(money, job.lvl));
+			player.addTmpExp(jobs.get(jobName).equationExp(exp, job.lvl));
 
-			congratPlayerBroadcast(player.getName(), jobName, job.lvl);
-			verifyReward(player, jobs.get(jobName), job.lvl);
-		}
-		if(playSound)
-		{
-			Player worker = Bukkit.getPlayer(player.getName());
-			if(worker != null)
+			job.addExp(jobs.get(jobName).equationExp(exp, job.lvl));
+			boolean playSound = false;
+
+			//while(job.xp >= job.xpGoal && job.lvl <= jobs.get(jobName).getLvlMax())
+			while(job.xp >= job.xpGoal)
 			{
-				worker.getWorld().playSound(worker.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 5F, 1F);
+				job.lvl++;
+				playSound = true;
+				job.xp -= job.xpGoal;
+				job.xpGoal = jobs.get(jobName).equationLeveling(job.lvl);
+
+				congratPlayerBroadcast(player.getName(), jobName, job.lvl);
+				verifyReward(player, jobs.get(jobName), job.lvl);
+			}
+			if(playSound)
+			{
+				Player worker = Bukkit.getPlayer(player.getName());
+				if(worker != null)
+				{
+					worker.getWorld().playSound(worker.getLocation(), Sound.BLOCK_RESPAWN_ANCHOR_CHARGE, 5F, 1F);
+				}
 			}
 		}
 	}
@@ -1365,7 +1359,7 @@ public class JobManager
 		job.xp += exp;
 		job.xpTotal += exp;
 
-		while(job.xp >= job.xpGoal )
+		while(job.xp >= job.xpGoal)
 		{
 			job.lvl++;
 			job.xp -= job.xpGoal;
@@ -1457,7 +1451,7 @@ public class JobManager
 
 	public void congratPlayerBroadcast(String playerName, String jobName, int lvl)
 	{
-		if(lvl == 50 || lvl == 100)
+		if((lvl == 50 || lvl == 100) || (lvl > 100 && lvl%5 == 0))
 		{
 			Bukkit.broadcastMessage(ChatColor.GREEN + playerName + " est " + ChatColor.BOLD + jobName + ChatColor.RESET + ChatColor.GREEN + " niveau "
 					+ ChatColor.BOLD + lvl + ChatColor.RESET + ChatColor.GREEN + " !");
@@ -1468,25 +1462,41 @@ public class JobManager
 	{
 		if(job.getRewards().containsKey(lvl))
 		{
-			Inventory inventory = Bukkit.getPlayer(player.getUuid()).getInventory();
+			Player onlinePlayer = Bukkit.getPlayer(player.getUuid());
+			Inventory inventory = onlinePlayer.getInventory();
 			if(inventory.firstEmpty() != -1)
 			{
-				inventory.addItem(job.getRewards().get(lvl).getItems().get(0));
+				for(ItemStack itemStack : job.getRewards().get(lvl).getItems())
+				{
+					inventory.addItem(itemStack);
+				}
 			}
 			else
 			{
-				Bukkit.getPlayer(player.getUuid()).sendMessage(ChatColor.GREEN + "Vous n'avez pas de place dans votre inventaire pour recevoir votre récompense. \nLibérez votre inventaire pour la récupérer lors de votre prochaine connexion.");
+				onlinePlayer.sendMessage(ChatColor.GREEN
+						+ "Vous n'avez pas de place dans votre inventaire pour recevoir votre récompense. \nLibérez votre inventaire pour la récupérer lors de votre prochaine connexion.");
 				player.addRewardedItem(new RewardedItem(-1, job.getRewards().get(lvl).getItems().get(0)));
 			}
+			new BukkitRunnable()
+			{
+				@Override
+				public void run()
+				{
+					for(String command : job.getRewards().get(lvl).getCommands())
+					{
+						Bukkit.dispatchCommand(console, command.replace("%player%", player.getName()));
+					}
+				}
+			}.runTaskLater(NKjobs.getPlugin(), 0);
 		}
 	}
 
 	public TextComponent getJobInfo(String jobName, int page, int jobLevel)
 	{
-		TextComponent jobInfo = new TextComponent( "" );
+		TextComponent jobInfo = new TextComponent("");
 		//String jobInfo = "";
 		int lineNumber = 0; //max 16
-		int begin = (page-1) * 16;
+		int begin = (page - 1) * 16;
 
 		Job job = jobs.get(jobName);
 
@@ -1502,16 +1512,19 @@ public class JobManager
 			{
 				for(JobItem jobItem : entry.getValue())
 				{
-					if(count >= begin && lineNumber <= 15)
+					if(count >= begin)
 					{
 
-						if(!added && lineNumber < 16)
+						if(!added)
 						{
 							added = true;
-							jobInfo.addExtra("\n" + ChatColor.BOLD + ChatColor.GREEN + TranslationManager.translate(entry.getKey()) + ChatColor.RESET);
+							jobInfo.addExtra(
+									"\n" + ChatColor.BOLD + ChatColor.GREEN + TranslationManager.translate(entry.getKey()) + ChatColor.RESET);
 						}
 
-						jobInfo.addExtra("\n  " + ChatColor.GRAY + TranslationManager.translate(jobItem.getName()) + " -> " + ChatColor.GREEN + NKjobs.getPlugin().getEconomy().format(job.equationMoney(jobItem.getMoney(), jobLevel)) + "  " + ChatColor.GREEN + Formatter.formatMoney(job.equationExp(jobItem.getExp(), jobLevel)) + " XP" + ChatColor.RESET);
+						jobInfo.addExtra("\n  " + ChatColor.GRAY + TranslationManager.translate(jobItem.getName()) + " -> " + ChatColor.GREEN
+								+ NKjobs.getPlugin().getEconomy().format(job.equationMoney(jobItem.getMoney(), jobLevel)) + "  " + ChatColor.GREEN
+								+ Formatter.formatMoney(job.equationExp(jobItem.getExp(), jobLevel)) + " XP" + ChatColor.RESET);
 						lineNumber++;
 					}
 					count++;
@@ -1523,27 +1536,39 @@ public class JobManager
 			}
 			nbItems += entry.getValue().size();
 		}
-		if(jobInfo.getExtra()== null)
+		if(jobInfo.getExtra() == null)
 		{
 			jobInfo.addExtra("Il n'y a rien sur cette page.");
 		}
 
-		TextComponent preview = new TextComponent( "\n--- <<<   " );
+		TextComponent preview = new TextComponent("\n--- <<<   ");
 		preview.setBold(true);
-		preview.setClickEvent( new ClickEvent( ClickEvent.Action.RUN_COMMAND, "/jobs info " + jobName + " " + (page-1) ));
+		preview.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/jobs info " + jobName + " " + (page - 1)));
 
 		jobInfo.addExtra(preview);
 
-		jobInfo.addExtra( "" + ChatColor.BOLD + ChatColor.GREEN + page + " / " + (int) Math.ceil(nbItems/16.0) + ChatColor.RESET);
+		jobInfo.addExtra("" + ChatColor.BOLD + ChatColor.GREEN + page + " / " + (int) Math.ceil(nbItems / 16.0) + ChatColor.RESET);
 
-		TextComponent next = new TextComponent( "   >>> ---" );
+		TextComponent next = new TextComponent("   >>> ---");
 		next.setBold(true);
-		next.setClickEvent( new ClickEvent( ClickEvent.Action.RUN_COMMAND, "/jobs info " + jobName + " " + (page+1) ));
+		next.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/jobs info " + jobName + " " + (page + 1)));
 
 		jobInfo.addExtra(next);
 
-
-
 		return jobInfo;
+	}
+
+
+	public void setXpDayTimer()
+	{
+		Calendar date = Calendar.getInstance();
+		date.add(Calendar.DAY_OF_MONTH, 1);
+		date.set(Calendar.HOUR, 1);
+		date.set(Calendar.MINUTE, 0);
+		date.set(Calendar.SECOND, 0);
+
+		Timer timer = new Timer();
+
+		//timer.schedule(new XpDayTimerTask(), date.getTime());
 	}
 }

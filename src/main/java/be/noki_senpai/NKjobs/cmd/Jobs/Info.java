@@ -84,7 +84,6 @@ public class Info
 			}
 
 			sender.spigot().sendMessage(jobManager.getJobInfo(jobName, page, jobLevel));
-
 		}
 
 		// Command called by Console
