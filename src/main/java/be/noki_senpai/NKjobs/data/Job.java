@@ -1,5 +1,6 @@
 package be.noki_senpai.NKjobs.data;
 
+import be.noki_senpai.NKjobs.managers.ConfigManager;
 import org.bukkit.ChatColor;
 import org.bukkit.boss.BarColor;
 
@@ -69,6 +70,10 @@ public class Job
 
 	public double equationMoney(double base, int level)
 	{
+		if(level > lvlMax)
+		{
+			return base + base * lvlMax / ratioMoney;
+		}
 		return base + base * level / ratioMoney;
 	}
 

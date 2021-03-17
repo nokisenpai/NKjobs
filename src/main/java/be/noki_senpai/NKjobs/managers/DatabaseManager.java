@@ -203,6 +203,8 @@ public class DatabaseManager
 						+ " `xp_goal` double NOT NULL,"
 						+ " `xp_total` double NOT NULL,"
 						+ " `old` BOOLEAN NOT NULL,"
+						+ " `xp_day` double NOT NULL,"
+						+ " `time` DATE NOT NULL DEFAULT '2020-02-23',"
 						+ " UNIQUE INDEX `player_id_job_id_UNIQUE` (`player_id`,`job_id`)) ENGINE = InnoDB;";
 				s = bdd.createStatement();
 				s.execute(req);

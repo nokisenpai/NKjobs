@@ -8,6 +8,8 @@ import org.bukkit.boss.BarStyle;
 import org.bukkit.boss.BossBar;
 import org.bukkit.entity.Player;
 
+import java.util.Date;
+
 public class PlayerJob
 {
 	public int id = -1;
@@ -19,8 +21,10 @@ public class PlayerJob
 	public double xpTotal = 0;
 	public BossBar bossBar = null;
 	public boolean updated = false;
+	public double xpDay = 0;
+	public Date time = null;
 
-	public PlayerJob(int jobId, String name, int lvl, double xp, double xpGoal, double xpTotal, Player player, String chatColor, String colorBar)
+	public PlayerJob(int jobId, String name, int lvl, double xp, double xpGoal, double xpTotal, Player player, String chatColor, String colorBar, double xpDay, Date time)
 	{
 		this.id = jobId;
 		this.name = name;
@@ -28,6 +32,8 @@ public class PlayerJob
 		this.xp = xp;
 		this.xpGoal = xpGoal;
 		this.xpTotal = xpTotal;
+		this.xpDay = xpDay;
+		this.time = time;
 		this.formattedName = ChatColor.valueOf(chatColor) + name.substring(0, 1).toUpperCase() + name.substring(1) + ChatColor.RESET;
 		if(player != null && colorBar != null)
 		{
@@ -35,9 +41,13 @@ public class PlayerJob
 					formattedName + " niv. " + lvl + " : " + Formatter.format(xp) + " / " + Formatter.format(xpGoal) + "xp", BarColor.valueOf(colorBar), BarStyle.SEGMENTED_20);
 			bossBar.setVisible(false);
 			bossBar.addPlayer(player);
-			if(xp / xpGoal > 1)
+			if(xp / xpGoal < 0)
 			{
 				bossBar.setProgress(0.0);
+			}
+			else if(xp / xpGoal > 1)
+			{
+				bossBar.setProgress(1.0);
 			}
 			else
 			{
@@ -59,9 +69,13 @@ public class PlayerJob
 	{
 		this.updated = false;
 		this.bossBar.setTitle(formattedName + " niv. " + lvl + " : " + Formatter.format(xp) + " / " + Formatter.format(xpGoal) + "xp");
-		if(xp / xpGoal > 1)
+		if(xp / xpGoal < 0)
 		{
 			this.bossBar.setProgress(0.0);
+		}
+		else if(xp / xpGoal > 1)
+		{
+			this.bossBar.setProgress(1.0);
 		}
 		else
 		{

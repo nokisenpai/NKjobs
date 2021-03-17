@@ -12,18 +12,12 @@
     ratio: 25
   action:
     BREAK:
-      acacia_leaves:
-        base_money: 0.5
-        base_exp: 0.5
       allium:
         base_money: 1.00
         base_exp: 1.00
       azure_bluet:
         base_money: 1.00
         base_exp: 1.00
-      birch_leaves:
-        base_money: 0.5
-        base_exp: 0.5
       blue_ice:
         base_money: 0.50
         base_exp: 0.50
@@ -100,8 +94,11 @@
         base_money: 0.5
         base_exp: 0.5
       netherrack:
-        base_money: 0.005
-        base_exp: 0.005
+        base_money: 0.01
+        base_exp: 0.01
+      NETHER_BRICK:
+        base_money: 0.2
+        base_exp: 0.2
       nether_quartz_ore:
         base_money: 1.0
         base_exp: 1.0
@@ -188,6 +185,9 @@
         base_money: 2.0
         base_exp: 2.0
       end_crystal:
+        base_money: 10.0
+        base_exp: 10.0
+      golden_apple:
         base_money: 5.0
         base_exp: 5.0
       golden_sword:
@@ -420,17 +420,17 @@
   action:
     BREAK:
       acacia_leaves:
-        base_money: 1.0
-        base_exp: 1.0
-      acacia_log:
-        base_money: 2.0
-        base_exp: 2.0
-      birch_leaves:
         base_money: 0.5
         base_exp: 0.5
+      acacia_log:
+        base_money: 2.5
+        base_exp: 2.5
+      birch_leaves:
+        base_money: 0.25
+        base_exp: 0.25
       birch_log:
-        base_money: 1.0
-        base_exp: 1.0
+        base_money: 1.5
+        base_exp: 1.5
       brown_mushroom:
         base_money: 1.77
         base_exp: 1.77
@@ -438,8 +438,8 @@
         base_money: 1.0
         base_exp: 1.0
       dark_oak_leaves:
-        base_money: 0.5
-        base_exp: 0.5
+        base_money: 0.20
+        base_exp: 0.20
       dark_oak_log:
         base_money: 0.8
         base_exp: 0.8
@@ -450,20 +450,20 @@
         base_money: 0.01
         base_exp: 0.01
       jungle_leaves:
-        base_money: 0.5
-        base_exp: 0.5
+        base_money: 0.25
+        base_exp: 0.25
       jungle_log:
-        base_money: 1.0
-        base_exp: 1.0
+        base_money: 1.75
+        base_exp: 1.75
       large_fern:
         base_money: 1.0
         base_exp: 1.0
       oak_leaves:
-        base_money: 0.5
-        base_exp: 0.5
+        base_money: 0.25
+        base_exp: 0.25
       oak_log:
-        base_money: 1.0
-        base_exp: 1.0
+        base_money: 1.5
+        base_exp: 1.5
       podzol:
         base_money: 0.16
         base_exp: 0.16
@@ -471,11 +471,11 @@
         base_money: 1.00
         base_exp: 1.00
       spruce_leaves:
-        base_money: 0.5
-        base_exp: 0.5
+        base_money: 0.25
+        base_exp: 0.25
       spruce_log:
-        base_money: 1.0
-        base_exp: 1.0
+        base_money: 1.5
+        base_exp: 1.5
       stripped_acacia_log:
         base_money: 0.5
         base_exp: 0.5
@@ -605,210 +605,134 @@
         base_money: 0.01
         base_exp: 0.01
       scaffolding:
-        base_money: 0.20
-        base_exp: 0.20
-    PLACE:
+        base_money: 0.10
+        base_exp: 0.10
       acacia_button:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.01
+        base_exp: 0.01
       acacia_door:
-        base_money: 0.50
-        base_exp: 0.50
-      acacia_fence:
-        base_money: 0.50
-        base_exp: 0.50
-      acacia_fence_gate:
-        base_money: 0.50
-        base_exp: 0.50
-      acacia_leaves:
-        base_money: 0.50
-        base_exp: 0.50
-      acacia_log:
-        base_money: 0.50
-        base_exp: 0.50
-      acacia_planks:
-        base_money: 0.50
-        base_exp: 0.50
-      acacia_pressure_plate:
-        base_money: 0.50
-        base_exp: 0.50
-      acacia_slab:
         base_money: 0.2
         base_exp: 0.2
+      acacia_fence:
+        base_money: 0.2
+        base_exp: 0.2
+      acacia_fence_gate:
+        base_money: 0.2
+        base_exp: 0.2
+      acacia_planks:
+        base_money: 0.05
+        base_exp: 0.05
+      acacia_pressure_plate:
+        base_money: 0.1
+        base_exp: 0.1
+      acacia_slab:
+        base_money: 0.1
+        base_exp: 0.1
       acacia-sign:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       acacia_stairs:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       acacia_trapdoor:
-        base_money: 0.50
-        base_exp: 0.50
-      acacia_wood:
-        base_money: 0.50
-        base_exp: 0.50
-      activator_rail:
-        base_money: 0.50
-        base_exp: 0.50
-      allium:
-        base_money: 0.50
-        base_exp: 0.50
-      andesite:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       andesite_slab:
         base_money: 0.20
         base_exp: 0.20
       andesite_stairs:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       andesite_wall:
-        base_money: 0.50
-        base_exp: 0.50
-      anvil:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       armor_stand:
         base_money: 0.50
         base_exp: 0.50
-      azure_bluet:
-        base_money: 0.50
-        base_exp: 0.50
-      beacon:
-        base_money: 0.50
-        base_exp: 0.50
       birch_button:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.01
+        base_exp: 0.01
       birch_door:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       birch_fence:
-        base_money: 0.50
-        base_exp: 0.50
-      birch_fence_gate:
-        base_money: 0.50
-        base_exp: 0.50
-      birch_leaves:
-        base_money: 0.50
-        base_exp: 0.50
-      birch_log:
-        base_money: 0.50
-        base_exp: 0.50
-      birch_planks:
-        base_money: 0.50
-        base_exp: 0.50
-      birch_pressure_plate:
-        base_money: 0.50
-        base_exp: 0.50
-      birch_slab:
-        base_money: 0.2
+        base_money: 0.20
         base_exp: 0.2
+      birch_fence_gate:
+        base_money: 0.20
+        base_exp: 0.20
+      birch_planks:
+        base_money: 0.10
+        base_exp: 0.10
+      birch_pressure_plate:
+        base_money: 0.10
+        base_exp: 0.10
+      birch_slab:
+        base_money: 0.1
+        base_exp: 0.1
       birch_sign:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       birch_stairs:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       birch_trapdoor:
-        base_money: 0.50
-        base_exp: 0.50
-      birch_wood:
-        base_money: 0.50
-        base_exp: 0.50
-      black_banner:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       black_bed:
         base_money: 0.50
         base_exp: 0.50
       black_carpet:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       black_concrete:
         base_money: 0.50
         base_exp: 0.50
       black_concrete_powder:
-        base_money: 0.50
-        base_exp: 0.50
-      black_glazed_terracotta:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       black_stained_glass:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       black_stained_glass_pane:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.05
+        base_exp: 0.05
       black_terracotta:
-        base_money: 0.50
-        base_exp: 0.50
-      black_wool:
-        base_money: 0.50
-        base_exp: 0.50
-      blue_banner:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       blue_bed:
         base_money: 0.50
         base_exp: 0.50
       blue_carpet:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       blue_concrete:
         base_money: 0.50
         base_exp: 0.50
       blue_concrete_powder:
-        base_money: 0.50
-        base_exp: 0.50
-      blue_glazed_terracotta:
-        base_money: 0.50
-        base_exp: 0.50
-      blue_ice:
-        base_money: 0.50
-        base_exp: 0.50
-      blue_orchid:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       blue_stained_glass:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       blue_stained_glass_pane:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.05
+        base_exp: 0.05
       blue_terracotta:
-        base_money: 0.50
-        base_exp: 0.50
-      blue_wool:
-        base_money: 0.50
-        base_exp: 0.50
-      bone_block:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       bookshelf:
-        base_money: 0.50
-        base_exp: 0.50
-      brain_coral:
-        base_money: 0.50
-        base_exp: 0.50
-      brain_coral_block:
-        base_money: 0.50
-        base_exp: 0.50
-      brain_coral_fan:
-        base_money: 0.50
-        base_exp: 0.50
-      brewing_stand:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 2.50
+        base_exp: 2.50
       bricks:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.1
+        base_exp: 0.1
       brick_slab:
-        base_money: 0.2
-        base_exp: 0.2
+        base_money: 0.1
+        base_exp: 0.1
       brick_stairs:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       brown_banner:
         base_money: 0.50
         base_exp: 0.50
@@ -816,38 +740,26 @@
         base_money: 0.50
         base_exp: 0.50
       brown_carpet:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       brown_concrete:
         base_money: 0.50
         base_exp: 0.50
       brown_concrete_powder:
-        base_money: 0.50
-        base_exp: 0.50
-      brown_glazed_terracotta:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       brown_stained_glass:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       brown_stained_glass_pane:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.05
+        base_exp: 0.05
       brown_terracotta:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       brown_wool:
-        base_money: 0.50
-        base_exp: 0.50
-      bubble_coral:
-        base_money: 0.50
-        base_exp: 0.50
-      bubble_coral_block:
-        base_money: 0.50
-        base_exp: 0.50
-      bubble_coral_fan:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       carved_pumpkin:
         base_money: 0.50
         base_exp: 0.50
@@ -855,395 +767,200 @@
         base_money: 0.50
         base_exp: 0.50
       chest:
-        base_money: 0.50
-        base_exp: 0.50
-      chipped_anvil:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       chiseled_quartz_block:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       chiseled_red_sandstone:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       chiseled_sandstone:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       chiseled_stone_bricks:
-        base_money: 0.50
-        base_exp: 0.50
-      chorus_plant:
-        base_money: 0.50
-        base_exp: 0.50
-      clay:
-        base_money: 0.50
-        base_exp: 0.50
-      coal_block:
-        base_money: 0.50
-        base_exp: 0.50
-      coal_ore:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       coarse_dirt:
-        base_money: 0.2
-        base_exp: 0.2
-      cobblestone:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.02
+        base_exp: 0.02
       cobblestone_slab:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.05
+        base_exp: 0.05
       cobblestone_wall:
-        base_money: 0.50
-        base_exp: 0.50
-      cobweb:
-        base_money: 0.50
-        base_exp: 0.50
-      comparator:
-        base_money: 0.50
-        base_exp: 0.50
-      conduit:
-        base_money: 0.50
-        base_exp: 0.50
-      cracked_stone_bricks:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.05
+        base_exp: 0.05
       crafting_table:
-        base_money: 0.50
-        base_exp: 0.50
-      creeper_head:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       cut_red_sandstone:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       cut_red_sandstone_slab:
-        base_money: 0.20
-        base_exp: 0.20
+        base_money: 0.10
+        base_exp: 0.10
       cut_sandstone:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       cut_sandstone_slab:
-        base_money: 0.20
+        base_money: 0.10
         base_exp: 0.20
-      cyan_banner:
-        base_money: 0.50
-        base_exp: 0.50
       cyan_bed:
         base_money: 0.50
         base_exp: 0.50
       cyan_carpet:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.05
+        base_exp: 0.05
       cyan_concrete:
         base_money: 0.50
         base_exp: 0.50
       cyan_concrete_powder:
-        base_money: 0.50
-        base_exp: 0.50
-      cyan_glazed_terracotta:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       cyan_stained_glass:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       cyan_stained_glass_pane:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.05
+        base_exp: 0.05
       cyan_terracotta:
         base_money: 0.50
         base_exp: 0.50
-      cyan_wool:
-        base_money: 0.50
-        base_exp: 0.50
-      damaged_anvil:
-        base_money: 0.50
-        base_exp: 0.50
-      dandelion:
-        base_money: 0.50
-        base_exp: 0.50
       dark_oak_button:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.01
+        base_exp: 0.01
       dark_oak_door:
-        base_money: 0.50
-        base_exp: 0.50
-      dark_oak_fence:
-        base_money: 0.50
-        base_exp: 0.50
-      dark_oak_fence_gate:
-        base_money: 0.50
-        base_exp: 0.50
-      dark_oak_leaves:
-        base_money: 0.50
-        base_exp: 0.50
-      dark_oak_log:
-        base_money: 0.50
-        base_exp: 0.50
-      dark_oak_planks:
-        base_money: 0.50
-        base_exp: 0.50
-      dark_oak_pressure_plate:
-        base_money: 0.50
-        base_exp: 0.50
-      dark_oak_slab:
-        base_money: 0.2
-        base_exp: 0.2
-      dark_oak_sign:
-        base_money: 0.50
-        base_exp: 0.50
-      dark_oak_stairs:
-        base_money: 0.50
-        base_exp: 0.50
-      dark_oak_trapdoor:
-        base_money: 0.50
-        base_exp: 0.50
-      dark_oak_wood:
-        base_money: 0.50
-        base_exp: 0.50
-      dark_prismarine:
-        base_money: 0.50
-        base_exp: 0.50
-      dark_prismarine_slab:
-        base_money: 0.50
-        base_exp: 0.50
-      dark_prismarine_stairs:
-        base_money: 0.50
-        base_exp: 0.50
-      daylight_detector:
-        base_money: 0.50
-        base_exp: 0.50
-      dead_brain_coral_block:
-        base_money: 0.50
-        base_exp: 0.50
-      dead_bubble_coral_block:
-        base_money: 0.50
-        base_exp: 0.50
-      dead_bush:
-        base_money: 0.50
-        base_exp: 0.50
-      dead_fire_coral_block:
-        base_money: 0.50
-        base_exp: 0.50
-      dead_horn_coral_block:
-        base_money: 0.50
-        base_exp: 0.50
-      dead_tube_coral_block:
-        base_money: 0.50
-        base_exp: 0.50
-      detector_rail:
-        base_money: 0.50
-        base_exp: 0.50
-      diamond_ore:
-        base_money: 0.50
-        base_exp: 0.50
-      diorite:
-        base_money: 0.50
-        base_exp: 0.50
-      diorite_slab:
         base_money: 0.20
         base_exp: 0.20
+      dark_oak_fence:
+        base_money: 0.10
+        base_exp: 0.10
+      dark_oak_fence_gate:
+        base_money: 0.20
+        base_exp: 0.20
+      dark_oak_planks:
+        base_money: 0.10
+        base_exp: 0.10
+      dark_oak_pressure_plate:
+        base_money: 0.10
+        base_exp: 0.10
+      dark_oak_slab:
+        base_money: 0.05
+        base_exp: 0.05
+      dark_oak_sign:
+        base_money: 0.20
+        base_exp: 0.20
+      dark_oak_stairs:
+        base_money: 0.20
+        base_exp: 0.20
+      dark_oak_trapdoor:
+        base_money: 0.20
+        base_exp: 0.20
+      dark_prismarine_slab:
+        base_money: 0.10
+        base_exp: 0.10
+      dark_prismarine_stairs:
+        base_money: 0.20
+        base_exp: 0.20
+      diorite_slab:
+        base_money: 0.10
+        base_exp: 0.10
       diorite_stairs:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       diorite_wall:
-        base_money: 0.50
-        base_exp: 0.50
-      dirt:
-        base_money: 0.2
-        base_exp: 0.2
+        base_money: 0.20
+        base_exp: 0.20
       dispenser:
-        base_money: 0.50
-        base_exp: 0.50
-      dragon_egg:
-        base_money: 0.50
-        base_exp: 0.50
-      dragon_head:
-        base_money: 0.50
-        base_exp: 0.50
-      dried_kelp_block:
         base_money: 0.50
         base_exp: 0.50
       dropper:
         base_money: 0.50
         base_exp: 0.50
-      emerald_block:
-        base_money: 0.50
-        base_exp: 0.50
-      emerald_ore:
-        base_money: 0.50
-        base_exp: 0.50
       enchanting_table:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       ender_chest:
         base_money: 0.50
         base_exp: 0.50
-      end_rod:
-        base_money: 0.50
-        base_exp: 0.50
-      end_stone:
-        base_money: 0.50
-        base_exp: 0.50
-      end_stone_bricks:
-        base_money: 0.50
-        base_exp: 0.50
-      fern:
-        base_money: 0.50
-        base_exp: 0.50
-      fire_coral:
-        base_money: 0.50
-        base_exp: 0.50
-      fire_coral_block:
-        base_money: 0.50
-        base_exp: 0.50
-      fire_coral_fan:
-        base_money: 0.50
-        base_exp: 0.50
       flower_pot:
-        base_money: 0.50
-        base_exp: 0.50
-      furnace:
-        base_money: 0.50
-        base_exp: 0.50
-      glass:
-        base_money: 0.50
-        base_exp: 0.50
-      glass_pane:
-        base_money: 0.50
-        base_exp: 0.50
-      glowstone:
-        base_money: 0.50
-        base_exp: 0.50
-      gold_block:
-        base_money: 0.50
-        base_exp: 0.50
-      gold_ore:
-        base_money: 0.50
-        base_exp: 0.50
-      granite:
-        base_money: 0.50
-        base_exp: 0.50
-      granite_slab:
         base_money: 0.20
         base_exp: 0.20
+      furnace:
+        base_money: 0.10
+        base_exp: 0.10
+      glass_pane:
+        base_money: 0.10
+        base_exp: 0.10
+      granite_slab:
+        base_money: 0.10
+        base_exp: 0.10
       granite_stairs:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       granite_wall:
-        base_money: 0.50
-        base_exp: 0.50
-      grass:
-        base_money: 0.50
-        base_exp: 0.50
-      grass_block:
-        base_money: 0.50
-        base_exp: 0.50
-      grass_path:
-        base_money: 0.50
-        base_exp: 0.50
-      gravel:
-        base_money: 0.50
-        base_exp: 0.50
-      gray_banner:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       gray_bed:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       gray_carpet:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.05
+        base_exp: 0.05
       gray_concrete:
         base_money: 0.50
-        base_exp: 0.50
+        base_exp: 0.20
       gray_concrete_powder:
-        base_money: 0.50
-        base_exp: 0.50
-      gray_glazed_terracotta:
-        base_money: 0.50
+        base_money: 0.10
         base_exp: 0.50
       gray_stained_glass:
-        base_money: 0.50
+        base_money: 0.10
         base_exp: 0.50
       gray_stained_glass_pane:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.05
+        base_exp: 0.05
       gray_terracotta:
-        base_money: 0.50
-        base_exp: 0.50
-      gray_wool:
-        base_money: 0.50
-        base_exp: 0.50
-      green_banner:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       green_bed:
         base_money: 0.50
         base_exp: 0.50
       green_carpet:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       green_concrete:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       green_concrete_powder:
-        base_money: 0.50
-        base_exp: 0.50
-      green_glazed_terracotta:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       green_shulker_box:
         base_money: 0.50
         base_exp: 0.50
       green_stained_glass:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       green_stained_glass_pane:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       green_terracotta:
-        base_money: 0.50
-        base_exp: 0.50
-      green_wool:
-        base_money: 0.50
-        base_exp: 0.50
-      hay_block:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       heavy_weighted_pressure_plate:
         base_money: 0.50
         base_exp: 0.50
       hopper:
-        base_money: 0.50
-        base_exp: 0.50
-      horn_coral:
-        base_money: 0.50
-        base_exp: 0.50
-      horn_coral_block:
-        base_money: 0.50
-        base_exp: 0.50
-      horn_coral_fan:
-        base_money: 0.50
-        base_exp: 0.50
-      ice:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       iron_bars:
         base_money: 0.50
         base_exp: 0.50
-      iron_block:
-        base_money: 0.50
-        base_exp: 0.50
       iron_door:
-        base_money: 0.50
-        base_exp: 0.50
-      iron_ore:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       iron_trapdoor:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       jack_o_lantern:
         base_money: 0.50
         base_exp: 0.50
@@ -1251,764 +968,458 @@
         base_money: 0.50
         base_exp: 0.50
       jungle_button:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.05
+        base_exp: 0.05
       jungle_door:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       jungle_fence:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       jungle_fence_gate:
-        base_money: 0.50
-        base_exp: 0.50
-      jungle_leaves:
-        base_money: 0.50
-        base_exp: 0.50
-      jungle_log:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       jungle_planks:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       jungle_pressure_plate:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       jungle_slab:
-        base_money: 0.2
-        base_exp: 0.2
+        base_money: 0.1
+        base_exp: 0.1
       jungle_sign:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       jungle_stairs:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       jungle_trapdoor:
-        base_money: 0.50
-        base_exp: 0.50
-      jungle_wood:
-        base_money: 0.50
-        base_exp: 0.50
-      kelp:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       ladder:
-        base_money: 0.50
-        base_exp: 0.50
-      lapis_block:
-        base_money: 0.50
-        base_exp: 0.50
-      lapis_ore:
-        base_money: 0.50
-        base_exp: 0.50
-      large_fern:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       lever:
-        base_money: 0.50
-        base_exp: 0.50
-      light_blue_banner:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.05
+        base_exp: 0.05
       light_blue_bed:
         base_money: 0.50
         base_exp: 0.50
       light_blue_carpet:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.05
+        base_exp: 0.05
       light_blue_concrete:
         base_money: 0.50
         base_exp: 0.50
       light_blue_concrete_powder:
-        base_money: 0.50
-        base_exp: 0.50
-      light_blue_glazed_terracotta:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       light_blue_stained_glass:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       light_blue_stained_glass_pane:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       light_blue_terracotta:
-        base_money: 0.50
-        base_exp: 0.50
-      light_blue_wool:
-        base_money: 0.50
-        base_exp: 0.50
-      light_gray_banner:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       light_gray_bed:
         base_money: 0.50
         base_exp: 0.50
       light_gray_carpet:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       light_gray_concrete:
         base_money: 0.50
         base_exp: 0.50
       light_gray_concrete_powder:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       light_gray_stained_glass:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       light_gray_stained_glass_pane:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       light_gray_terracotta:
         base_money: 0.50
         base_exp: 0.50
-      light_gray_wool:
-        base_money: 0.50
-        base_exp: 0.50
       light_weighted_pressure_plate:
-        base_money: 0.50
-        base_exp: 0.50
-      lilac:
-        base_money: 0.50
-        base_exp: 0.50
-      lily_pad:
-        base_money: 0.50
-        base_exp: 0.50
-      lime_banner:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       lime_bed:
         base_money: 0.50
         base_exp: 0.50
       lime_carpet:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       lime_concrete:
         base_money: 0.50
         base_exp: 0.50
       lime_concrete_powder:
-        base_money: 0.50
-        base_exp: 0.50
-      lime_glazed_terracotta:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       lime_stained_glass:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       lime_stained_glass_pane:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       lime_terracotta:
-        base_money: 0.50
-        base_exp: 0.50
-      lime_wool:
-        base_money: 0.50
-        base_exp: 0.50
-      magenta_banner:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       magenta_bed:
         base_money: 0.50
         base_exp: 0.50
       magenta_carpet:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       magenta_concrete:
         base_money: 0.50
         base_exp: 0.50
       magenta_concrete_powder:
-        base_money: 0.50
-        base_exp: 0.50
-      magenta_glazed_terracotta:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       magenta_stained_glass:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       magenta_stained_glass_pane:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       magenta_terracotta:
-        base_money: 0.50
-        base_exp: 0.50
-      magenta_wool:
-        base_money: 0.50
-        base_exp: 0.50
-      magma_block:
-        base_money: 0.50
-        base_exp: 0.50
-      melon:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       mossy_cobblestone:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       mossy_cobblestone_wall:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       mossy_stone_bricks:
-        base_money: 0.50
-        base_exp: 0.50
-      mushroom_stem:
-        base_money: 0.50
-        base_exp: 0.50
-      mycelium:
-        base_money: 0.50
-        base_exp: 0.50
-      netherrack:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       nether_brick_fence:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       nether_brick_slab:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       nether_brick_stairs:
-        base_money: 0.50
-        base_exp: 0.50
-      nether_quartz_ore:
-        base_money: 0.50
-        base_exp: 0.50
-      nether_wart_block:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       note_block:
         base_money: 0.50
         base_exp: 0.50
       oak_button:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.05
+        base_exp: 0.05
       oak_door:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       oak_fence:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       oak_fence_gate:
-        base_money: 0.50
-        base_exp: 0.50
-      oak_leaves:
-        base_money: 0.50
-        base_exp: 0.50
-      oak_log:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       oak_planks:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       oak_pressure_plate:
-        base_money: 0.50
-        base_exp: 0.50
-      oak_sapling:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       oak_sign:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       oak_slab:
-        base_money: 0.2
-        base_exp: 0.2
+        base_money: 0.10
+        base_exp: 0.10
       oak_stairs:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       oak_trapdoor:
-        base_money: 0.50
-        base_exp: 0.50
-      oak_wood:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       observer:
-        base_money: 0.50
-        base_exp: 0.50
-      obsidian:
-        base_money: 0.50
-        base_exp: 0.50
-      orange_banner:
         base_money: 0.50
         base_exp: 0.50
       orange_bed:
         base_money: 0.50
         base_exp: 0.50
       orange_carpet:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       orange_concrete:
         base_money: 0.50
         base_exp: 0.50
       orange_concrete_powder:
-        base_money: 0.50
-        base_exp: 0.50
-      orange_glazed_terracotta:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       orange_stained_glass:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       orange_stained_glass_pane:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       orange_terracotta:
-        base_money: 0.50
-        base_exp: 0.50
-      orange_tulip:
-        base_money: 0.50
-        base_exp: 0.50
-      orange_wool:
-        base_money: 0.50
-        base_exp: 0.50
-      oxeye_daisy:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       packed_ice:
         base_money: 0.50
         base_exp: 0.50
       painting:
         base_money: 0.50
         base_exp: 0.50
-      peony:
-        base_money: 0.50
-        base_exp: 0.50
-      petrified_oak_slab:
-        base_money: 0.50
-        base_exp: 0.50
-      pink_banner:
-        base_money: 0.50
-        base_exp: 0.50
       pink_bed:
         base_money: 0.50
         base_exp: 0.50
       pink_carpet:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       pink_concrete:
         base_money: 0.50
         base_exp: 0.50
       pink_concrete_powder:
-        base_money: 0.50
-        base_exp: 0.50
-      pink_glazed_terracotta:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       pink_stained_glass:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       pink_stained_glass_pane:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       pink_terracotta:
-        base_money: 0.50
-        base_exp: 0.50
-      pink_tulip:
-        base_money: 0.50
-        base_exp: 0.50
-      pink_wool:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       piston:
-        base_money: 0.50
-        base_exp: 0.50
-      player_head:
-        base_money: 0.50
-        base_exp: 0.50
-      podzol:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       polished_andesite:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       polished_andesite_slab:
-        base_money: 0.20
-        base_exp: 0.20
+        base_money: 0.10
+        base_exp: 0.10
       polished_andesite_stairs:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       polished_diorite:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       polished_diorite_slab:
-        base_money: 0.20
-        base_exp: 0.20
+        base_money: 0.10
+        base_exp: 0.10
       polished_diorite_stairs:
-        base_money: 0.50
-        base_exp: 0.50
-      polished_granite:
-        base_money: 0.50
-        base_exp: 0.50
-      polished_granite_slab:
         base_money: 0.20
         base_exp: 0.20
+      polished_granite:
+        base_money: 0.10
+        base_exp: 0.10
+      polished_granite_slab:
+        base_money: 0.10
+        base_exp: 0.10
       polished_granite_stairs:
-        base_money: 0.50
-        base_exp: 0.50
-      poppy:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       powered_rail:
         base_money: 0.50
         base_exp: 0.50
-      prismarine:
-        base_money: 0.50
-        base_exp: 0.50
       prismarine_bricks:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       prismarine_brick_slab:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       prismarine_brick_stairs:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       prismarine_slab:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       prismarine_stairs:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       pumpkin:
-        base_money: 0.50
-        base_exp: 0.50
-      purple_banner:
         base_money: 0.50
         base_exp: 0.50
       purple_bed:
         base_money: 0.50
         base_exp: 0.50
       purple_carpet:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       purple_concrete:
         base_money: 0.50
         base_exp: 0.50
       purple_concrete_powder:
-        base_money: 0.50
-        base_exp: 0.50
-      purple_glazed_terracotta:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       purple_stained_glass:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       purple_stained_glass_pane:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       purple_terracotta:
-        base_money: 0.50
-        base_exp: 0.50
-      purple_wool:
-        base_money: 0.50
-        base_exp: 0.50
-      purpur_block:
         base_money: 0.50
         base_exp: 0.50
       purpur_pillar:
         base_money: 0.50
         base_exp: 0.50
       purpur_slab:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       purpur_stairs:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       quartz_block:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       quartz_pillar:
         base_money: 0.50
         base_exp: 0.50
       quartz_slab:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       quartz_stairs:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       rail:
-        base_money: 0.50
-        base_exp: 0.50
-      redstone_block:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       redstone_lamp:
         base_money: 0.50
         base_exp: 0.50
-      redstone_ore:
-        base_money: 0.50
-        base_exp: 0.50
       redstone_torch:
-        base_money: 0.50
-        base_exp: 0.50
-      red_banner:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       red_bed:
         base_money: 0.50
         base_exp: 0.50
       red_carpet:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       red_concrete:
         base_money: 0.50
         base_exp: 0.50
       red_concrete_powder:
-        base_money: 0.50
-        base_exp: 0.50
-      red_glazed_terracotta:
-        base_money: 0.50
-        base_exp: 0.50
-      red_mushroom:
-        base_money: 0.50
-        base_exp: 0.50
-      red_mushroom_block:
-        base_money: 0.50
-        base_exp: 0.50
-      red_nether_bricks:
-        base_money: 0.50
-        base_exp: 0.50
-      red_sand:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       red_sandstone:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.05
+        base_exp: 0.05
       red_sandstone_slab:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       red_sandstone_stairs:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       red_stained_glass:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       red_stained_glass_pane:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       red_terracotta:
-        base_money: 0.50
-        base_exp: 0.50
-      red_tulip:
-        base_money: 0.50
-        base_exp: 0.50
-      red_wool:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       repeater:
         base_money: 0.50
         base_exp: 0.50
-      rose_bush:
-        base_money: 0.50
-        base_exp: 0.50
-      sand:
-        base_money: 0.50
-        base_exp: 0.50
       sandstone:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.01
+        base_exp: 0.01
       sandstone_slab:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       sandstone_stairs:
-        base_money: 0.50
-        base_exp: 0.50
-      seagrass:
-        base_money: 0.50
-        base_exp: 0.50
-      sea_lantern:
-        base_money: 0.50
-        base_exp: 0.50
-      sea_pickle:
-        base_money: 0.50
-        base_exp: 0.50
-      sign:
-        base_money: 0.50
-        base_exp: 0.50
-      silver_glazed_terracotta:
-        base_money: 0.50
-        base_exp: 0.50
-      skeleton_skull:
-        base_money: 0.50
-        base_exp: 0.50
-      slime_block:
-        base_money: 0.50
-        base_exp: 0.50
-      smooth_quartz:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       smooth_quartz_slab:
-        base_money: 0.20
-        base_exp: 0.20
+        base_money: 0.10
+        base_exp: 0.10
       smooth_quartz_stairs:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       smooth_red_sandstone:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.05
+        base_exp: 0.05
       smooth_red_sandstone_slab:
-        base_money: 0.20
-        base_exp: 0.20
+        base_money: 0.10
+        base_exp: 0.10
       smooth_red_sandstone_stairs:
-        base_money: 0.50
-        base_exp: 0.50
-      smooth_sandstone:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       smooth_sandstone_slab:
-        base_money: 0.20
-        base_exp: 0.20
+        base_money: 0.10
+        base_exp: 0.10
       smooth_sandstone_stairs:
-        base_money: 0.50
-        base_exp: 0.50
-      smooth_stone:
-        base_money: 0.50
-        base_exp: 0.50
-      smooth_stone_slab:
         base_money: 0.20
         base_exp: 0.20
-      snow:
-        base_money: 0.50
-        base_exp: 0.50
-      snow_block:
-        base_money: 0.50
-        base_exp: 0.50
-      soul_sand:
-        base_money: 0.50
-        base_exp: 0.50
-      sponge:
-        base_money: 0.50
-        base_exp: 0.50
+      smooth_stone_slab:
+        base_money: 0.10
+        base_exp: 0.10
       spruce_button:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.05
+        base_exp: 0.05
       spruce_door:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       spruce_fence:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       spruce_fence_gate:
-        base_money: 0.50
-        base_exp: 0.50
-      spruce_leaves:
-        base_money: 0.50
-        base_exp: 0.50
-      spruce_log:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       spruce_planks:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.05
+        base_exp: 0.05
       spruce_pressure_plate:
-        base_money: 0.50
-        base_exp: 0.50
-      spruce_sapling:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       spruce_slab:
-        base_money: 0.2
-        base_exp: 0.2
+        base_money: 0.1
+        base_exp: 0.1
       spruce_sign:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       spruce_stairs:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       spruce_trapdoor:
-        base_money: 0.50
-        base_exp: 0.50
-      spruce_wood:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       sticky_piston:
         base_money: 0.50
         base_exp: 0.50
-      stone:
-        base_money: 0.50
-        base_exp: 0.50
       stone_bricks:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       stone_brick_slab:
-        base_money: 0.20
-        base_exp: 0.20
+        base_money: 0.10
+        base_exp: 0.10
       stone_brick_stairs:
-        base_money: 0.50
-        base_exp: 0.50
-      stone_button:
-        base_money: 0.50
-        base_exp: 0.50
-      stone_pressure_plate:
-        base_money: 0.50
-        base_exp: 0.50
-      stone_slab:
         base_money: 0.20
         base_exp: 0.20
+      stone_button:
+        base_money: 0.05
+        base_exp: 0.05
+      stone_pressure_plate:
+        base_money: 0.10
+        base_exp: 0.10
+      stone_slab:
+        base_money: 0.10
+        base_exp: 0.10
       stone_stairs:
-        base_money: 0.50
-        base_exp: 0.50
-      stripped_acacia_log:
-        base_money: 0.50
-        base_exp: 0.50
-      stripped_acacia_wood:
-        base_money: 0.50
-        base_exp: 0.50
-      stripped_birch_log:
-        base_money: 0.50
-        base_exp: 0.50
-      stripped_birch_wood:
-        base_money: 0.50
-        base_exp: 0.50
-      stripped_dark_oak_log:
-        base_money: 0.50
-        base_exp: 0.50
-      stripped_dark_oak_wood:
-        base_money: 0.50
-        base_exp: 0.50
-      stripped_jungle_log:
-        base_money: 0.50
-        base_exp: 0.50
-      stripped_jungle_wood:
-        base_money: 0.50
-        base_exp: 0.50
-      stripped_oak_log:
-        base_money: 0.50
-        base_exp: 0.50
-      stripped_oak_wood:
-        base_money: 0.50
-        base_exp: 0.50
-      stripped_spruce_log:
-        base_money: 0.50
-        base_exp: 0.50
-      stripped_spruce_wood:
-        base_money: 0.50
-        base_exp: 0.50
-      sunflower:
-        base_money: 0.50
-        base_exp: 0.50
-      terracotta:
-        base_money: 0.50
-        base_exp: 0.50
-      torch:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       trapped_chest:
         base_money: 0.50
         base_exp: 0.50
       tripwire_hook:
-        base_money: 0.50
-        base_exp: 0.50
-      tube_coral:
-        base_money: 0.50
-        base_exp: 0.50
-      tube_coral_block:
-        base_money: 0.50
-        base_exp: 0.50
-      tube_coral_fan:
-        base_money: 0.50
-        base_exp: 0.50
-      turtle_egg:
-        base_money: 0.50
-        base_exp: 0.50
-      vine:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.05
+        base_exp: 0.05
       white_banner:
         base_money: 0.50
         base_exp: 0.50
@@ -2016,74 +1427,1527 @@
         base_money: 0.50
         base_exp: 0.50
       white_carpet:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       white_concrete:
         base_money: 0.50
         base_exp: 0.50
       white_concrete_powder:
-        base_money: 0.50
-        base_exp: 0.50
-      white_glazed_terracotta:
-        base_money: 0.50
-        base_exp: 0.50
-      white_shulker_box:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       white_stained_glass:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       white_stained_glass_pane:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       white_terracotta:
-        base_money: 0.50
-        base_exp: 0.50
-      white_tulip:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       white_wool:
-        base_money: 0.50
-        base_exp: 0.50
-      wither_skeleton_skull:
-        base_money: 0.50
-        base_exp: 0.50
-      yellow_banner:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       yellow_bed:
         base_money: 0.50
         base_exp: 0.50
       yellow_carpet:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       yellow_concrete:
         base_money: 0.50
         base_exp: 0.50
       yellow_concrete_powder:
-        base_money: 0.50
-        base_exp: 0.50
-      yellow_glazed_terracotta:
-        base_money: 0.50
-        base_exp: 0.50
-      yellow_shulker_box:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       yellow_stained_glass:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.20
+        base_exp: 0.20
       yellow_stained_glass_pane:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
       yellow_terracotta:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.10
+        base_exp: 0.10
+    PLACE:
+      acacia_button:
+        base_money: 0.70
+        base_exp: 0.70
+      acacia_door:
+        base_money: 0.70
+        base_exp: 0.70
+      acacia_fence:
+        base_money: 0.70
+        base_exp: 0.70
+      acacia_fence_gate:
+        base_money: 0.70
+        base_exp: 0.70
+      acacia_leaves:
+        base_money: 0.70
+        base_exp: 0.70
+      acacia_log:
+        base_money: 0.70
+        base_exp: 0.70
+      acacia_planks:
+        base_money: 0.70
+        base_exp: 0.70
+      acacia_pressure_plate:
+        base_money: 0.70
+        base_exp: 0.70
+      acacia_slab:
+        base_money: 0.2
+        base_exp: 0.2
+      acacia-sign:
+        base_money: 0.70
+        base_exp: 0.70
+      acacia_stairs:
+        base_money: 0.70
+        base_exp: 0.70
+      acacia_trapdoor:
+        base_money: 0.70
+        base_exp: 0.70
+      acacia_wood:
+        base_money: 0.70
+        base_exp: 0.70
+      activator_rail:
+        base_money: 0.70
+        base_exp: 0.70
+      allium:
+        base_money: 0.70
+        base_exp: 0.70
+      andesite:
+        base_money: 0.70
+        base_exp: 0.70
+      andesite_slab:
+        base_money: 0.20
+        base_exp: 0.20
+      andesite_stairs:
+        base_money: 0.70
+        base_exp: 0.70
+      andesite_wall:
+        base_money: 0.70
+        base_exp: 0.70
+      anvil:
+        base_money: 0.70
+        base_exp: 0.70
+      armor_stand:
+        base_money: 0.70
+        base_exp: 0.70
+      azure_bluet:
+        base_money: 0.70
+        base_exp: 0.70
+      beacon:
+        base_money: 0.70
+        base_exp: 0.70
+      birch_button:
+        base_money: 0.70
+        base_exp: 0.70
+      birch_door:
+        base_money: 0.70
+        base_exp: 0.70
+      birch_fence:
+        base_money: 0.70
+        base_exp: 0.70
+      birch_fence_gate:
+        base_money: 0.70
+        base_exp: 0.70
+      birch_leaves:
+        base_money: 0.70
+        base_exp: 0.70
+      birch_log:
+        base_money: 0.70
+        base_exp: 0.70
+      birch_planks:
+        base_money: 0.70
+        base_exp: 0.70
+      birch_pressure_plate:
+        base_money: 0.70
+        base_exp: 0.70
+      birch_slab:
+        base_money: 0.2
+        base_exp: 0.2
+      birch_sign:
+        base_money: 0.70
+        base_exp: 0.70
+      birch_stairs:
+        base_money: 0.70
+        base_exp: 0.70
+      birch_trapdoor:
+        base_money: 0.70
+        base_exp: 0.70
+      birch_wood:
+        base_money: 0.70
+        base_exp: 0.70
+      black_banner:
+        base_money: 0.70
+        base_exp: 0.70
+      black_bed:
+        base_money: 0.70
+        base_exp: 0.70
+      black_carpet:
+        base_money: 0.70
+        base_exp: 0.70
+      black_concrete:
+        base_money: 0.70
+        base_exp: 0.70
+      black_concrete_powder:
+        base_money: 0.70
+        base_exp: 0.70
+      black_glazed_terracotta:
+        base_money: 0.70
+        base_exp: 0.70
+      black_stained_glass:
+        base_money: 0.70
+        base_exp: 0.70
+      black_stained_glass_pane:
+        base_money: 0.70
+        base_exp: 0.70
+      black_terracotta:
+        base_money: 0.70
+        base_exp: 0.70
+      black_wool:
+        base_money: 0.70
+        base_exp: 0.70
+      blue_banner:
+        base_money: 0.70
+        base_exp: 0.70
+      blue_bed:
+        base_money: 0.70
+        base_exp: 0.70
+      blue_carpet:
+        base_money: 0.70
+        base_exp: 0.70
+      blue_concrete:
+        base_money: 0.70
+        base_exp: 0.70
+      blue_concrete_powder:
+        base_money: 0.70
+        base_exp: 0.70
+      blue_glazed_terracotta:
+        base_money: 0.70
+        base_exp: 0.70
+      blue_ice:
+        base_money: 0.70
+        base_exp: 0.70
+      blue_orchid:
+        base_money: 0.70
+        base_exp: 0.70
+      blue_stained_glass:
+        base_money: 0.70
+        base_exp: 0.70
+      blue_stained_glass_pane:
+        base_money: 0.70
+        base_exp: 0.70
+      blue_terracotta:
+        base_money: 0.70
+        base_exp: 0.70
+      blue_wool:
+        base_money: 0.70
+        base_exp: 0.70
+      bone_block:
+        base_money: 0.70
+        base_exp: 0.70
+      bookshelf:
+        base_money: 0.70
+        base_exp: 0.70
+      brain_coral:
+        base_money: 0.70
+        base_exp: 0.70
+      brain_coral_block:
+        base_money: 0.70
+        base_exp: 0.70
+      brain_coral_fan:
+        base_money: 0.70
+        base_exp: 0.70
+      brewing_stand:
+        base_money: 0.70
+        base_exp: 0.70
+      bricks:
+        base_money: 0.70
+        base_exp: 0.70
+      brick_slab:
+        base_money: 0.2
+        base_exp: 0.2
+      brick_stairs:
+        base_money: 0.70
+        base_exp: 0.70
+      brown_banner:
+        base_money: 0.70
+        base_exp: 0.70
+      brown_bed:
+        base_money: 0.70
+        base_exp: 0.70
+      brown_carpet:
+        base_money: 0.70
+        base_exp: 0.70
+      brown_concrete:
+        base_money: 0.70
+        base_exp: 0.70
+      brown_concrete_powder:
+        base_money: 0.70
+        base_exp: 0.70
+      brown_glazed_terracotta:
+        base_money: 0.70
+        base_exp: 0.70
+      brown_stained_glass:
+        base_money: 0.70
+        base_exp: 0.70
+      brown_stained_glass_pane:
+        base_money: 0.70
+        base_exp: 0.70
+      brown_terracotta:
+        base_money: 0.70
+        base_exp: 0.70
+      brown_wool:
+        base_money: 0.70
+        base_exp: 0.70
+      bubble_coral:
+        base_money: 0.70
+        base_exp: 0.70
+      bubble_coral_block:
+        base_money: 0.70
+        base_exp: 0.70
+      bubble_coral_fan:
+        base_money: 0.70
+        base_exp: 0.70
+      carved_pumpkin:
+        base_money: 0.70
+        base_exp: 0.70
+      cauldron:
+        base_money: 0.70
+        base_exp: 0.70
+      chest:
+        base_money: 0.70
+        base_exp: 0.70
+      chipped_anvil:
+        base_money: 0.70
+        base_exp: 0.70
+      chiseled_quartz_block:
+        base_money: 0.70
+        base_exp: 0.70
+      chiseled_red_sandstone:
+        base_money: 0.70
+        base_exp: 0.70
+      chiseled_sandstone:
+        base_money: 0.70
+        base_exp: 0.70
+      chiseled_stone_bricks:
+        base_money: 0.70
+        base_exp: 0.70
+      chorus_plant:
+        base_money: 0.70
+        base_exp: 0.70
+      clay:
+        base_money: 0.70
+        base_exp: 0.70
+      coal_block:
+        base_money: 0.70
+        base_exp: 0.70
+      coal_ore:
+        base_money: 0.70
+        base_exp: 0.70
+      coarse_dirt:
+        base_money: 0.2
+        base_exp: 0.2
+      cobblestone:
+        base_money: 0.70
+        base_exp: 0.70
+      cobblestone_slab:
+        base_money: 0.70
+        base_exp: 0.70
+      cobblestone_wall:
+        base_money: 0.70
+        base_exp: 0.70
+      cobweb:
+        base_money: 0.70
+        base_exp: 0.70
+      comparator:
+        base_money: 0.70
+        base_exp: 0.70
+      conduit:
+        base_money: 0.70
+        base_exp: 0.70
+      cracked_stone_bricks:
+        base_money: 0.70
+        base_exp: 0.70
+      crafting_table:
+        base_money: 0.70
+        base_exp: 0.70
+      creeper_head:
+        base_money: 0.70
+        base_exp: 0.70
+      cut_red_sandstone:
+        base_money: 0.70
+        base_exp: 0.70
+      cut_red_sandstone_slab:
+        base_money: 0.20
+        base_exp: 0.20
+      cut_sandstone:
+        base_money: 0.70
+        base_exp: 0.70
+      cut_sandstone_slab:
+        base_money: 0.20
+        base_exp: 0.20
+      cyan_banner:
+        base_money: 0.70
+        base_exp: 0.70
+      cyan_bed:
+        base_money: 0.70
+        base_exp: 0.70
+      cyan_carpet:
+        base_money: 0.70
+        base_exp: 0.70
+      cyan_concrete:
+        base_money: 0.70
+        base_exp: 0.70
+      cyan_concrete_powder:
+        base_money: 0.70
+        base_exp: 0.70
+      cyan_glazed_terracotta:
+        base_money: 0.70
+        base_exp: 0.70
+      cyan_stained_glass:
+        base_money: 0.70
+        base_exp: 0.70
+      cyan_stained_glass_pane:
+        base_money: 0.70
+        base_exp: 0.70
+      cyan_terracotta:
+        base_money: 0.70
+        base_exp: 0.70
+      cyan_wool:
+        base_money: 0.70
+        base_exp: 0.70
+      damaged_anvil:
+        base_money: 0.70
+        base_exp: 0.70
+      dandelion:
+        base_money: 0.70
+        base_exp: 0.70
+      dark_oak_button:
+        base_money: 0.70
+        base_exp: 0.70
+      dark_oak_door:
+        base_money: 0.70
+        base_exp: 0.70
+      dark_oak_fence:
+        base_money: 0.70
+        base_exp: 0.70
+      dark_oak_fence_gate:
+        base_money: 0.70
+        base_exp: 0.70
+      dark_oak_leaves:
+        base_money: 0.70
+        base_exp: 0.70
+      dark_oak_log:
+        base_money: 0.70
+        base_exp: 0.70
+      dark_oak_planks:
+        base_money: 0.70
+        base_exp: 0.70
+      dark_oak_pressure_plate:
+        base_money: 0.70
+        base_exp: 0.70
+      dark_oak_slab:
+        base_money: 0.2
+        base_exp: 0.2
+      dark_oak_sign:
+        base_money: 0.70
+        base_exp: 0.70
+      dark_oak_stairs:
+        base_money: 0.70
+        base_exp: 0.70
+      dark_oak_trapdoor:
+        base_money: 0.70
+        base_exp: 0.70
+      dark_oak_wood:
+        base_money: 0.70
+        base_exp: 0.70
+      dark_prismarine:
+        base_money: 0.70
+        base_exp: 0.70
+      dark_prismarine_slab:
+        base_money: 0.70
+        base_exp: 0.70
+      dark_prismarine_stairs:
+        base_money: 0.70
+        base_exp: 0.70
+      daylight_detector:
+        base_money: 0.70
+        base_exp: 0.70
+      dead_brain_coral_block:
+        base_money: 0.70
+        base_exp: 0.70
+      dead_bubble_coral_block:
+        base_money: 0.70
+        base_exp: 0.70
+      dead_bush:
+        base_money: 0.70
+        base_exp: 0.70
+      dead_fire_coral_block:
+        base_money: 0.70
+        base_exp: 0.70
+      dead_horn_coral_block:
+        base_money: 0.70
+        base_exp: 0.70
+      dead_tube_coral_block:
+        base_money: 0.70
+        base_exp: 0.70
+      detector_rail:
+        base_money: 0.70
+        base_exp: 0.70
+      diamond_ore:
+        base_money: 0.70
+        base_exp: 0.70
+      diorite:
+        base_money: 0.70
+        base_exp: 0.70
+      diorite_slab:
+        base_money: 0.20
+        base_exp: 0.20
+      diorite_stairs:
+        base_money: 0.70
+        base_exp: 0.70
+      diorite_wall:
+        base_money: 0.70
+        base_exp: 0.70
+      dirt:
+        base_money: 0.2
+        base_exp: 0.2
+      dispenser:
+        base_money: 0.70
+        base_exp: 0.70
+      dragon_egg:
+        base_money: 0.70
+        base_exp: 0.70
+      dragon_head:
+        base_money: 0.70
+        base_exp: 0.70
+      dried_kelp_block:
+        base_money: 0.70
+        base_exp: 0.70
+      dropper:
+        base_money: 0.70
+        base_exp: 0.70
+      emerald_block:
+        base_money: 0.70
+        base_exp: 0.70
+      emerald_ore:
+        base_money: 0.70
+        base_exp: 0.70
+      enchanting_table:
+        base_money: 0.70
+        base_exp: 0.70
+      ender_chest:
+        base_money: 0.70
+        base_exp: 0.70
+      end_rod:
+        base_money: 0.70
+        base_exp: 0.70
+      end_stone:
+        base_money: 0.70
+        base_exp: 0.70
+      end_stone_bricks:
+        base_money: 0.70
+        base_exp: 0.70
+      fern:
+        base_money: 0.70
+        base_exp: 0.70
+      fire_coral:
+        base_money: 0.70
+        base_exp: 0.70
+      fire_coral_block:
+        base_money: 0.70
+        base_exp: 0.70
+      fire_coral_fan:
+        base_money: 0.70
+        base_exp: 0.70
+      flower_pot:
+        base_money: 0.70
+        base_exp: 0.70
+      furnace:
+        base_money: 0.70
+        base_exp: 0.70
+      glass:
+        base_money: 0.70
+        base_exp: 0.70
+      glass_pane:
+        base_money: 0.70
+        base_exp: 0.70
+      glowstone:
+        base_money: 0.70
+        base_exp: 0.70
+      gold_block:
+        base_money: 0.70
+        base_exp: 0.70
+      gold_ore:
+        base_money: 0.70
+        base_exp: 0.70
+      granite:
+        base_money: 0.70
+        base_exp: 0.70
+      granite_slab:
+        base_money: 0.20
+        base_exp: 0.20
+      granite_stairs:
+        base_money: 0.70
+        base_exp: 0.70
+      granite_wall:
+        base_money: 0.70
+        base_exp: 0.70
+      grass:
+        base_money: 0.70
+        base_exp: 0.70
+      grass_block:
+        base_money: 0.70
+        base_exp: 0.70
+      grass_path:
+        base_money: 0.70
+        base_exp: 0.70
+      gravel:
+        base_money: 0.70
+        base_exp: 0.70
+      gray_banner:
+        base_money: 0.70
+        base_exp: 0.70
+      gray_bed:
+        base_money: 0.70
+        base_exp: 0.70
+      gray_carpet:
+        base_money: 0.70
+        base_exp: 0.70
+      gray_concrete:
+        base_money: 0.70
+        base_exp: 0.70
+      gray_concrete_powder:
+        base_money: 0.70
+        base_exp: 0.70
+      gray_glazed_terracotta:
+        base_money: 0.70
+        base_exp: 0.70
+      gray_stained_glass:
+        base_money: 0.70
+        base_exp: 0.70
+      gray_stained_glass_pane:
+        base_money: 0.70
+        base_exp: 0.70
+      gray_terracotta:
+        base_money: 0.70
+        base_exp: 0.70
+      gray_wool:
+        base_money: 0.70
+        base_exp: 0.70
+      green_banner:
+        base_money: 0.70
+        base_exp: 0.70
+      green_bed:
+        base_money: 0.70
+        base_exp: 0.70
+      green_carpet:
+        base_money: 0.70
+        base_exp: 0.70
+      green_concrete:
+        base_money: 0.70
+        base_exp: 0.70
+      green_concrete_powder:
+        base_money: 0.70
+        base_exp: 0.70
+      green_glazed_terracotta:
+        base_money: 0.70
+        base_exp: 0.70
+      green_shulker_box:
+        base_money: 0.70
+        base_exp: 0.70
+      green_stained_glass:
+        base_money: 0.70
+        base_exp: 0.70
+      green_stained_glass_pane:
+        base_money: 0.70
+        base_exp: 0.70
+      green_terracotta:
+        base_money: 0.70
+        base_exp: 0.70
+      green_wool:
+        base_money: 0.70
+        base_exp: 0.70
+      hay_block:
+        base_money: 0.70
+        base_exp: 0.70
+      heavy_weighted_pressure_plate:
+        base_money: 0.70
+        base_exp: 0.70
+      hopper:
+        base_money: 0.70
+        base_exp: 0.70
+      horn_coral:
+        base_money: 0.70
+        base_exp: 0.70
+      horn_coral_block:
+        base_money: 0.70
+        base_exp: 0.70
+      horn_coral_fan:
+        base_money: 0.70
+        base_exp: 0.70
+      ice:
+        base_money: 0.70
+        base_exp: 0.70
+      iron_bars:
+        base_money: 0.70
+        base_exp: 0.70
+      iron_block:
+        base_money: 0.70
+        base_exp: 0.70
+      iron_door:
+        base_money: 0.70
+        base_exp: 0.70
+      iron_ore:
+        base_money: 0.70
+        base_exp: 0.70
+      iron_trapdoor:
+        base_money: 0.70
+        base_exp: 0.70
+      jack_o_lantern:
+        base_money: 0.70
+        base_exp: 0.70
+      jukebox:
+        base_money: 0.70
+        base_exp: 0.70
+      jungle_button:
+        base_money: 0.70
+        base_exp: 0.70
+      jungle_door:
+        base_money: 0.70
+        base_exp: 0.70
+      jungle_fence:
+        base_money: 0.70
+        base_exp: 0.70
+      jungle_fence_gate:
+        base_money: 0.70
+        base_exp: 0.70
+      jungle_leaves:
+        base_money: 0.70
+        base_exp: 0.70
+      jungle_log:
+        base_money: 0.70
+        base_exp: 0.70
+      jungle_planks:
+        base_money: 0.70
+        base_exp: 0.70
+      jungle_pressure_plate:
+        base_money: 0.70
+        base_exp: 0.70
+      jungle_slab:
+        base_money: 0.2
+        base_exp: 0.2
+      jungle_sign:
+        base_money: 0.70
+        base_exp: 0.70
+      jungle_stairs:
+        base_money: 0.70
+        base_exp: 0.70
+      jungle_trapdoor:
+        base_money: 0.70
+        base_exp: 0.70
+      jungle_wood:
+        base_money: 0.70
+        base_exp: 0.70
+      kelp:
+        base_money: 0.70
+        base_exp: 0.70
+      ladder:
+        base_money: 0.70
+        base_exp: 0.70
+      lapis_block:
+        base_money: 0.70
+        base_exp: 0.70
+      lapis_ore:
+        base_money: 0.70
+        base_exp: 0.70
+      large_fern:
+        base_money: 0.70
+        base_exp: 0.70
+      lever:
+        base_money: 0.70
+        base_exp: 0.70
+      light_blue_banner:
+        base_money: 0.70
+        base_exp: 0.70
+      light_blue_bed:
+        base_money: 0.70
+        base_exp: 0.70
+      light_blue_carpet:
+        base_money: 0.70
+        base_exp: 0.70
+      light_blue_concrete:
+        base_money: 0.70
+        base_exp: 0.70
+      light_blue_concrete_powder:
+        base_money: 0.70
+        base_exp: 0.70
+      light_blue_glazed_terracotta:
+        base_money: 0.70
+        base_exp: 0.70
+      light_blue_stained_glass:
+        base_money: 0.70
+        base_exp: 0.70
+      light_blue_stained_glass_pane:
+        base_money: 0.70
+        base_exp: 0.70
+      light_blue_terracotta:
+        base_money: 0.70
+        base_exp: 0.70
+      light_blue_wool:
+        base_money: 0.70
+        base_exp: 0.70
+      light_gray_banner:
+        base_money: 0.70
+        base_exp: 0.70
+      light_gray_bed:
+        base_money: 0.70
+        base_exp: 0.70
+      light_gray_carpet:
+        base_money: 0.70
+        base_exp: 0.70
+      light_gray_concrete:
+        base_money: 0.70
+        base_exp: 0.70
+      light_gray_concrete_powder:
+        base_money: 0.70
+        base_exp: 0.70
+      light_gray_stained_glass:
+        base_money: 0.70
+        base_exp: 0.70
+      light_gray_stained_glass_pane:
+        base_money: 0.70
+        base_exp: 0.70
+      light_gray_terracotta:
+        base_money: 0.70
+        base_exp: 0.70
+      light_gray_wool:
+        base_money: 0.70
+        base_exp: 0.70
+      light_weighted_pressure_plate:
+        base_money: 0.70
+        base_exp: 0.70
+      lilac:
+        base_money: 0.70
+        base_exp: 0.70
+      lily_pad:
+        base_money: 0.70
+        base_exp: 0.70
+      lime_banner:
+        base_money: 0.70
+        base_exp: 0.70
+      lime_bed:
+        base_money: 0.70
+        base_exp: 0.70
+      lime_carpet:
+        base_money: 0.70
+        base_exp: 0.70
+      lime_concrete:
+        base_money: 0.70
+        base_exp: 0.70
+      lime_concrete_powder:
+        base_money: 0.70
+        base_exp: 0.70
+      lime_glazed_terracotta:
+        base_money: 0.70
+        base_exp: 0.70
+      lime_stained_glass:
+        base_money: 0.70
+        base_exp: 0.70
+      lime_stained_glass_pane:
+        base_money: 0.70
+        base_exp: 0.70
+      lime_terracotta:
+        base_money: 0.70
+        base_exp: 0.70
+      lime_wool:
+        base_money: 0.70
+        base_exp: 0.70
+      magenta_banner:
+        base_money: 0.70
+        base_exp: 0.70
+      magenta_bed:
+        base_money: 0.70
+        base_exp: 0.70
+      magenta_carpet:
+        base_money: 0.70
+        base_exp: 0.70
+      magenta_concrete:
+        base_money: 0.70
+        base_exp: 0.70
+      magenta_concrete_powder:
+        base_money: 0.70
+        base_exp: 0.70
+      magenta_glazed_terracotta:
+        base_money: 0.70
+        base_exp: 0.70
+      magenta_stained_glass:
+        base_money: 0.70
+        base_exp: 0.70
+      magenta_stained_glass_pane:
+        base_money: 0.70
+        base_exp: 0.70
+      magenta_terracotta:
+        base_money: 0.70
+        base_exp: 0.70
+      magenta_wool:
+        base_money: 0.70
+        base_exp: 0.70
+      magma_block:
+        base_money: 0.70
+        base_exp: 0.70
+      melon:
+        base_money: 0.70
+        base_exp: 0.70
+      mossy_cobblestone:
+        base_money: 0.70
+        base_exp: 0.70
+      mossy_cobblestone_wall:
+        base_money: 0.70
+        base_exp: 0.70
+      mossy_stone_bricks:
+        base_money: 0.70
+        base_exp: 0.70
+      mushroom_stem:
+        base_money: 0.70
+        base_exp: 0.70
+      mycelium:
+        base_money: 0.70
+        base_exp: 0.70
+      netherrack:
+        base_money: 0.70
+        base_exp: 0.70
+      nether_brick:
+        base_money: 0.70
+        base_exp: 0.70
+      nether_brick_fence:
+        base_money: 0.70
+        base_exp: 0.70
+      nether_brick_slab:
+        base_money: 0.70
+        base_exp: 0.70
+      nether_brick_stairs:
+        base_money: 0.70
+        base_exp: 0.70
+      nether_quartz_ore:
+        base_money: 0.70
+        base_exp: 0.70
+      nether_wart_block:
+        base_money: 0.70
+        base_exp: 0.70
+      note_block:
+        base_money: 0.70
+        base_exp: 0.70
+      oak_button:
+        base_money: 0.70
+        base_exp: 0.70
+      oak_door:
+        base_money: 0.70
+        base_exp: 0.70
+      oak_fence:
+        base_money: 0.70
+        base_exp: 0.70
+      oak_fence_gate:
+        base_money: 0.70
+        base_exp: 0.70
+      oak_leaves:
+        base_money: 0.70
+        base_exp: 0.70
+      oak_log:
+        base_money: 0.70
+        base_exp: 0.70
+      oak_planks:
+        base_money: 0.70
+        base_exp: 0.70
+      oak_pressure_plate:
+        base_money: 0.70
+        base_exp: 0.70
+      oak_sapling:
+        base_money: 0.70
+        base_exp: 0.70
+      oak_sign:
+        base_money: 0.70
+        base_exp: 0.70
+      oak_slab:
+        base_money: 0.2
+        base_exp: 0.2
+      oak_stairs:
+        base_money: 0.70
+        base_exp: 0.70
+      oak_trapdoor:
+        base_money: 0.70
+        base_exp: 0.70
+      oak_wood:
+        base_money: 0.70
+        base_exp: 0.70
+      observer:
+        base_money: 0.70
+        base_exp: 0.70
+      obsidian:
+        base_money: 0.70
+        base_exp: 0.70
+      orange_banner:
+        base_money: 0.70
+        base_exp: 0.70
+      orange_bed:
+        base_money: 0.70
+        base_exp: 0.70
+      orange_carpet:
+        base_money: 0.70
+        base_exp: 0.70
+      orange_concrete:
+        base_money: 0.70
+        base_exp: 0.70
+      orange_concrete_powder:
+        base_money: 0.70
+        base_exp: 0.70
+      orange_glazed_terracotta:
+        base_money: 0.70
+        base_exp: 0.70
+      orange_stained_glass:
+        base_money: 0.70
+        base_exp: 0.70
+      orange_stained_glass_pane:
+        base_money: 0.70
+        base_exp: 0.70
+      orange_terracotta:
+        base_money: 0.70
+        base_exp: 0.70
+      orange_tulip:
+        base_money: 0.70
+        base_exp: 0.70
+      orange_wool:
+        base_money: 0.70
+        base_exp: 0.70
+      oxeye_daisy:
+        base_money: 0.70
+        base_exp: 0.70
+      packed_ice:
+        base_money: 0.70
+        base_exp: 0.70
+      painting:
+        base_money: 0.70
+        base_exp: 0.70
+      peony:
+        base_money: 0.70
+        base_exp: 0.70
+      petrified_oak_slab:
+        base_money: 0.70
+        base_exp: 0.70
+      pink_banner:
+        base_money: 0.70
+        base_exp: 0.70
+      pink_bed:
+        base_money: 0.70
+        base_exp: 0.70
+      pink_carpet:
+        base_money: 0.70
+        base_exp: 0.70
+      pink_concrete:
+        base_money: 0.70
+        base_exp: 0.70
+      pink_concrete_powder:
+        base_money: 0.70
+        base_exp: 0.70
+      pink_glazed_terracotta:
+        base_money: 0.70
+        base_exp: 0.70
+      pink_stained_glass:
+        base_money: 0.70
+        base_exp: 0.70
+      pink_stained_glass_pane:
+        base_money: 0.70
+        base_exp: 0.70
+      pink_terracotta:
+        base_money: 0.70
+        base_exp: 0.70
+      pink_tulip:
+        base_money: 0.70
+        base_exp: 0.70
+      pink_wool:
+        base_money: 0.70
+        base_exp: 0.70
+      piston:
+        base_money: 0.70
+        base_exp: 0.70
+      player_head:
+        base_money: 0.70
+        base_exp: 0.70
+      podzol:
+        base_money: 0.70
+        base_exp: 0.70
+      polished_andesite:
+        base_money: 0.70
+        base_exp: 0.70
+      polished_andesite_slab:
+        base_money: 0.20
+        base_exp: 0.20
+      polished_andesite_stairs:
+        base_money: 0.70
+        base_exp: 0.70
+      polished_diorite:
+        base_money: 0.70
+        base_exp: 0.70
+      polished_diorite_slab:
+        base_money: 0.20
+        base_exp: 0.20
+      polished_diorite_stairs:
+        base_money: 0.70
+        base_exp: 0.70
+      polished_granite:
+        base_money: 0.70
+        base_exp: 0.70
+      polished_granite_slab:
+        base_money: 0.20
+        base_exp: 0.20
+      polished_granite_stairs:
+        base_money: 0.70
+        base_exp: 0.70
+      poppy:
+        base_money: 0.70
+        base_exp: 0.70
+      powered_rail:
+        base_money: 0.70
+        base_exp: 0.70
+      prismarine:
+        base_money: 0.70
+        base_exp: 0.70
+      prismarine_bricks:
+        base_money: 0.70
+        base_exp: 0.70
+      prismarine_brick_slab:
+        base_money: 0.70
+        base_exp: 0.70
+      prismarine_brick_stairs:
+        base_money: 0.70
+        base_exp: 0.70
+      prismarine_slab:
+        base_money: 0.70
+        base_exp: 0.70
+      prismarine_stairs:
+        base_money: 0.70
+        base_exp: 0.70
+      pumpkin:
+        base_money: 0.70
+        base_exp: 0.70
+      purple_banner:
+        base_money: 0.70
+        base_exp: 0.70
+      purple_bed:
+        base_money: 0.70
+        base_exp: 0.70
+      purple_carpet:
+        base_money: 0.70
+        base_exp: 0.70
+      purple_concrete:
+        base_money: 0.70
+        base_exp: 0.70
+      purple_concrete_powder:
+        base_money: 0.70
+        base_exp: 0.70
+      purple_glazed_terracotta:
+        base_money: 0.70
+        base_exp: 0.70
+      purple_stained_glass:
+        base_money: 0.70
+        base_exp: 0.70
+      purple_stained_glass_pane:
+        base_money: 0.70
+        base_exp: 0.70
+      purple_terracotta:
+        base_money: 0.70
+        base_exp: 0.70
+      purple_wool:
+        base_money: 0.70
+        base_exp: 0.70
+      purpur_block:
+        base_money: 0.70
+        base_exp: 0.70
+      purpur_pillar:
+        base_money: 0.70
+        base_exp: 0.70
+      purpur_slab:
+        base_money: 0.70
+        base_exp: 0.70
+      purpur_stairs:
+        base_money: 0.70
+        base_exp: 0.70
+      quartz_block:
+        base_money: 0.70
+        base_exp: 0.70
+      quartz_pillar:
+        base_money: 0.70
+        base_exp: 0.70
+      quartz_slab:
+        base_money: 0.70
+        base_exp: 0.70
+      quartz_stairs:
+        base_money: 0.70
+        base_exp: 0.70
+      rail:
+        base_money: 0.70
+        base_exp: 0.70
+      redstone_block:
+        base_money: 0.70
+        base_exp: 0.70
+      redstone_lamp:
+        base_money: 0.70
+        base_exp: 0.70
+      redstone_ore:
+        base_money: 0.70
+        base_exp: 0.70
+      redstone_torch:
+        base_money: 0.70
+        base_exp: 0.70
+      red_banner:
+        base_money: 0.70
+        base_exp: 0.70
+      red_bed:
+        base_money: 0.70
+        base_exp: 0.70
+      red_carpet:
+        base_money: 0.70
+        base_exp: 0.70
+      red_concrete:
+        base_money: 0.70
+        base_exp: 0.70
+      red_concrete_powder:
+        base_money: 0.70
+        base_exp: 0.70
+      red_glazed_terracotta:
+        base_money: 0.70
+        base_exp: 0.70
+      red_mushroom:
+        base_money: 0.70
+        base_exp: 0.70
+      red_mushroom_block:
+        base_money: 0.70
+        base_exp: 0.70
+      red_nether_bricks:
+        base_money: 0.70
+        base_exp: 0.70
+      red_sand:
+        base_money: 0.70
+        base_exp: 0.70
+      red_sandstone:
+        base_money: 0.70
+        base_exp: 0.70
+      red_sandstone_slab:
+        base_money: 0.70
+        base_exp: 0.70
+      red_sandstone_stairs:
+        base_money: 0.70
+        base_exp: 0.70
+      red_stained_glass:
+        base_money: 0.70
+        base_exp: 0.70
+      red_stained_glass_pane:
+        base_money: 0.70
+        base_exp: 0.70
+      red_terracotta:
+        base_money: 0.70
+        base_exp: 0.70
+      red_tulip:
+        base_money: 0.70
+        base_exp: 0.70
+      red_wool:
+        base_money: 0.70
+        base_exp: 0.70
+      repeater:
+        base_money: 0.70
+        base_exp: 0.70
+      rose_bush:
+        base_money: 0.70
+        base_exp: 0.70
+      sand:
+        base_money: 0.70
+        base_exp: 0.70
+      sandstone:
+        base_money: 0.70
+        base_exp: 0.70
+      sandstone_slab:
+        base_money: 0.70
+        base_exp: 0.70
+      sandstone_stairs:
+        base_money: 0.70
+        base_exp: 0.70
+      seagrass:
+        base_money: 0.70
+        base_exp: 0.70
+      sea_lantern:
+        base_money: 0.70
+        base_exp: 0.70
+      sea_pickle:
+        base_money: 0.70
+        base_exp: 0.70
+      sign:
+        base_money: 0.70
+        base_exp: 0.70
+      silver_glazed_terracotta:
+        base_money: 0.70
+        base_exp: 0.70
+      skeleton_skull:
+        base_money: 0.70
+        base_exp: 0.70
+      slime_block:
+        base_money: 0.70
+        base_exp: 0.70
+      smooth_quartz:
+        base_money: 0.70
+        base_exp: 0.70
+      smooth_quartz_slab:
+        base_money: 0.20
+        base_exp: 0.20
+      smooth_quartz_stairs:
+        base_money: 0.70
+        base_exp: 0.70
+      smooth_red_sandstone:
+        base_money: 0.70
+        base_exp: 0.70
+      smooth_red_sandstone_slab:
+        base_money: 0.20
+        base_exp: 0.20
+      smooth_red_sandstone_stairs:
+        base_money: 0.70
+        base_exp: 0.70
+      smooth_sandstone:
+        base_money: 0.70
+        base_exp: 0.70
+      smooth_sandstone_slab:
+        base_money: 0.20
+        base_exp: 0.20
+      smooth_sandstone_stairs:
+        base_money: 0.70
+        base_exp: 0.70
+      smooth_stone:
+        base_money: 0.70
+        base_exp: 0.70
+      smooth_stone_slab:
+        base_money: 0.20
+        base_exp: 0.20
+      snow:
+        base_money: 0.70
+        base_exp: 0.70
+      snow_block:
+        base_money: 0.70
+        base_exp: 0.70
+      soul_sand:
+        base_money: 0.70
+        base_exp: 0.70
+      sponge:
+        base_money: 0.70
+        base_exp: 0.70
+      spruce_button:
+        base_money: 0.70
+        base_exp: 0.70
+      spruce_door:
+        base_money: 0.70
+        base_exp: 0.70
+      spruce_fence:
+        base_money: 0.70
+        base_exp: 0.70
+      spruce_fence_gate:
+        base_money: 0.70
+        base_exp: 0.70
+      spruce_leaves:
+        base_money: 0.70
+        base_exp: 0.70
+      spruce_log:
+        base_money: 0.70
+        base_exp: 0.70
+      spruce_planks:
+        base_money: 0.70
+        base_exp: 0.70
+      spruce_pressure_plate:
+        base_money: 0.70
+        base_exp: 0.70
+      spruce_sapling:
+        base_money: 0.70
+        base_exp: 0.70
+      spruce_slab:
+        base_money: 0.2
+        base_exp: 0.2
+      spruce_sign:
+        base_money: 0.70
+        base_exp: 0.70
+      spruce_stairs:
+        base_money: 0.70
+        base_exp: 0.70
+      spruce_trapdoor:
+        base_money: 0.70
+        base_exp: 0.70
+      spruce_wood:
+        base_money: 0.70
+        base_exp: 0.70
+      sticky_piston:
+        base_money: 0.70
+        base_exp: 0.70
+      stone:
+        base_money: 0.70
+        base_exp: 0.70
+      stone_bricks:
+        base_money: 0.70
+        base_exp: 0.70
+      stone_brick_slab:
+        base_money: 0.20
+        base_exp: 0.20
+      stone_brick_stairs:
+        base_money: 0.70
+        base_exp: 0.70
+      stone_button:
+        base_money: 0.70
+        base_exp: 0.70
+      stone_pressure_plate:
+        base_money: 0.70
+        base_exp: 0.70
+      stone_slab:
+        base_money: 0.20
+        base_exp: 0.20
+      stone_stairs:
+        base_money: 0.70
+        base_exp: 0.70
+      stripped_acacia_log:
+        base_money: 0.70
+        base_exp: 0.70
+      stripped_acacia_wood:
+        base_money: 0.70
+        base_exp: 0.70
+      stripped_birch_log:
+        base_money: 0.70
+        base_exp: 0.70
+      stripped_birch_wood:
+        base_money: 0.70
+        base_exp: 0.70
+      stripped_dark_oak_log:
+        base_money: 0.70
+        base_exp: 0.70
+      stripped_dark_oak_wood:
+        base_money: 0.70
+        base_exp: 0.70
+      stripped_jungle_log:
+        base_money: 0.70
+        base_exp: 0.70
+      stripped_jungle_wood:
+        base_money: 0.70
+        base_exp: 0.70
+      stripped_oak_log:
+        base_money: 0.70
+        base_exp: 0.70
+      stripped_oak_wood:
+        base_money: 0.70
+        base_exp: 0.70
+      stripped_spruce_log:
+        base_money: 0.70
+        base_exp: 0.70
+      stripped_spruce_wood:
+        base_money: 0.70
+        base_exp: 0.70
+      sunflower:
+        base_money: 0.70
+        base_exp: 0.70
+      terracotta:
+        base_money: 0.70
+        base_exp: 0.70
+      torch:
+        base_money: 0.70
+        base_exp: 0.70
+      trapped_chest:
+        base_money: 0.70
+        base_exp: 0.70
+      tripwire_hook:
+        base_money: 0.70
+        base_exp: 0.70
+      tube_coral:
+        base_money: 0.70
+        base_exp: 0.70
+      tube_coral_block:
+        base_money: 0.70
+        base_exp: 0.70
+      tube_coral_fan:
+        base_money: 0.70
+        base_exp: 0.70
+      turtle_egg:
+        base_money: 0.70
+        base_exp: 0.70
+      vine:
+        base_money: 0.70
+        base_exp: 0.70
+      white_banner:
+        base_money: 0.70
+        base_exp: 0.70
+      white_bed:
+        base_money: 0.70
+        base_exp: 0.70
+      white_carpet:
+        base_money: 0.70
+        base_exp: 0.70
+      white_concrete:
+        base_money: 0.70
+        base_exp: 0.70
+      white_concrete_powder:
+        base_money: 0.70
+        base_exp: 0.70
+      white_glazed_terracotta:
+        base_money: 0.70
+        base_exp: 0.70
+      white_shulker_box:
+        base_money: 0.70
+        base_exp: 0.70
+      white_stained_glass:
+        base_money: 0.70
+        base_exp: 0.70
+      white_stained_glass_pane:
+        base_money: 0.70
+        base_exp: 0.70
+      white_terracotta:
+        base_money: 0.70
+        base_exp: 0.70
+      white_tulip:
+        base_money: 0.70
+        base_exp: 0.70
+      white_wool:
+        base_money: 0.70
+        base_exp: 0.70
+      wither_skeleton_skull:
+        base_money: 0.70
+        base_exp: 0.70
+      yellow_banner:
+        base_money: 0.70
+        base_exp: 0.70
+      yellow_bed:
+        base_money: 0.70
+        base_exp: 0.70
+      yellow_carpet:
+        base_money: 0.70
+        base_exp: 0.70
+      yellow_concrete:
+        base_money: 0.70
+        base_exp: 0.70
+      yellow_concrete_powder:
+        base_money: 0.70
+        base_exp: 0.70
+      yellow_glazed_terracotta:
+        base_money: 0.70
+        base_exp: 0.70
+      yellow_shulker_box:
+        base_money: 0.70
+        base_exp: 0.70
+      yellow_stained_glass:
+        base_money: 0.70
+        base_exp: 0.70
+      yellow_stained_glass_pane:
+        base_money: 0.70
+        base_exp: 0.70
+      yellow_terracotta:
+        base_money: 0.70
+        base_exp: 0.70
       yellow_wool:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.70
+        base_exp: 0.70
       zombie_head:
-        base_money: 0.50
-        base_exp: 0.50
+        base_money: 0.70
+        base_exp: 0.70
     BREAK:
       grass:
         base_money: 0.01
@@ -2099,77 +2963,77 @@
         base_money: 0.5
         base_exp: 0.5
       smooth_quartz:
-        base_money: 0.4
-        base_exp: 0.4
+        base_money: 0.8
+        base_exp: 0.8
       smooth_stone:
-        base_money: 0.05
-        base_exp: 0.05
+        base_money: 0.1
+        base_exp: 0.1
       Cracked_Stone_Bricks:
-        base_money: 0.05
-        base_exp: 0.05
+        base_money: 0.1
+        base_exp: 0.1
       glass:
-        base_money: 0.05
-        base_exp: 0.05
+        base_money: 0.1
+        base_exp: 0.1
       terracotta:
-        base_money: 0.05
-        base_exp: 0.05
+        base_money: 0.2
+        base_exp: 0.2
       white_glazed_terracotta:
-        base_money: 0.05
-        base_exp: 0.05
+        base_money: 0.2
+        base_exp: 0.2
       orange_glazed_terracotta:
-        base_money: 0.05
-        base_exp: 0.05
+        base_money: 0.2
+        base_exp: 0.2
       magenta_glazed_terracotta:
-        base_money: 0.05
-        base_exp: 0.05
+        base_money: 0.2
+        base_exp: 0.2
       light_blue_glazed_terracotta:
-        base_money: 0.05
-        base_exp: 0.05
+        base_money: 0.2
+        base_exp: 0.2
       yellow_glazed_terracotta:
-        base_money: 0.05
-        base_exp: 0.05
+        base_money: 0.2
+        base_exp: 0.2
       lime_glazed_terracotta:
-        base_money: 0.05
-        base_exp: 0.05
+        base_money: 0.2
+        base_exp: 0.2
       pink_glazed_terracotta:
-        base_money: 0.05
-        base_exp: 0.05
+        base_money: 0.2
+        base_exp: 0.2
       gray_glazed_terracotta:
-        base_money: 0.05
-        base_exp: 0.05
+        base_money: 0.2
+        base_exp: 0.2
       light_gray_glazed_terracotta:
-        base_money: 0.05
-        base_exp: 0.05
+        base_money: 0.2
+        base_exp: 0.2
       cyan_glazed_terracotta:
-        base_money: 0.05
-        base_exp: 0.05
+        base_money: 0.2
+        base_exp: 0.2
       purple_glazed_terracotta:
-        base_money: 0.05
-        base_exp: 0.05
+        base_money: 0.2
+        base_exp: 0.2
       blue_glazed_terracotta:
-        base_money: 0.05
-        base_exp: 0.05
+        base_money: 0.2
+        base_exp: 0.2
       brown_glazed_terracotta:
-        base_money: 0.05
-        base_exp: 0.05
+        base_money: 0.2
+        base_exp: 0.2
       green_glazed_terracotta:
-        base_money: 0.05
-        base_exp: 0.05
+        base_money: 0.2
+        base_exp: 0.2
       red_glazed_terracotta:
-        base_money: 0.05
-        base_exp: 0.05
+        base_money: 0.2
+        base_exp: 0.2
       black_glazed_terracotta:
-        base_money: 0.05
-        base_exp: 0.05
+        base_money: 0.2
+        base_exp: 0.2
       smooth_sandstone:
-        base_money: 0.05
-        base_exp: 0.05
-      Brick:
-        base_money: 0.1
-        base_exp: 0.1
+        base_money: 0.2
+        base_exp: 0.2
+      brick:
+        base_money: 0.25
+        base_exp: 0.25
       smooth_red_sandstone:
-        base_money: 0.1
-        base_exp: 0.1
+        base_money: 0.15
+        base_exp: 0.15
   reward:
     50:
       items:
@@ -2207,8 +3071,8 @@
         base_money: 0.50
         base_exp: 0.50
       andesite:
-        base_money: 0.1
-        base_exp: 0.1
+        base_money: 0.2
+        base_exp: 0.2
       black_concrete:
         base_money: 0.50
         base_exp: 0.50
@@ -2222,8 +3086,8 @@
         base_money: 0.50
         base_exp: 0.50
       coal_ore:
-        base_money: 1.0
-        base_exp: 1.0
+        base_money: 1.5
+        base_exp: 1.5
       cobblestone:
         base_money: 0.05
         base_exp: 0.05
@@ -2240,8 +3104,8 @@
         base_money: 8.00
         base_exp: 8.00
       diorite:
-        base_money: 0.1
-        base_exp: 0.1
+        base_money: 0.2
+        base_exp: 0.2
       dirt:
         base_money: 0.1
         base_exp: 0.1
@@ -2249,11 +3113,11 @@
         base_money: 35.00
         base_exp: 35.00
       gold_ore:
-        base_money: 2.20
-        base_exp: 2.20
+        base_money: 2.80
+        base_exp: 2.80
       granite:
-        base_money: 0.1
-        base_exp: 0.1
+        base_money: 0.2
+        base_exp: 0.2
       gravel:
         base_money: 0.1
         base_exp: 0.1
@@ -2270,11 +3134,11 @@
         base_money: 0.50
         base_exp: 0.50
       iron_ore:
-        base_money: 1.0
-        base_exp: 1.0
+        base_money: 1.5
+        base_exp: 1.5
       lapis_ore:
-        base_money: 3.0
-        base_exp: 3.0
+        base_money: 3.5
+        base_exp: 3.5
       light_blue_concrete:
         base_money: 0.50
         base_exp: 0.50
@@ -2291,8 +3155,8 @@
         base_money: 0.50
         base_exp: 0.50
       obsidian:
-        base_money: 3.40
-        base_exp: 3.40
+        base_money: 4.40
+        base_exp: 4.40
       orange_concrete:
         base_money: 0.50
         base_exp: 0.50
@@ -2311,9 +3175,12 @@
       red_concrete:
         base_money: 0.50
         base_exp: 0.50
+      spawner:
+        base_money: 50.00
+        base_exp: 50.00
       stone:
-        base_money: 0.05
-        base_exp: 0.05
+        base_money: 0.07
+        base_exp: 0.07
       terracotta:
         base_money: 0.05
         base_exp: 0.05
@@ -2540,11 +3407,11 @@
         base_money: 1.0
         base_exp: 1.0
       iron_ingot:
-        base_money: 0.5
-        base_exp: 0.5
+        base_money: 0.8
+        base_exp: 0.8
       gold_ingot:
-        base_money: 0.4
-        base_exp: 0.4
+        base_money: 0.6
+        base_exp: 0.6
       redstone_dust:
         base_money: 0.1
         base_exp: 0.1
@@ -2669,14 +3536,14 @@
         base_money: 0.2
         base_exp: 0.2
       red_sand:
-        base_money: 0.24
-        base_exp: 0.24
+        base_money: 0.34
+        base_exp: 0.34
       sand:
         base_money: 0.09
         base_exp: 0.09
       sandstone:
-        base_money: 0.17
-        base_exp: 0.17
+        base_money: 0.22
+        base_exp: 0.22
       seagrass:
         base_money: 0.01
         base_exp: 0.01
@@ -2846,13 +3713,16 @@
       Cooked_Salmon:
         base_money: 0.5
         base_exp: 0.5
+      Green_Dye:
+        base_money: 0.05
+        base_exp: 0.05
       Brick:
         base_money: 0.1
         base_exp: 0.1
     KILL:
       GUARDIAN:
-        base_money: 0.75
-        base_exp: 0.75
+        base_money: 1
+        base_exp: 1
       elder_guardian:
         base_money: 50.0
         base_exp: 50.0
@@ -3047,17 +3917,14 @@
         base_money: 0.02
         base_exp: 0.02
       baked_potato:
-        base_money: 0.1
-        base_exp: 0.1
+        base_money: 0.2
+        base_exp: 0.2
       Cooked_Rabbit:
         base_money: 0.4
         base_exp: 0.4
       Cooked_Mutton:
         base_money: 0.2
         base_exp: 0.2
-      Green_Dye:
-        base_money: 0.05
-        base_exp: 0.05
     MILK:
       Cow:
         base_money: 1.0
@@ -3141,6 +4008,10 @@
   equation_money:
     ratio: 25
   action:
+    BREAK:
+      soul_sand:
+        base_money: 0.2
+        base_exp: 0.2
     BREW:
       nether_wart:
         base_money: 0.1
@@ -3194,6 +4065,12 @@
         base_money: 1.0
         base_exp: 1.0
     CRAFT:
+      glistering_melon_slice:
+        base_money: 0.5
+        base_exp: 0.5
+      golden_carrot:
+        base_money: 0.3
+        base_exp: 0.3
       book:
         base_money: 0.50
         base_exp: 0.50
@@ -3215,318 +4092,353 @@
       glass_bottle:
         base_money: 0.50
         base_exp: 0.50
+      blaze_powder:
+        base_money: 0.1
+        base_exp: 0.1
     ENCHANT:
       power-1:
-        base_money: 0.1
-        base_exp: 0.1
+        base_money: 0.13
+        base_exp: 0.13
       power-2:
-        base_money: 0.2
-        base_exp: 0.2
+        base_money: 0.26
+        base_exp: 0.26
       power-3:
-        base_money: 0.4
-        base_exp: 0.4
+        base_money: 0.53
+        base_exp: 0.53
       power-4:
-        base_money: 0.8
-        base_exp: 0.8
+        base_money: 1.0
+        base_exp: 1.0
       flame-1:
-        base_money: 0.9
-        base_exp: 0.9
+        base_money: 1.2
+        base_exp: 1.2
       infinity-1:
-        base_money: 2.7
-        base_exp: 2.7
+        base_money: 3.6
+        base_exp: 3.6
       punch-1:
-        base_money: 0.3
-        base_exp: 0.3
+        base_money: 0.4
+        base_exp: 0.4
       punch-2:
-        base_money: 0.6
-        base_exp: 0.6
+        base_money: 0.8
+        base_exp: 0.8
       channeling-1:
-        base_money: 2.7
-        base_exp: 2.7
+        base_money: 3.6
+        base_exp: 3.6
       sharpness-1:
-        base_money: 0.1
-        base_exp: 0.1
+        base_money: 0.2
+        base_exp: 0.2
       sharpness-2:
-        base_money: 0.2
-        base_exp: 0.2
+        base_money: 0.3
+        base_exp: 0.3
       sharpness-3:
-        base_money: 0.4
-        base_exp: 0.4
+        base_money: 0.53
+        base_exp: 0.53
       sharpness-4:
-        base_money: 0.8
-        base_exp: 0.8
+        base_money: 1.1
+        base_exp: 1.1
       sharpness-5:
-        base_money: 1.6
-        base_exp: 1.6
+        base_money: 2.1
+        base_exp: 2.1
       bane_of_arthropods-1:
-        base_money: 0.3
-        base_exp: 0.3
-      bane_of_arthropods-2:
-        base_money: 0.6
-        base_exp: 0.6
-      bane_of_arthropods-3:
-        base_money: 1.2
-        base_exp: 1.2
-      bane_of_arthropods-4:
-        base_money: 2.4
-        base_exp: 2.4
-      bane_of_arthropods-5:
-        base_money: 4.8
-        base_exp: 4.8
-      smite-1:
-        base_money: 0.3
-        base_exp: 0.3
-      smite-2:
-        base_money: 0.6
-        base_exp: 0.6
-      smite-3:
-        base_money: 1.2
-        base_exp: 1.2
-      smite-4:
-        base_money: 2.4
-        base_exp: 2.4
-      smite-5:
-        base_money: 4.8
-        base_exp: 4.8
-      depth_strider-1:
-        base_money: 0.9
-        base_exp: 0.9
-      depth_strider-2:
-        base_money: 1.8
-        base_exp: 1.8
-      depth_strider-3:
-        base_money: 3.6
-        base_exp: 3.6
-      efficiency-1:
-        base_money: 0.1
-        base_exp: 0.1
-      efficiency-2:
-        base_money: 0.2
-        base_exp: 0.2
-      efficiency-3:
         base_money: 0.4
         base_exp: 0.4
-      efficiency-4:
+      bane_of_arthropods-2:
         base_money: 0.8
         base_exp: 0.8
-      efficiency-5:
+      bane_of_arthropods-3:
         base_money: 1.6
         base_exp: 1.6
+      bane_of_arthropods-4:
+        base_money: 3.2
+        base_exp: 3.2
+      bane_of_arthropods-5:
+        base_money: 6.4
+        base_exp: 6.4
+      smite-1:
+        base_money: 0.4
+        base_exp: 0.4
+      smite-2:
+        base_money: 0.8
+        base_exp: 0.8
+      smite-3:
+        base_money: 1.6
+        base_exp: 1.6
+      smite-4:
+        base_money: 3.2
+        base_exp: 3.2
+      smite-5:
+        base_money: 6.0
+        base_exp: 6.0
+      depth_strider-1:
+        base_money: 1.2
+        base_exp: 1.2
+      depth_strider-2:
+        base_money: 2.7
+        base_exp: 2.7
+      depth_strider-3:
+        base_money: 4.8
+        base_exp: 4.8
+      efficiency-1:
+        base_money: 0.2
+        base_exp: 0.2
+      efficiency-2:
+        base_money: 0.25
+        base_exp: 0.25
+      efficiency-3:
+        base_money: 0.53
+        base_exp: 0.53
+      efficiency-4:
+        base_money: 1.0
+        base_exp: 1.0
+      efficiency-5:
+        base_money: 2.1
+        base_exp: 2.1
       unbreaking-1:
-        base_money: 0.3
-        base_exp: 0.3
+        base_money: 0.4
+        base_exp: 0.4
       unbreaking-2:
-        base_money: 0.6
-        base_exp: 0.6
+        base_money: 0.8
+        base_exp: 0.8
       unbreaking-3:
-        base_money: 1.2
-        base_exp: 1.2
+        base_money: 1.6
+        base_exp: 1.6
       fire_aspect-1:
-        base_money: 0.9
-        base_exp: 0.9
+        base_money: 1.2
+        base_exp: 1.2
       fire_aspect-2:
-        base_money: 1.8
-        base_exp: 1.8
+        base_money: 2.4
+        base_exp: 2.4
       frost_walker-1:
-        base_money: 0.9
-        base_exp: 0.9
+        base_money: 1.2
+        base_exp: 1.2
       frost_walker-2:
-        base_money: 1.8
-        base_exp: 1.8
+        base_money: 2.4
+        base_exp: 2.4
       impaling-1:
-        base_money: 0.9
-        base_exp: 0.9
+        base_money: 1.2
+        base_exp: 1.2
       impaling-2:
-        base_money: 1.8
-        base_exp: 1.8
+        base_money: 2.4
+        base_exp: 2.4
       impaling-3:
-        base_money: 3.6
-        base_exp: 3.6
+        base_money: 4.8
+        base_exp: 4.8
       impaling-4:
-        base_money: 7.2
-        base_exp: 7.2
+        base_money: 9.6
+        base_exp: 9.6
       impaling-5:
-        base_money: 14.4
-        base_exp: 14.4
+        base_money: 17.4
+        base_exp: 17.4
       knockback-1:
-        base_money: 0.3
-        base_exp: 0.3
+        base_money: 0.4
+        base_exp: 0.4
       knockback-2:
-        base_money: 0.6
-        base_exp: 0.6
+        base_money: 0.8
+        base_exp: 0.8
       fortune-1:
-        base_money: 0.9
-        base_exp: 0.9
-      fortune-2:
-        base_money: 1.8
-        base_exp: 1.8
-      fortune-3:
-        base_money: 3.6
-        base_exp: 3.6
-      looting-1:
-        base_money: 0.9
-        base_exp: 0.9
-      looting-2:
-        base_money: 1.8
-        base_exp: 1.8
-      looting-3:
-        base_money: 3.6
-        base_exp: 3.6
-      loyalty-1:
-        base_money: 0.3
-        base_exp: 0.3
-      loyalty-2:
-        base_money: 0.6
-        base_exp: 0.6
-      loyalty-3:
         base_money: 1.2
         base_exp: 1.2
+      fortune-2:
+        base_money: 2.4
+        base_exp: 2.4
+      fortune-3:
+        base_money: 4.8
+        base_exp: 4.8
+      looting-1:
+        base_money: 1.2
+        base_exp: 1.2
+      looting-2:
+        base_money: 2.4
+        base_exp: 2.4
+      looting-3:
+        base_money: 4.8
+        base_exp: 4.8
+      loyalty-1:
+        base_money: 0.4
+        base_exp: 0.4
+      loyalty-2:
+        base_money: 0.8
+        base_exp: 0.8
+      loyalty-3:
+        base_money: 1.6
+        base_exp: 1.6
       luck_of_the_sea-1:
-        base_money: 0.9
-        base_exp: 0.9
+        base_money: 1.2
+        base_exp: 1.2
       luck_of_the_sea-2:
-        base_money: 1.8
-        base_exp: 1.8
+        base_money: 2.4
+        base_exp: 2.4
       luck_of_the_sea-3:
-        base_money: 3.6
-        base_exp: 3.6
+        base_money: 4.8
+        base_exp: 4.8
       lure-1:
-        base_money: 0.9
-        base_exp: 0.9
+        base_money: 1.2
+        base_exp: 1.2
       lure-2:
-        base_money: 1.8
-        base_exp: 1.8
+        base_money: 2.4
+        base_exp: 2.4
       lure-3:
-        base_money: 3.6
-        base_exp: 3.6
+        base_money: 4.8
+        base_exp: 4.8
       multishot-1:
-        base_money: 0.9
-        base_exp: 0.9
+        base_money: 1.2
+        base_exp: 1.2
       respiration-1:
-        base_money: 0.9
-        base_exp: 0.9
+        base_money: 1.2
+        base_exp: 1.2
       respiration-2:
-        base_money: 1.8
-        base_exp: 1.8
+        base_money: 2.4
+        base_exp: 2.4
       respiration-3:
-        base_money: 3.6
-        base_exp: 3.6
+        base_money: 4.8
+        base_exp: 4.8
       piercing-1:
-        base_money: 0.1
-        base_exp: 0.1
+        base_money: 0.13
+        base_exp: 0.13
       piercing-2:
-        base_money: 0.2
-        base_exp: 0.2
+        base_money: 0.26
+        base_exp: 0.26
       piercing-3:
+        base_money: 0.53
+        base_exp: 0.53
+      piercing-4:
+        base_money: 1.2
+        base_exp: 1.2
+      protection-1:
+        base_money: 0.13
+        base_exp: 0.13
+      protection-2:
+        base_money: 0.26
+        base_exp: 0.26
+      protection-3:
+        base_money: 0.53
+        base_exp: 0.53
+      protection-4:
+        base_money: 1.1
+        base_exp: 1.1
+      blast_protection-1:
+        base_money: 1.2
+        base_exp: 1.2
+      blast_protection-2:
+        base_money: 2.4
+        base_exp: 2.4
+      blast_protection-3:
+        base_money: 4.8
+        base_exp: 4.8
+      blast_protection-4:
+        base_money: 9.6
+        base_exp: 9.6
+      feather_falling-1:
         base_money: 0.4
         base_exp: 0.4
-      piercing-4:
+      feather_falling-2:
         base_money: 0.8
         base_exp: 0.8
-      protection-1:
+      feather_falling-3:
+        base_money: 1.6
+        base_exp: 1.6
+      feather_falling-4:
+        base_money: 3.2
+        base_exp: 3.2
+      fire_protection-1:
+        base_money: 0.4
+        base_exp: 0.4
+      fire_protection-2:
+        base_money: 0.8
+        base_exp: 0.8
+      fire_protection-3:
+        base_money: 1.6
+        base_exp: 1.6
+      fire_protection-4:
+        base_money: 3.0
+        base_exp: 3.0
+      projectile_protection-1:
+        base_money: 0.4
+        base_exp: 0.4
+      projectile_protection-2:
+        base_money: 0.8
+        base_exp: 0.8
+      projectile_protection-3:
+        base_money: 1.6
+        base_exp: 1.6
+      projectile_protection-4:
+        base_money: 3.0
+        base_exp: 3.0
+      quick_charge-1:
         base_money: 0.1
         base_exp: 0.1
-      protection-2:
-        base_money: 0.2
-        base_exp: 0.2
-      protection-3:
-        base_money: 0.4
-        base_exp: 0.4
-      protection-4:
+      quick_charge-2:
         base_money: 0.8
         base_exp: 0.8
-      blast_protection-1:
-        base_money: 0.9
-        base_exp: 0.9
-      blast_protection-2:
-        base_money: 1.8
-        base_exp: 1.8
-      blast_protection-3:
+      quick_charge-3:
+        base_money: 1.6
+        base_exp: 1.6
+      riptide-1:
+        base_money: 1.2
+        base_exp: 1.2
+      riptide-2:
+        base_money: 2.4
+        base_exp: 2.4
+      riptide-3:
+        base_money: 4.8
+        base_exp: 4.8
+      silk_touch-1:
         base_money: 3.6
         base_exp: 3.6
-      blast_protection-4:
+      sweeping-1:
+        base_money: 1.2
+        base_exp: 1.2
+      sweeping-2:
+        base_money: 2.4
+        base_exp: 2.4
+      sweeping-3:
+        base_money: 4.8
+        base_exp: 4.8
+      thorns-1:
+        base_money: 3.6
+        base_exp: 3.6
+      thorns-2:
         base_money: 7.2
         base_exp: 7.2
-      feather_falling-1:
-        base_money: 0.3
-        base_exp: 0.3
-      feather_falling-2:
-        base_money: 0.6
-        base_exp: 0.6
-      feather_falling-3:
-        base_money: 1.2
-        base_exp: 1.2
-      feather_falling-4:
-        base_money: 2.4
-        base_exp: 2.4
-      fire_protection-1:
-        base_money: 0.3
-        base_exp: 0.3
-      fire_protection-2:
-        base_money: 0.6
-        base_exp: 0.6
-      fire_protection-3:
-        base_money: 1.2
-        base_exp: 1.2
-      fire_protection-4:
-        base_money: 2.4
-        base_exp: 2.4
-      projectile_protection-1:
-        base_money: 0.3
-        base_exp: 0.3
-      projectile_protection-2:
-        base_money: 0.6
-        base_exp: 0.6
-      projectile_protection-3:
-        base_money: 1.2
-        base_exp: 1.2
-      projectile_protection-4:
-        base_money: 2.4
-        base_exp: 2.4
-      quick_charge-1:
-        base_money: 0.3
-        base_exp: 0.3
-      quick_charge-2:
-        base_money: 0.6
-        base_exp: 0.6
-      quick_charge-3:
-        base_money: 1.2
-        base_exp: 1.2
-      riptide-1:
-        base_money: 0.9
-        base_exp: 0.9
-      riptide-2:
-        base_money: 1.8
-        base_exp: 1.8
-      riptide-3:
-        base_money: 3.6
-        base_exp: 3.6
-      silk_touch-1:
-        base_money: 2.7
-        base_exp: 2.7
-      sweeping-1:
-        base_money: 0.9
-        base_exp: 0.9
-      sweeping-2:
-        base_money: 1.8
-        base_exp: 1.8
-      sweeping-3:
-        base_money: 3.6
-        base_exp: 3.6
-      thorns-1:
-        base_money: 2.7
-        base_exp: 2.7
-      thorns-2:
-        base_money: 5.4
-        base_exp: 5.4
       thorns-3:
-        base_money: 10.8
-        base_exp: 10.8
+        base_money: 14.2
+        base_exp: 14.2
       aqua_affinity-1:
-        base_money: 0.9
-        base_exp: 0.9
+        base_money: 1.2
+        base_exp: 1.2
+    KILL:
+      blaze:
+        base_money: 1.5
+        base_exp: 1.5
+      magma_cube-1:
+        base_money: 0.15
+        base_exp: 0.15
+      magma_cube-2:
+        base_money: 0.6
+        base_exp: 0.6
+      magma_cube-4:
+        base_money: 4.0
+        base_exp: 4.0
     SMELT:
+      Green_Dye:
+        base_money: 0.05
+        base_exp: 0.05
       Lime_Dye:
         base_money: 0.5
         base_exp: 0.5
+      glass:
+        base_money: 0.10
+        base_exp: 0.10
+  reward:
+    50:
+      items:
+        0:
+          id: diamond_chestplate
+          name: "Plastron ensorcelé"
+          enchantments:
+            fire_protection: 7
+            protection: 4
+            thorns: 3
+            projectile_protection: 4
+          unbreakable: true
+          prevent_lost: true
 # Fin de la config du job Sorcier----------------------------------------

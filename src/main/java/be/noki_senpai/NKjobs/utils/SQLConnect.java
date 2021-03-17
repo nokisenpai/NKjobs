@@ -23,7 +23,7 @@ public class SQLConnect
 		jdbcConfig.setMaximumPoolSize(10);
 		jdbcConfig.setMinimumIdle(2);
 		jdbcConfig.setMaxLifetime(900000);
-		jdbcConfig.setJdbcUrl("jdbc:mysql://" + host_ + ":" + port_ + "/" + dbName_ + "?useSSL=false&autoReconnect=true&useUnicode=yes");
+		jdbcConfig.setJdbcUrl("jdbc:mysql://" + host_ + ":" + port_ + "/" + dbName_ + "?useSSL=false&autoReconnect=true&useUnicode=yes&zeroDateTimeBehavior=convertToNull");
 		jdbcConfig.setUsername(user_);
 		jdbcConfig.setPassword(password_);
 		ds = new HikariDataSource(jdbcConfig);

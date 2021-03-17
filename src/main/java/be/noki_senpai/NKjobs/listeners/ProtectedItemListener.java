@@ -55,9 +55,13 @@ public class ProtectedItemListener implements Listener
 	// on Death
 	// ######################################
 
-	@EventHandler(priority = EventPriority.LOW)
+	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onDeath(PlayerDeathEvent event)
 	{
+		if(event.getKeepInventory())
+		{
+			return;
+		}
 		List<ItemStack> l = event.getDrops();
 		Iterator<ItemStack> i = l.iterator();
 

@@ -16,5 +16,5 @@ ratio-from-spawner: 0.40
 min-explore-money: 0.10
 min-explore-exp: 0.10
 global-blocks-timer: 5
-max-registered-furnaces : 16
-max-registered-brewingstands : 16
+max-registered-furnaces : 32
+max-registered-brewingstands : 32

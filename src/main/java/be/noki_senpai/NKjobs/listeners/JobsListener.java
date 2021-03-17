@@ -1,10 +1,14 @@
 package be.noki_senpai.NKjobs.listeners;
 
+import be.noki_senpai.NKjobs.NKjobs;
 import be.noki_senpai.NKjobs.managers.*;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.block.Block;
+import org.bukkit.block.CreatureSpawner;
+import org.bukkit.block.data.BlockData;
 import org.bukkit.block.data.type.BrewingStand;
 import org.bukkit.block.data.type.Furnace;
 import org.bukkit.entity.*;
@@ -22,7 +26,9 @@ import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerShearEntityEvent;
 import org.bukkit.inventory.*;
+import org.bukkit.inventory.meta.BlockStateMeta;
 import org.bukkit.material.CocoaPlant;
+import org.bukkit.persistence.PersistentDataType;
 
 import java.sql.Timestamp;
 
@@ -43,7 +49,7 @@ public class JobsListener implements Listener
 	// BREAK
 	// ######################################
 
-	@EventHandler(priority = EventPriority.LOW) public void onBlockBreak(BlockBreakEvent event)
+	@EventHandler(priority = EventPriority.HIGHEST) public void onBlockBreak(BlockBreakEvent event)
 	{
 		if(event.isCancelled())
 		{
@@ -80,7 +86,7 @@ public class JobsListener implements Listener
 	// PLACE
 	// ######################################
 
-	@EventHandler(priority = EventPriority.LOW) public void onBlockPlace(BlockPlaceEvent event)
+	@EventHandler(priority = EventPriority.HIGHEST) public void onBlockPlace(BlockPlaceEvent event)
 	{
 		if(event.isCancelled())
 		{
@@ -117,7 +123,7 @@ public class JobsListener implements Listener
 	// KILL
 	// ######################################
 
-	@EventHandler(priority = EventPriority.LOW) public void onKill(EntityDeathEvent event)
+	@EventHandler(priority = EventPriority.HIGHEST) public void onKill(EntityDeathEvent event)
 	{
 		LivingEntity entity = event.getEntity();
 		if(entity.getKiller() != null)
@@ -137,7 +143,7 @@ public class JobsListener implements Listener
 	// FISH
 	// ######################################
 
-	@EventHandler(priority = EventPriority.LOW) public void onFish(PlayerFishEvent event)
+	@EventHandler(priority = EventPriority.HIGHEST) public void onFish(PlayerFishEvent event)
 	{
 		if(event.isCancelled())
 		{
@@ -163,7 +169,7 @@ public class JobsListener implements Listener
 	// CRAFT
 	// ######################################
 
-	@EventHandler(priority = EventPriority.LOW) public void onCraft(CraftItemEvent event)
+	@EventHandler(priority = EventPriority.HIGHEST) public void onCraft(CraftItemEvent event)
 	{
 		if(event.isCancelled())
 		{
@@ -254,7 +260,7 @@ public class JobsListener implements Listener
 	// SMELT
 	// ######################################
 
-	@EventHandler(priority = EventPriority.LOW) public void onSmelt(FurnaceSmeltEvent event)
+	@EventHandler(priority = EventPriority.HIGHEST) public void onSmelt(FurnaceSmeltEvent event)
 	{
 		if(event.isCancelled())
 		{
@@ -284,7 +290,7 @@ public class JobsListener implements Listener
 	// BREW
 	// ######################################
 
-	@EventHandler(priority = EventPriority.LOW) public void onBrew(BrewEvent event)
+	@EventHandler(priority = EventPriority.HIGHEST) public void onBrew(BrewEvent event)
 	{
 		if(event.isCancelled())
 		{
@@ -327,7 +333,7 @@ public class JobsListener implements Listener
 	// ENCHANT
 	// ######################################
 
-	@EventHandler(priority = EventPriority.LOW) public void onEnchant(EnchantItemEvent event)
+	@EventHandler(priority = EventPriority.HIGHEST) public void onEnchant(EnchantItemEvent event)
 	{
 		if(event.isCancelled())
 		{
@@ -418,7 +424,7 @@ public class JobsListener implements Listener
 	// BREED
 	// ######################################
 
-	@EventHandler(priority = EventPriority.LOW) public void onBreed(EntityBreedEvent event)
+	@EventHandler(priority = EventPriority.HIGHEST) public void onBreed(EntityBreedEvent event)
 	{
 		if(event.isCancelled())
 		{
@@ -426,6 +432,10 @@ public class JobsListener implements Listener
 		}
 
 		Player player = (Player) event.getBreeder();
+		if(player == null)
+		{
+			return;
+		}
 		if(player.getGameMode().equals(GameMode.SURVIVAL))
 		{
 			jobManager.executeBreed(playerManager.getPlayer(player.getName()), event.getEntity().getType().name().toUpperCase());
@@ -436,7 +446,7 @@ public class JobsListener implements Listener
 	// TAME
 	// ######################################
 
-	@EventHandler(priority = EventPriority.LOW) public void onTame(EntityTameEvent event)
+	@EventHandler(priority = EventPriority.HIGHEST) public void onTame(EntityTameEvent event)
 	{
 		if(event.isCancelled())
 		{
@@ -454,7 +464,7 @@ public class JobsListener implements Listener
 	// MILK
 	// ######################################
 
-	@EventHandler(priority = EventPriority.LOW) public void onMilk(PlayerInteractEntityEvent event)
+	@EventHandler(priority = EventPriority.HIGHEST) public void onMilk(PlayerInteractEntityEvent event)
 	{
 		if(event.isCancelled())
 		{
@@ -488,7 +498,7 @@ public class JobsListener implements Listener
 	// SHEAR
 	// ######################################
 
-	@EventHandler(priority = EventPriority.LOW) public void onShear(PlayerShearEntityEvent event)
+	@EventHandler(priority = EventPriority.HIGHEST) public void onShear(PlayerShearEntityEvent event)
 	{
 		if(event.isCancelled())
 		{
@@ -506,7 +516,7 @@ public class JobsListener implements Listener
 	// EXPLORE
 	// ######################################
 
-	@EventHandler(priority = EventPriority.LOW) public void onPlayerMove(PlayerMoveEvent event)
+	@EventHandler(priority = EventPriority.HIGHEST) public void onPlayerMove(PlayerMoveEvent event)
 	{
 		if(event.isCancelled())
 		{
