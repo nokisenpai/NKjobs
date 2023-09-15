@@ -1,20 +1,23 @@
 # NKjobs
 
-# MySQL connection (required)
-use-mysql: true
+# MySQL connection
+# Get database access automatically using NKcore API
+use-nkcore-access: true
+
+# Used if use-nkcore-access is set to false. You can connect to another database.
 table-prefix: NKjobs_
 host: localhost
 port: 3306
-dbName: minecraft
+dbName: minecraft_dev
 user: root
 password:
 
-# Options
-server-name: 'world'
+# Possible values : DEBUG, LOG, WARN, ERROR
+log-level: LOG
 max-job: 1
 ratio-from-spawner: 0.40
-min-explore-money: 0.10
+min-explore-money: 0.0
 min-explore-exp: 0.10
 global-blocks-timer: 5
-max-registered-furnaces : 32
-max-registered-brewingstands : 32
+max-registered-furnaces: 32
+max-registered-brewingstands: 32

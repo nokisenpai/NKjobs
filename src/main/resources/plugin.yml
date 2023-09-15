@@ -1,12 +1,15 @@
-name: NKjobs
-main: be.noki_senpai.NKjobs.NKjobs
-version: 1.0.4
-api-version: 1.16
+name: ${project.name}
+main: ovh.lumen.${project.name}.Main
+version: ${project.version}
+api-version: 1.18
 author: 'NoKi_senpai'
 description: 'Allows players to have jobs'
-depend: [Vault, NKmanager]
-softdepend: [NKeconomy]
+website: www.lumen.ovh
+depend: [Vault, NKcore]
 commands:
+  ${project.name}:
+    description: "The root plugin command"
+    usage: /<command> [subcommand]
   jobs:
     description: "Main NKjobs plugin command"
     usage: /<command> <join|leave|leaveall|switch|info|stats|top|level|xp>
